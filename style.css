@@ -1,5 +1,5 @@
 /*
-Theme Name:     Jupiter Child Theme
+Theme Name:     Yoga Jupiter Child Theme 
 Theme URI: 		http://demos.artbees.net/jupiter5
 Description:    Child theme for the Jupiter theme 
 Author:         Your name here
@@ -19,3 +19,41 @@ body {
 }
 
 */
+
+.schedule-table-week-controller {
+    border-bottom: 1px solid #eee;
+}
+
+.this-week-banner.date-display.active {
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+}
+
+.schedule-table-week-controller.text-uppercase.small.bg-white.text-center.pt-2.pb-2.font-weight-bold {
+    background-color: #fff;
+}
+
+.class-day-title, .schedule-table-week-controller {
+    border-bottom: 1px solid #eee;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(238, 238, 238);
+}
+
+.class-day {
+    border-right: 1px solid #eee;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(238, 238, 238);
+}
+
+.theme-page-wrapper .theme-content {
+	padding: 30px 20px 0px 20px !important;
+}
+
+@media (min-width:768px) {
+	.showOnMobile {
+		display: none;
+	}
+}

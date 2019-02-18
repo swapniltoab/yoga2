@@ -98,7 +98,7 @@ class ZingFit
         $zingfit_access_token = get_transient('zingfit_access_token');
         $optionSites = get_option('zingfit_sites');
         $regions = get_option('zingfit_regions');
-        $classes = [];
+        // $classes = [];
 
         if ($zingfit_access_token) {
             foreach ($optionSites as $sites) {
@@ -113,8 +113,9 @@ class ZingFit
 
                     $response = wp_remote_get($url, $args);
                     $class = json_decode(wp_remote_retrieve_body($response), true);
-                    error_log('$class$class$class ..... '.print_r($class,1));
-                    array_push($classes, $class);
+                    // error_log('$class$class$class ..... '.print_r($class,1));
+                    return $class['classes'];
+                    // array_push($classes, $class);
                 }
             }
         }

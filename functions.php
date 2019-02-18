@@ -2,8 +2,9 @@
 add_action( 'wp_enqueue_scripts', 'yoga_enqueue' );
 function yoga_enqueue() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css' );
-    wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js', array('jquery'), true );
+    wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+    wp_enqueue_script( 'bootstrap', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
+    wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), true );
 }
 
 add_action( 'admin_enqueue_scripts', 'yoga_admin_enqueue' );
@@ -29,9 +30,9 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     $zingfit = new ZingFit($zingfit_client_id, $zingfit_client_secret, $zingfit_api_url);
 endif;
 
-// $zingfit->getRegions();
-    // $zingfit->getSites();
-    // $zingfit->getClasses();
+//  $zingfit->getRegions();
+//  $zingfit->getSites();
+//  $zingfit->getClasses();
 
 include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_access_token.php';
 
