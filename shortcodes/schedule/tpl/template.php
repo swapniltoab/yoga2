@@ -16,51 +16,44 @@
 
 <div id="schedule-table" class="schedule-table row no-gutters" data-currenttime="1550488645">
 
-    <?php 
-    $temp = '';
-    foreach($classes as $class){
-        $classDate = $class['classDate'];
-        $classDate = explode('T', $classDate);
-        $Date = $classDate[0];
-        $Day = date('l', strtotime($Date));
-        error_log('$class$class$class ..... '.print_r($Day,1));
-        error_log('$class$class$class 2222  ..... '.print_r(strtotime($Date),1));
+    <?php
 
-        if($temp !== $Date) :
-            $temp = $Date;
-    ?>
-    
-    <div class="col-lg bg-white text-uppercase small class-day active" id="tab-2019-02-18">
-        <div class="  ">
-            
-            <div class="class-day-title p-3">
-                <h3 class=" font-weight-bold"><?php echo $Day ?></h3>
-                <span><?php echo $Date ?></span>
-            </div>
+    foreach($schedule as $classes){
+        $length = count($classes);
+        foreach ($classes as $key => $class) {
+            if ($key == 0) : ?>
 
-            <?php endif; ?>
+                <div class="col-lg bg-white text-uppercase small class-day active" id="tab-2019-02-18">
+                    <div class="  ">
 
-            <div class="classes-container">
-                <div id="794234914659632960" class="class-container p-3 row no-gutters  not-private " data-room="noho" data-classid="794234914659632960" data-classdate="2019-02-18T07:00:00" data-classinstructorname="Rob" data-gender="">
-                    <div class="col-7 col-lg-12">
-                        <div class="class-instructor position-relative">
-                            <div class="class-time">
-                            <?php echo $classDate[1] ?>
-                            </div>
-                            <?php echo $class['instructor1'] ?><br>
+                        <div class="class-day-title p-3">
+                            <h3 class=" font-weight-bold"><?php echo $class['day'] ?></h3>
+                            <span><?php echo $class['date'] ?></span>
                         </div>
+
+                        <?php endif; ?>
+
+                        <div class="classes-container">
+                            <div id="794234914659632960" class="class-container p-3 row no-gutters  not-private " data-room="noho" data-classid="794234914659632960" data-classdate="2019-02-18T07:00:00" data-classinstructorname="Rob" data-gender="">
+                                <div class="col-7 col-lg-12">
+                                    <div class="class-instructor position-relative">
+                                        <div class="class-time">
+                                        <?php echo $class['time'] ?>
+                                        </div>
+                                        <?php echo $class['instructor_name'] ?><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php if ($key == ($length-1)) : ?>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <?php if($temp !== $Date) :
-                 ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <?php 
+    <?php
         }
+    }
     ?>
 
     <!-- <div class="col-lg bg-white text-uppercase small class-day active" id="tab-2019-02-19">
@@ -104,7 +97,7 @@
             </div>
         </div>
     </div> -->
-    
+
     <!-- <div class="col-lg bg-white text-uppercase small class-day active" id="tab-2019-02-21">
         <div class="  ">
             <div class="class-day-title p-3">
