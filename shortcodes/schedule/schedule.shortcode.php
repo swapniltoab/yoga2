@@ -29,9 +29,11 @@ class ZingFit_Schedule_Shortcode
             $stringDate = strtotime($Date);
             $tempClass = [];
 
+            $time = date('h:i A', strtotime($classDate[1]));
+            
             $tempClass['day'] = $classDay;
-            $tempClass['date'] = $Date;
-            $tempClass['time'] = $classDate[1];
+            $tempClass['date'] = substr($Date,5);
+            $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
 
             if(is_array($schedule[$stringDate])){
