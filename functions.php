@@ -6,6 +6,12 @@ function yoga_enqueue() {
     wp_enqueue_script( 'bootstrap', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
     wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), true );
     wp_enqueue_script( 'calender', get_stylesheet_directory_uri() . '/js/website/calender.js', array('jquery'), true );
+    wp_enqueue_script( 'customer-register', get_stylesheet_directory_uri() . '/js/website/customer-register.js', array('jquery'), true );
+    
+    wp_localize_script('customer-register', 'zingfit_js_var', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
+
 }
 
 add_action( 'admin_enqueue_scripts', 'yoga_admin_enqueue' );
@@ -33,9 +39,13 @@ endif;
 
 //  $zingfit->getRegions();
 //  $zingfit->getSites();
-//  $zingfit->getClasses();
+  $zingfit->getClasses();
 
 include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_access_token.php';
+include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_customer_register.php';
 
 include_once get_stylesheet_directory() . '/shortcodes/schedule/schedule.shortcode.php';
 new ZingFit_Schedule_Shortcode();
+
+include_once get_stylesheet_directory() . '/shortcodes/register/register.shortcode.php';
+new ZingFit_Register_Shortcode();

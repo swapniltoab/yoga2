@@ -86,6 +86,36 @@ button {
     width: auto;
 }
 
+.form-label {
+    text-align: right;
+    /* position: relative; */
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000 !important;
+}
+
+.js-form-control.row {
+    padding: 5px 0;
+}
+
+.form-input, .form-check-input {
+    background-color: #fdfdfd;
+    border: 1px solid #ced4da;
+    outline: 0;
+    margin-bottom: 4px;
+    display: block;
+    width: 40%;
+}
+
+.form-label:after {
+    display: block;
+    content: "*";
+    position: absolute;
+    top: -2px;
+    right: 5px;
+}
+
 @media (min-width:768px) {
 	.showOnMobile {
 		display: none;
