@@ -3,7 +3,7 @@
     $(document).ready(function(){
 
         $('#btn_register').click(function(e){
-            e.preventDefault();
+            //e.preventDefault();
 
              $(".error-message").empty();
             if(!validateForm()){
@@ -63,23 +63,27 @@
         var result = true;
         $(".js-required").each(function() {
             var input_value =  $(this).val().trim();
-            var mail_input_value =  $.trim($("input[name='username']").val());
+            //Zconsole.log('input........',input_value);
+            //var mail_input_value =  $.trim($("input[name='username']").val());
 
-            var ddl = document.getElementById("state");
-            var state_value = ddl.options[ddl.selectedIndex].value;
+            //var ddl = document.getElementById("state");
+            //var state_value = ddl.options[ddl.selectedIndex].value;
             //var state_value = document.querySelector('#state').value;
             //console.log('state', state_value);
 
             if(input_value.length == 0){
                 result = false;
-                $(this).parent('.js-form-control').find(".error-message").empty().text('Required');
-            // } else if(mail_input_value.length == 0){
+                $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Required');
+            }
+            // if ($('#state')[0].tagName !='SELECT') {
             //     result = false;
-            //     $(this).parent('.js-form-control').find(".error-message").empty().text('Required');
-           
-             } else {
-                result = true;
-             }
+            //     $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Required');
+            // }
+
+            //    else {
+            //     result = true;
+            //  }
+
             
         });
         return result;

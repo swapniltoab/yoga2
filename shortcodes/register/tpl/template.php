@@ -68,10 +68,10 @@
     </div>
     </div>
 
-    <div class="js-form-control js-required row">
+    <div class="js-form-control row">
     <label class="col-md-3 form-label" for="state"><b>STATE</b></label>
     <div class="col-md-9">
-    <select id="state" class="form-input" name="state" required>
+    <select id="state" class="form-input js-required" name="state" required>
     <option value="selectstate">Select State</option>
     <option value="AL">Alabama</option>
     </select><br>
@@ -134,7 +134,7 @@
                                 "December" => "12"
                                 );
                 foreach ($months as $monthname => $month) {?>
-                <option class="" value="<?php echo $month?>"><?php echo $monthname ?></option>
+                <option class="js-required" value="<?php echo $month?>"><?php echo $monthname ?></option>
                 <?php } ?>
           </select>
 
