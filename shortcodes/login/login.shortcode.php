@@ -1,6 +1,6 @@
 <?php
 
-class ZingFit_Register_Shortcode
+class ZingFit_Login_Shortcode
 {
 
     public function __construct()
@@ -12,10 +12,10 @@ class ZingFit_Register_Shortcode
 
     private function define_admin_hooks()
     {
-        add_shortcode('zingfit_register', array($this, 'zingfit_register_callback'));
+        add_shortcode('zingfit_login', array($this, 'zingfit_login_callback'));
     }
 
-    public function zingfit_register_callback($args)
+    public function zingfit_login_callback($args)
     {
         global $zingfit;
 

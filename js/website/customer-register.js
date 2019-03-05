@@ -3,7 +3,7 @@
     $(document).ready(function(){
 
         $('#btn_register').click(function(e){
-            //e.preventDefault();
+            e.preventDefault();
 
              $(".error-message").empty();
             if(!validateForm()){
