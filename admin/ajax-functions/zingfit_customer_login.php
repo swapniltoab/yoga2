@@ -15,7 +15,7 @@ function zingfit_customer_login()
     
     if (is_wp_error($user)) {
         echo json_encode(array('status' => false, 'error' => $user->get_error_message()));
-    } else if ($response['error']){
+    } else{
         echo json_encode(array('status' => true));
     }
     die();
