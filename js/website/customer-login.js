@@ -33,19 +33,4 @@
 
     });
 
-    // function validateForm() {
-    //     var result = true;
-    //     $(".js-required").each(function () {
-    //         var input_value = $(this).val().trim();
-            
-    //         if (input_value.length == 0) {
-    //             result = false;
-    //             $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Required');
-    //         }
-
-    //     });
-    //     return result;
-
-    // }
-
 })(jQuery);

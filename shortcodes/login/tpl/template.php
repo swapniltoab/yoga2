@@ -5,7 +5,7 @@
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="username"><b>EMAIL</b></label>
     <div class="col-md-9">
-    <input type="email" class="js-required form-input" name="username" required><br>
+    <input type="email" class="form-input" name="username" required><br>
     <span class="error-message" style="color:red"></span>
     </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="password"><b>PASSWORD</b></label>
     <div class="col-md-9">
-    <input type="password" class="js-required form-input" name="password" required><br>
+    <input type="password" class="form-input" name="password" required><br>
     <span class="error-message" style="color:red"></span>
     </div>
     </div>
