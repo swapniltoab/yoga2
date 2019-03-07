@@ -31,6 +31,11 @@
                 success: (response) => {
                     if(response.status === true){
                         let userdata = response.userdata;
+                        if(response.response_code =='406')
+                        {
+                            alert('User is already exists in zingfit api, please use another email/username');
+                            return false;
+                        }
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',
