@@ -1,4 +1,4 @@
-<form id ="registerform" name="registerform" method="post" accept-charset="UTF-8">  
+<form id ="registerform" name="registerform" method="post" accept-charset="UTF-8">
   <div class="container">
     <h1>SIGN UP</h1>
 
@@ -11,7 +11,7 @@
     <span class="error-message" style="color:red"></span>
     </div>
     </div>
-    
+
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="password"><b>PASSWORD</b></label>
     <div class="col-md-9">
@@ -35,7 +35,7 @@
     <span class="error-message" style="color:red"></span>
     </div>
     </div>
-    
+
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="lastName"><b>LAST NAME</b></label>
     <div class="col-md-9">
@@ -85,13 +85,13 @@
     <input type="text" class="js-required form-input" name="zip" required><br>
     <span class="error-message" style="color:red"></span>
     </div>
-    </div>             
+    </div>
 
       <div class="form-check-inline js-form-control row" required>
           <label class="col-md-3 form-label" for="region">
           <b>Region</b>
           </label>
-          <div class="col-md-9">  
+          <div class="col-md-9">
         <div class="form-check-inline">
           <label class="form-check-label" for="region">
             <input type="radio" class="" id="radio1" name="region" value="newyork" checked>New York
@@ -101,7 +101,7 @@
         <div class="form-check-inline">
           <label class="form-check-label" for="region">
             <input type="radio" class="" id="radio2" name="region" value="losangeles">Los Angeles
-          </label>    
+          </label>
         </div>
 
         <div class="form-check-inline">
@@ -118,8 +118,8 @@
         <div class="col-md-9">
           <select id="selectMonth" class="form-input" name="selectMonth" style="width:auto;" class="form-control">
             <option>Month</option>
-              <?php 
-                // $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+              <?php
+
                 $months = array("January" => "01",
                                 "February" => "02",
                                 "March" => "03",
@@ -139,10 +139,9 @@
           </select>
 
           <select id="selectDate" name="selectDate" style="width:auto;" class="form-control">
-            <option>D</option>
-              <?php for ($i = 1; $i <= 31; $i++) {?>
-                <option class=""><?php echo $i ?></option>
-                <?php }?>
+            <?php for ($i = 1; $i <= 31; $i++) {?>
+              <option class=""><?php echo $i ?></option>
+            <?php }?>
           </select>
 
           <select id="selectYear" name="selectYear" style="width:auto;" class="form-control">
@@ -153,7 +152,7 @@
           <span class="error-message" style="color:red"></span>
           </div>
       </div>
-      
+
       <div class="row">
         <div class="col-md-2"></div>
       <label class="col-md-9 custom-control">

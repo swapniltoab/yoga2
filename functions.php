@@ -8,7 +8,7 @@ function yoga_enqueue() {
     wp_enqueue_script( 'calender', get_stylesheet_directory_uri() . '/js/website/calender.js', array('jquery'), true );
     wp_enqueue_script( 'customer-register', get_stylesheet_directory_uri() . '/js/website/customer-register.js', array('jquery'), true );
     wp_enqueue_script( 'customer-login', get_stylesheet_directory_uri() . '/js/website/customer-login.js', array('jquery'), true );
-    
+
     wp_localize_script('customer-register', 'zingfit_js_var', array(
         'ajaxurl' => admin_url('admin-ajax.php')
     ));

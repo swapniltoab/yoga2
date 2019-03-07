@@ -20,8 +20,9 @@ class ZingFit_Login_Shortcode
         global $zingfit;
 
         if(! is_user_logged_in()){
-            $content = include 'tpl/template.php';
-            echo $content;
+            ob_start();
+            include 'tpl/template.php';
+            return ob_get_clean();
         }
     }
 

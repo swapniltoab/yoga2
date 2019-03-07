@@ -13,5 +13,3 @@ function zingfit_generate_access_token()
     die();
 }
  add_action('wp_ajax_zingfit_generate_access_token', 'zingfit_generate_access_token');
-
-

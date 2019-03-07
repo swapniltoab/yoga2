@@ -30,7 +30,7 @@ class ZingFit_Schedule_Shortcode
             $tempClass = [];
 
             $time = date('h:i A', strtotime($classDate[1]));
-            
+
             $tempClass['day'] = $classDay;
             $tempClass['date'] = substr($Date,5);
             $tempClass['time'] = $time;
