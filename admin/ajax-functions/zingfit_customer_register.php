@@ -46,10 +46,10 @@ function zingfit_customer_register()
 
     $response = wp_remote_post('https://api.zingfit.com/account', $args);
     $userdata = json_decode($response['body']);
-    //print_r(json_decode($response['body']));
+    // error_log(print_r($response,1));
 
     if ($userdata) {
-        echo json_encode(array('status' => true, 'userdata' => $userdata));
+        echo json_encode(array('status' => true, 'userdata' => $userdata, 'response_code' => $response['response']['code']));
     } else if ($response['error']){
         echo json_encode(array('status' => false, 'error' => $response['error'], 'error_description' => $response['error_description']));
     }
