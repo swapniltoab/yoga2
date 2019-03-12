@@ -1,7 +1,7 @@
-<form id ="loginform" name="loginform" method="post" accept-charset="UTF-8" style="display:none">  
+<form id ="loginform" name="loginform" method="post" accept-charset="UTF-8">  
   <div class="container">
     <h1>Login</h1>
-
+    <p>Already have an account ...</p> 
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="username"><b>EMAIL</b></label>
     <div class="col-md-9">

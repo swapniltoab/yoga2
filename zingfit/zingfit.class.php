@@ -113,7 +113,9 @@ class ZingFit
 
                     $response = wp_remote_get($url, $args);
                     $class = json_decode(wp_remote_retrieve_body($response), true);
+                    //print_r($response);
                     // error_log('$class$class$class ..... '.print_r($class,1));
+                    //print_r($class);
                     return $class['classes'];
                     // array_push($classes, $class);
                 }

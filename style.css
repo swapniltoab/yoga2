@@ -105,7 +105,7 @@ button {
     outline: 0;
     margin-bottom: 4px;
     display: block;
-    width: 40%;
+    width: 70%;
 }
 
 .form-label:after {
@@ -142,4 +142,18 @@ button {
 .schedule-table.row>.class-day.active {
     display: block;
 }
+
+.right_col {
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_row {
+    padding-top: 3em;
+    padding-bottom: 3em;
+    background-color: #fff;
+}
+
 

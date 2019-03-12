@@ -22,6 +22,7 @@
     foreach($schedule as $classes){
         $length = count($classes);
         foreach ($classes as $key => $class) {
+           // print_r($class);
             if ($key == 0) : ?>
 
                 <div class="col-lg bg-white text-uppercase small class-day" id="">
@@ -42,7 +43,8 @@
                                         <?php echo $class['time'] ?>
                                         </div>
                                         <?php echo $class['instructor_name'] ?><br>
-                                        <button type="button">RESERVE</button>
+                                        <?php //echo $class['room_Id'] ?><br>
+                                        <button id="reserve" type="button" data-room-id="<?php echo $class['room_Id']?>">RESERVE</button>
                                     </div>
                                 </div>
                             </div>

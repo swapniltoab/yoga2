@@ -35,6 +35,7 @@ class ZingFit_Schedule_Shortcode
             $tempClass['date'] = substr($Date,5);
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
+            $tempClass['room_Id'] = $class['roomId'];
 
             if(is_array($schedule[$stringDate])){
                 array_push($schedule[$stringDate], $tempClass);
