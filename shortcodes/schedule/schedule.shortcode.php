@@ -21,7 +21,7 @@ class ZingFit_Schedule_Shortcode
         $classes = $zingfit->getClasses();
         $schedule = [];
 
-        foreach($classes as $class){
+        foreach ($classes as $class) {
             $classDate = $class['classDate'];
             $classDate = explode('T', $classDate);
             $Date = $classDate[0];
@@ -32,12 +32,12 @@ class ZingFit_Schedule_Shortcode
             $time = date('h:i A', strtotime($classDate[1]));
 
             $tempClass['day'] = $classDay;
-            $tempClass['date'] = substr($Date,5);
+            $tempClass['date'] = substr($Date, 5);
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
 
-            if(is_array($schedule[$stringDate])){
+            if (is_array($schedule[$stringDate])) {
                 array_push($schedule[$stringDate], $tempClass);
             } else {
                 $schedule[$stringDate][0] = $tempClass;

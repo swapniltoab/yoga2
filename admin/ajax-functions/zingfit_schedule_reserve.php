@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function zingfit_schedule_reserve()
 {
@@ -13,12 +13,10 @@ function zingfit_schedule_reserve()
         )
     );
     $url = 'https://api.zingfit.com/rooms/'.$room;
-   
+
     $response = wp_remote_get($url,$args);
     print_r($response);
 }
 
 
 add_action('wp_ajax_zingfit_schedule_reserve', 'zingfit_schedule_reserve');
-
-

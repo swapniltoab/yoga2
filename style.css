@@ -1,7 +1,7 @@
 /*
-Theme Name:     Yoga Jupiter Child Theme 
+Theme Name:     Yoga Jupiter Child Theme
 Theme URI: 		http://demos.artbees.net/jupiter5
-Description:    Child theme for the Jupiter theme 
+Description:    Child theme for the Jupiter theme
 Author:         Your name here
 Theme URI: 		http://themeforest.net/user/artbees
 Template:       jupiter
@@ -116,7 +116,7 @@ button {
     right: 5px;
 }
 .error-message {
-   
+
 
 }
 
@@ -156,4 +156,6 @@ button {
     background-color: #fff;
 }
 
-
+.hideElement{
+    display:none;
+}

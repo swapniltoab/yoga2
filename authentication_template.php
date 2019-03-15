@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*template name: zingfit authentication */
 if ( !is_user_logged_in() ) {
@@ -8,14 +8,14 @@ get_header();
 <div class="container">
     <div class="row form_row">
         <div class="col-sm-6">
-        <?php 
+        <?php
             echo do_shortcode('[zingfit_login]');
             echo do_shortcode('[zingfit_register]');
         ?>
         </div>
         <div class="col-sm-6 right_col">
-        <input class="js-ShowLoginForm" style="display: none;" type="submit" value="Open Login Form" /><br>
-        <input class="js-ShowRegisterForm" type="submit" value="Open Sign Up Form" />
+        <input class="js-ShowLoginForm btn hideElement" type="submit" value="SIGN IN >" /><br>
+        <input class="js-ShowRegisterForm btn" type="submit" value="SIGN UP >" />
         </div>
     </div>
 </div>

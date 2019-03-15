@@ -2,7 +2,7 @@
 
     $(document).ready(function() {
 
-        $('#reserve').click(function (e) {
+        $('.reserve').click(function (e) {
            var roomid = $(this).attr('data-room-id');
            //console.log(roomid);
 

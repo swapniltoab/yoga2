@@ -1,7 +1,7 @@
-<form id ="loginform" name="loginform" method="post" accept-charset="UTF-8">  
+<form id ="loginform" name="loginform" method="post" accept-charset="UTF-8">
   <div class="container">
-    <h1>Login</h1>
-    <p>Already have an account ...</p> 
+    <h2>Sign In</h2>
+    <p>Already have an account ...</p>
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="username"><b>EMAIL</b></label>
     <div class="col-md-9">
@@ -9,7 +9,7 @@
     <span class="error-message" style="color:red"></span>
     </div>
     </div>
-    
+
     <div class="js-form-control row">
     <label class="col-md-3 form-label" for="password"><b>PASSWORD</b></label>
     <div class="col-md-9">
@@ -21,7 +21,7 @@
       <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-9">
-      <input id= "btn_login" type="submit" value="Login">
+      <input id= "btn_login" class="btn" type="submit" value="Login">
       </div>
       </div>
   </div>

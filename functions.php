@@ -2,9 +2,9 @@
 add_action( 'wp_enqueue_scripts', 'yoga_enqueue' );
 function yoga_enqueue() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
-    wp_enqueue_script( 'bootstrap', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
-    wp_enqueue_script( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), true );
+    wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+    wp_enqueue_script( 'popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', array('jquery'), true );
+    wp_enqueue_script( 'bootstrapJs', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('jquery'), true );
     wp_enqueue_script( 'calender', get_stylesheet_directory_uri() . '/js/website/calender.js', array('jquery'), true );
     wp_enqueue_script( 'customer-register', get_stylesheet_directory_uri() . '/js/website/customer-register.js', array('jquery'), true );
     wp_enqueue_script( 'customer-login', get_stylesheet_directory_uri() . '/js/website/customer-login.js', array('jquery'), true );
