@@ -22,7 +22,7 @@
                     'password': data[1].value,
                 },
                 success: (response) => {
-                    if(response.status === true){
+                    if (response.status === true) {
                         window.location.href = '/';
                     } else {
                         alert('Failed WP login');

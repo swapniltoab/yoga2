@@ -3,7 +3,6 @@
 class Zingfit_Main_Settings {
 
 	public function __construct() {
-
 		$this->define_admin_hooks();
 	}
 
@@ -29,7 +28,6 @@ class Zingfit_Main_Settings {
 
 	function zingfit_settings_page_init() {
 		$settings_page = add_menu_page('Zingfit Settings', 'Zingfit Settings', 'manage_options', 'zingfit-settings', array($this, 'zingfit_settings_page'),'',30);
-
 		add_action("load-{$settings_page}", array($this, 'zingfit_load_settings_page'));
 	}
 
@@ -56,7 +54,7 @@ class Zingfit_Main_Settings {
 				$tab = $_GET['tab'];
 			} else {
 				$tab = 'general';
-      }
+      		}
 
 			switch ($tab) {
 
@@ -86,8 +84,6 @@ class Zingfit_Main_Settings {
 		}
 		echo '</h2>';
 	}
-
-
 
 	function zingfit_settings_page() {
 		global $pagenow;
@@ -141,5 +137,4 @@ class Zingfit_Main_Settings {
 		</div>
 		<?php
 	}
-
 }

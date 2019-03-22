@@ -40,10 +40,6 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     $zingfit = new ZingFit($zingfit_client_id, $zingfit_client_secret, $zingfit_api_url);
 endif;
 
-//  $zingfit->getRegions();
-//  $zingfit->getSites();
-  $zingfit->getClasses();
-
 include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_access_token.php';
 include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_customer_register.php';
 include_once get_stylesheet_directory() . '/admin/ajax-functions/zingfit_customer_login.php';

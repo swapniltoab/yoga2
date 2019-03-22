@@ -10,13 +10,8 @@
                 return false;
             }
 
-            //if(! $form.valid()) return false;
             let data = $('#registerform').serializeArray();
             let password = data[1].value;
-            console.log('data', data);
-
-            // var formData = JSON.stringify(jQuery('#registerform').serializeArray());
-            //console.log('formdata', formData);
 
             var ajax_url = zingfit_js_var.ajaxurl;
 
@@ -64,7 +59,7 @@
     });
 
     function validateForm() {
-        //console.log('Hererererer');
+
         $(".error-message").empty();
         var result = true;
         var password = $(".js-pass").val();
@@ -159,6 +154,5 @@
         }
         return true;
     }
-
 
 })(jQuery);

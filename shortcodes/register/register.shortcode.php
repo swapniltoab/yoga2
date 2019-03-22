@@ -5,9 +5,7 @@ class ZingFit_Register_Shortcode
 
     public function __construct()
     {
-
         $this->define_admin_hooks();
-
     }
 
     private function define_admin_hooks()

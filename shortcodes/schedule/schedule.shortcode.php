@@ -5,9 +5,7 @@ class ZingFit_Schedule_Shortcode
 
     public function __construct()
     {
-
         $this->define_admin_hooks();
-
     }
 
     private function define_admin_hooks()
@@ -42,12 +40,12 @@ class ZingFit_Schedule_Shortcode
             } else {
                 $schedule[$stringDate][0] = $tempClass;
             }
-
         }
-        // error_log('$schedule  ..... '.print_r($schedule,1));
 
-        $content = include 'tpl/template.php';
-        echo $content;
+        ob_start();
+        include 'tpl/template.php';
+        return ob_get_clean();
+
     }
 
 }

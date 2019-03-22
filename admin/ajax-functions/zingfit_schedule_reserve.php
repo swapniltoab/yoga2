@@ -17,6 +17,4 @@ function zingfit_schedule_reserve()
     $response = wp_remote_get($url,$args);
     print_r($response);
 }
-
-
 add_action('wp_ajax_zingfit_schedule_reserve', 'zingfit_schedule_reserve');

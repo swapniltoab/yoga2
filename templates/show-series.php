@@ -5,21 +5,13 @@
 get_header();
 
 $regions = get_option('zingfit_regions');
-
 $zingfit_access_token = get_transient('zingfit_access_token');
+$regionId = '811593826090091886';
 
-$args = array(
-    'headers' => array(
-        'Authorization' => 'Bearer ' . $zingfit_access_token,
-        'X-ZINGFIT-REGION-ID' => '811593826090091886',
-    )
-);
-$url = 'https://api.zingfit.com/series';
-
-$response = wp_remote_get($url,$args);
-
-$serieses = json_decode(wp_remote_retrieve_body($response), true);
-
+if ($zingfit_access_token) {
+    global $zinfit;
+    $serieses = $zingfit->getSeries($zingfit_access_token, $regionId);
+}
 ?>
 
 <div class="container" style="padding: 50px 20px">

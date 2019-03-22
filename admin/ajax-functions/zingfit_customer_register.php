@@ -4,18 +4,7 @@ function zingfit_customer_register()
 {
 
     $formData = $_POST['formData'];
-    //print_r($formData);exit;
-    //$formData = json_decode($formData);
-
     $param = [];
-    // foreach (explode('&', $formData) as $chunk) {
-    //     $data = explode("=", $chunk);
-
-    //     if ($data) {
-    //         $param[$data[0]] = $data[1];
-    //        // printf("Value for parameter \"%s\" is \"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
-    //     }
-    // }
 
     foreach ($formData as $data) {
         $param[$data['name']] = $data['value'];
@@ -45,7 +34,6 @@ function zingfit_customer_register()
 
     $response = wp_remote_post('https://api.zingfit.com/account', $args);
     $userdata = json_decode($response['body']);
-    // error_log(print_r($response,1));
 
     if ($userdata) {
         echo json_encode(array('status' => true, 'userdata' => $userdata, 'response_code' => $response['response']['code']));
@@ -57,6 +45,7 @@ function zingfit_customer_register()
 }
 add_action('wp_ajax_zingfit_customer_register', 'zingfit_customer_register');
 add_action('wp_ajax_nopriv_zingfit_customer_register', 'zingfit_customer_register');
+
 
 function zingfit_customer_register_wp_user()
 {
@@ -75,8 +64,6 @@ function zingfit_customer_register_wp_user()
         )
     );
 
-// print_r($user_id);
-
     $agreed = isset($customer['agreeTerms']) ? true : false;
 
     update_user_meta($user_id, 'zingfit_user_id', $customer['id']);
@@ -87,7 +74,6 @@ function zingfit_customer_register_wp_user()
     update_user_meta($user_id, 'zip', $customer['zip']);
     update_user_meta($user_id, 'agreeTerms', $agreed);
     update_user_meta($user_id, 'homeRegion', $customer['homeRegion']);
-    // update_user_meta( $user_id, 'region', $birthDate);
 
     if ($user_id) {
         wp_set_current_user($user_id);
@@ -102,6 +88,5 @@ function zingfit_customer_register_wp_user()
     die();
 
 }
-
 add_action('wp_ajax_zingfit_customer_register_wp_user', 'zingfit_customer_register_wp_user');
 add_action('wp_ajax_nopriv_zingfit_customer_register_wp_user', 'zingfit_customer_register_wp_user');
