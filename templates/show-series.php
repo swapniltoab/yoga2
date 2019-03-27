@@ -27,27 +27,23 @@ if ($zingfit_access_token) {
 
     <hr>
 
-    <!-- <div class="row"> -->
-
-        <?php foreach($serieses as $series): ?>
-        <div class="row">
-            <div class="col-md-6">
-                <h2><?php echo $series['name'] ?></h2>
-                <span><?php echo $series['description'] ?></span>
-            </div>
-
-            <div class="col-md-3">
-                <span><?php echo $series['price']['amount'] ?> <?php echo $series['price']['currency'] ?></span>
-            </div>
-
-            <div class="col-md-3">
-                <a href="javascript:void(0)" data-series-id="<?php echo $series['id'] ?>" class="btn" >Buy This Series</a>
-            </div>
+    <?php foreach($serieses as $series): ?>
+    <div class="row">
+        <div class="col-md-6">
+            <h2><?php echo $series['name'] ?></h2>
+            <span><?php echo $series['description'] ?></span>
         </div>
-        <hr>
-        <?php endforeach; ?>
 
-    <!-- </div> -->
+        <div class="col-md-3">
+            <span><?php echo $series['price']['amount'] ?> <?php echo $series['price']['currency'] ?></span>
+        </div>
+
+        <div class="col-md-3">
+            <a href="/checkout/?seriesId=<?php echo $series['id'] ?>" data-series-id="<?php echo $series['id'] ?>" class="btn" >Buy This Series</a>
+        </div>
+    </div>
+    <hr>
+    <?php endforeach; ?>
 
 </div>
 

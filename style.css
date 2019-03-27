@@ -22,6 +22,7 @@ body {
 .theme-content {
     width: 1155px;
 }
+
 .class-container {
     font-size: 12px;
 }
@@ -40,7 +41,8 @@ body {
     background-color: #fff;
 }
 
-.class-day-title, .schedule-table-week-controller {
+.class-day-title,
+.schedule-table-week-controller {
     border-bottom: 1px solid #eee;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -53,11 +55,13 @@ body {
     border-right-style: solid;
     border-right-color: rgb(238, 238, 238);
 }
+
 .classes-container {
     padding-left: 10px;
 }
+
 .theme-page-wrapper .theme-content {
-	padding: 30px 0px 0px 0px !important;
+    padding: 30px 0px 0px 0px !important;
 }
 
 .row {
@@ -70,7 +74,8 @@ body {
     margin-left: -15px;
 }
 
-.schedule-table-week-controller .next, .schedule-table-week-controller .prev {
+.schedule-table-week-controller .next,
+.schedule-table-week-controller .prev {
     display: inline-block;
     cursor: pointer;
 }
@@ -99,7 +104,8 @@ button {
     padding: 5px 0;
 }
 
-.form-input, .form-check-input {
+.form-input,
+.form-check-input {
     background-color: #fdfdfd;
     border: 1px solid #ced4da;
     outline: 0;
@@ -115,15 +121,13 @@ button {
     top: -2px;
     right: 5px;
 }
-.error-message {
 
-
-}
+.error-message {}
 
 @media (min-width:768px) {
-	.showOnMobile {
-		display: none;
-	}
+    .showOnMobile {
+        display: none;
+    }
 }
 
 @media (min-width: 992px) {
@@ -136,9 +140,11 @@ button {
         max-width: 100%;
     }
 }
+
 .schedule-table.row>.class-day:not(.active) {
     display: none;
 }
+
 .schedule-table.row>.class-day.active {
     display: block;
 }
@@ -156,11 +162,11 @@ button {
     background-color: #fff;
 }
 
-.hideElement{
-    display:none;
+.hideElement {
+    display: none;
 }
 
-.floor-shape{
+.floor-shape {
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -174,4 +180,45 @@ button {
     font-weight: 600;
     text-align: center;
     position: absolute;
+}
+
+
+/* User account page css */
+
+.container.user-account-container {
+    padding: 50px 30px;
+}
+
+.user-account-header {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-account-body {
+    display: flex;
+    width: 100%;
+    padding: 40px 20px;
+}
+
+.user-account-left-label {
+    text-align: right;
+    width: 100%;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 5px;
+}
+
+label.user-account-right-label {
+    width: 100%;
+    padding: 15px 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
 }

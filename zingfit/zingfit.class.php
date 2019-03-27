@@ -170,7 +170,71 @@ class ZingFit
         $url = $this->apiUrl.'rooms/'.$roomId;
 
         $response = wp_remote_get($url,$args);
-        // print_r($response);
+        return json_decode(wp_remote_retrieve_body($response), true);
+    }
+
+    public function getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId)
+    {
+        $bodyData = [
+            "confirmTerms" => true,
+            "seriesId" => $seriesId,
+            // "skuId" => [ ]
+        ];
+
+        $bodyData = json_encode($bodyData);
+
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => $bodyData
+        );
+        $url = $this->apiUrl.'orders/series/';
+
+        $response = wp_remote_post($url,$args);
+        return json_decode(wp_remote_retrieve_body($response), true);
+    }
+
+    public function getCustomerData($zingfit_user_access_token, $regionId)
+    {
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            )
+        );
+        $url = $this->apiUrl.'account/';
+
+        $response = wp_remote_get($url,$args);
+        $data = wp_remote_retrieve_body($response);
+        $userData = json_decode($data, true);
+
+        if($userData && !array_key_exists('error', $userData)) {
+            $wpUserId = get_current_user_id();
+            update_user_meta($wpUserId, 'zingfit_customer_data', $userData);
+        }
+
+        return $userData;
+    }
+
+    public function chargeCreditCard($zingfit_user_access_token, $regionId, $orderId, $checkoutInfo)
+    {
+        $checkoutInfo = json_encode($checkoutInfo);
+
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => $checkoutInfo
+        );
+        $url = $this->apiUrl.'payments/'.$orderId.'/creditcard';
+
+        $response = wp_remote_post($url,$args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
