@@ -114,6 +114,8 @@ class ZingFit
 
     }
 
+    
+
     public function getUserAuthenticate($username, $password, $wpUserId){
         $id = urlencode($this->client_id);
         $secret = urlencode($this->client_secret);
@@ -237,5 +239,41 @@ class ZingFit
         $response = wp_remote_post($url,$args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
+
+    public function getInstructorClasses($zingfit_access_token, $optionSites, $regions, $instructorId){
+
+     $zingfit_access_token = get_transient('zingfit_access_token');
+    $optionSites = get_option('zingfit_sites');
+    $regions = get_option('zingfit_regions');
+
+    $data = [
+        'instructorId' => '811593826257864200'
+    ];
+
+    $data = json_encode($data);
+
+    if ($zingfit_access_token) {
+        foreach ($optionSites as $sites) {
+            foreach ($sites as $site) {
+                $url = $this->apiUrl.'sites/' . $site['id'] . '/classes';
+                $args = array(
+                    'headers' => array(
+                        'Authorization' => 'Bearer ' . $zingfit_access_token,
+                        'X-ZINGFIT-REGION-ID' => '811593826090091886',
+                    ),
+                    'body' => $data
+                );
+
+                $response = wp_remote_get($url, $args);
+               
+                $class = json_decode(wp_remote_retrieve_body($response), true);
+                return $class['classes'];
+            }
+        }
+    }
+
+}
+
+
 
 }

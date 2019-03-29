@@ -58,3 +58,11 @@ new ZingFit_Register_Shortcode();
 
 include_once yoga_path . '/shortcodes/login/login.shortcode.php';
 new ZingFit_Login_Shortcode();
+
+include_once yoga_path . '/shortcodes/instructor_schedule/instructor_schedule.shortcode.php';
+new ZingFit_Instructor_Schedule_Shortcode();
+
+
+
+
+
