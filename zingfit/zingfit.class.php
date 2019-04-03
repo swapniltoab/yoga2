@@ -242,12 +242,8 @@ class ZingFit
 
     public function getInstructorClasses($zingfit_access_token, $optionSites, $regions, $instructorId){
 
-     $zingfit_access_token = get_transient('zingfit_access_token');
-    $optionSites = get_option('zingfit_sites');
-    $regions = get_option('zingfit_regions');
-
     $data = [
-        'instructorId' => '811593826257864200'
+        'instructorId' => $instructorId
     ];
 
     $data = json_encode($data);
@@ -263,9 +259,9 @@ class ZingFit
                     ),
                     'body' => $data
                 );
-
+                
                 $response = wp_remote_get($url, $args);
-               
+                
                 $class = json_decode(wp_remote_retrieve_body($response), true);
                 return $class['classes'];
             }

@@ -16,7 +16,6 @@
     <div id="schedule-table" class="schedule-table row no-gutters" data-currenttime="1550488645">
 
         <?php
-        
         foreach($schedule as $classes){
             $length = count($classes);
             foreach ($classes as $key => $class) {
