@@ -17,16 +17,14 @@ class ZingFit_Instructor_Schedule_Shortcode
     {
 
         global $zingfit;
-                
+
         $zingfit_access_token = get_transient('zingfit_access_token');
         $optionSites = get_option('zingfit_sites');
         $regions = get_option('zingfit_regions');
         $instructorId = $atts['instructorid'];
 
-        //print_r($instructorId);
-
         $instructorClasses = $zingfit->getInstructorClasses($zingfit_access_token, $optionSites, $regions, $instructorId);
-        //print_r($instructorClasses);
+
          $schedule = [];
 
         foreach ($instructorClasses as $class) {
@@ -42,7 +40,7 @@ class ZingFit_Instructor_Schedule_Shortcode
             //print_r($dateStr);
             $tempClass = [];
 
-            
+
 
             $time = date('h:i A', strtotime($classDate[1]));
 

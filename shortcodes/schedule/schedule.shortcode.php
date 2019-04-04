@@ -17,7 +17,7 @@ class ZingFit_Schedule_Shortcode
     {
         global $zingfit;
         $classes = $zingfit->getClasses();
-    
+
         $schedule = [];
 
         foreach ($classes as $class) {

@@ -16,11 +16,11 @@
     <div>
 
         <?php
-        print_r($instructorClasses);
+        // print_r($instructorClasses);
 
         //print_r($schedule);
 
-    
+
         ?>
     </div>
 
@@ -31,7 +31,7 @@
             $length = count($classes);
             foreach ($classes as $key => $class) {
                 if ($key == 0) : ?>
-                
+
                     <div class="col-lg bg-white text-uppercase small class-day" id="">
                         <div class="">
 
@@ -66,6 +66,6 @@
             }
         }
         ?>
-    </div>  
+    </div>
 </div>
 

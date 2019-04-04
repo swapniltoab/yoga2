@@ -27,8 +27,8 @@ $currentUserDataMyInfo = [
 $currentUserDataBillingInfo = [
                     'First Name' => $currentUserData['firstName'],
                     'Last Name' => $currentUserData['lastName'],
-                    'Address' => $currentUserData['address'],
-                    'ZIP' => $currentUserData['zip']
+                    'Address' => $currentUserData['billingAddress'],
+                    'ZIP' => $currentUserData['billingZip']
                 ];
 ?>
 
