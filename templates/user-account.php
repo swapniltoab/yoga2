@@ -10,7 +10,7 @@ $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpU
 $regionId = '811593826090091886';
 
 if ($zingfit_user_access_token) {
-    global $zinfit;
+    global $zingfit;
     $seriesOrderId = $zingfit->getCustomerData($zingfit_user_access_token, $regionId);
 }
 

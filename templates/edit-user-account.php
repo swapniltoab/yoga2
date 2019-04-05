@@ -144,7 +144,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             First Name
                             </label>
                             <div class="col-md-9">
-                                <input name="billing_first_name" required="" type="input" class="form-control " id="billing_first_name" placeholder="" autocomplete="" value="<?php echo $currentUserData['firstName']?>">
+                                <input name="firstName" required="" type="input" class="form-control " id="billing_first_name" placeholder="" autocomplete="" value="<?php echo $currentUserData['firstName']?>">
                             </div>
                         </div>
 
@@ -153,7 +153,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             Last Name
                             </label>
                             <div class="col-md-9">
-                                <input name="billing_last_name" required="" type="input" class="form-control " id="billing_last_name" placeholder="" autocomplete="" value="<?php echo $currentUserData['lastName']?>">
+                                <input name="lastName" required="" type="input" class="form-control " id="billing_last_name" placeholder="" autocomplete="" value="<?php echo $currentUserData['lastName']?>">
                             </div>
                         </div>
 

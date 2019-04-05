@@ -16,14 +16,19 @@ function zingfit_customer_update()
     // $year = $param['selectYear'];
 
     $password = $param['password'];
+
+    $regions = get_option('zingfit_regions');
+    $wpUserId = get_current_user_id();
+    $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+    $regionId = '811593826090091886';
+
+    if ($zingfit_user_access_token) {
+        global $zingfit;
+        $seriesOrderId = $zingfit->updateCustomerInfo($zingfit_user_access_token, $regionId, $param);
+    }
     // $birthDate = $year . '-' . $month . '-' . $date . 'T00:00';
     // $param['birthDate'] = isset($param['birthDate']) ? $birthDate : "";
 
-    $zingfit_access_token = get_transient('zingfit_access_token');
-    $regions = get_option('zingfit_regions');
-
-    global $zingfit;
-    // $userdata = $zingfit->updateCustomerInfo($zingfit_access_token, '', $param);
     // error_log('.... '.print_r($userdata,1));
 
     // if ($userdata) {

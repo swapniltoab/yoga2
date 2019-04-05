@@ -18,7 +18,19 @@ class ZingFit_Schedule_Shortcode
         global $zingfit;
         $classes = $zingfit->getClasses();
 
+        $availSlots = [];
+        $days = [];
         $schedule = [];
+
+        $time = strtotime("now");
+
+        for($i=0; $i<=6; $i++){
+            $temp = [];
+            $next = strtotime("+".$i." day");
+            $temp['day'] = date('l',$next);
+            $temp['date'] = date('d-m',$next);
+            array_push($days, $temp);
+        }
 
         foreach ($classes as $class) {
             $classDate = $class['classDate'];
@@ -36,10 +48,19 @@ class ZingFit_Schedule_Shortcode
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
 
-            if (is_array($schedule[$stringDate])) {
-                array_push($schedule[$stringDate], $tempClass);
+            if (is_array($availSlots[$classDay])) {
+                array_push($availSlots[$classDay], $tempClass);
             } else {
-                $schedule[$stringDate][0] = $tempClass;
+                $availSlots[$classDay][0] = $tempClass;
+            }
+        }
+
+        foreach($days as $k => $day){
+            if (!array_key_exists($day['day'],$availSlots))
+            {
+                $schedule[$day['day']][] = $day;
+            } else {
+                $schedule[$day['day']] = $availSlots[$day['day']];
             }
         }
 

@@ -283,11 +283,14 @@ class ZingFit
 
     }
 
-    public function updateCustomerInfo($zingfit_access_token, $regionId, $data){
+    public function updateCustomerInfo($zingfit_user_access_token, $regionId, $data)
+    {
 
+        error_log('$data ...'.print_r($data,1));
         $args = array(
+            'method'     => 'PUT',
             'headers' => array(
-                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/json;charset=UTF-8',
                 'X-ZINGFIT-REGION-ID' => '811593826090091886',
             ),
