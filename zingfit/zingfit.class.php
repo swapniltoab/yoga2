@@ -136,6 +136,24 @@ class ZingFit
 
     }
 
+    public function getGateways($zingfit_access_token, $regionId)
+    {
+        $url = $this->apiUrl.'gateways';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            )
+        );
+
+        $response = wp_remote_get($url,$args);
+        $api_response = json_decode(wp_remote_retrieve_body($response), true);
+
+        update_option("zingfit_gateways", $api_response);
+
+        return $api_response;
+    }
+
     public function getUserAuthenticate($username, $password, $wpUserId){
         $id = urlencode($this->client_id);
         $secret = urlencode($this->client_secret);
@@ -285,8 +303,7 @@ class ZingFit
 
     public function updateCustomerInfo($zingfit_user_access_token, $regionId, $data)
     {
-
-        error_log('$data ...'.print_r($data,1));
+        $url = $this->apiUrl.'account';
         $args = array(
             'method'     => 'PUT',
             'headers' => array(
@@ -297,9 +314,43 @@ class ZingFit
             'body' => json_encode($data),
         );
 
-        $response = wp_remote_post('https://api.zingfit.com/account', $args);
+        $response = wp_remote_post($url, $args);
         $userdata = json_decode($response['body']);
+    }
 
+    public function getCustomerCardsOfFile($zingfit_user_access_token, $regionId)
+    {
+        $url = $this->apiUrl.'account/cardsonfile';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $userCardsData = json_decode($response['body']);
+        return $userCardsData;
+    }
+
+    public function saveCustomerCreditCard($zingfit_user_access_token, $regionId, $data)
+    {
+        $data = json_encode($data);
+
+        $url = $this->apiUrl.'account/cardsonfile';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => $data
+        );
+
+        $response = wp_remote_post($url, $args);
+        $userCardsData = json_decode($response['body']);
+        return $userCardsData;
     }
 
 }

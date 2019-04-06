@@ -8,10 +8,12 @@ $regions = get_option('zingfit_regions');
 $wpUserId = get_current_user_id();
 $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
 $regionId = '811593826090091886';
+$userCardsData = '';
 
 if ($zingfit_user_access_token) {
     global $zingfit;
     $seriesOrderId = $zingfit->getCustomerData($zingfit_user_access_token, $regionId);
+    $userCardsData = $zingfit->getCustomerCardsOfFile($zingfit_user_access_token, $regionId);
 }
 
 $currentUserID = get_current_user_id();
@@ -102,6 +104,38 @@ $currentUserDataBillingInfo = [
             </div>
 
         </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="user-account-header">
+            <h3 class="yoga-h3 float-left">Cards On File</h3>
+            <span class="yoga-span float-right">
+                <a href="/account/addcard" class="yoga-a js-edit-user-info">Add New Card</a>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="div-table">
+
+        <div class="div-table-row">
+            <div class="div-table-col" align="center">TYPE</div>
+            <div  class="div-table-col">NUMBER</div>
+            <div  class="div-table-col">EXPIRATION</div>
+        </div>
+
+        <?php foreach($userCardsData as $key => $Card){
+            $strDate = strtotime($Card->expiration);
+            $date = date('m/y',$strDate);
+            ?>
+            <div class="div-table-row">
+                <div class="div-table-col"><?php echo $Card->cardType ?></div>
+                <div class="div-table-col"><?php echo $Card->lastFour ?></div>
+                <div class="div-table-col"><?php echo $date ?></div>
+            </div>
+        <?php }?>
 
     </div>
 
