@@ -58,6 +58,7 @@ class ZingFit_Schedule_Shortcode
         foreach($days as $k => $day){
             if (!array_key_exists($day['day'],$availSlots))
             {
+                $schedule[$day['day']]['isEmpty'] = true;
                 $schedule[$day['day']][] = $day;
             } else {
                 $schedule[$day['day']] = $availSlots[$day['day']];

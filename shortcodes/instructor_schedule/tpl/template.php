@@ -28,6 +28,23 @@
 
         <?php
         foreach($schedule as $classes){
+
+            if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
+                <div class="col-lg bg-white text-uppercase small class-day" id="">
+                    <div class="">
+                        <div class="class-day-title p-3">
+                            <h3 class="font-weight-bold"><?php echo $classes[0]['day'] ?></h3>
+                            <span><?php echo $classes[0]['date'] ?></span>
+                        </div>
+                    </div>
+
+                    <div class="classes-container">
+                        <span>No Data Available</span>
+                    </div>
+
+                </div>
+            <?php }
+                else {
             $length = count($classes);
             foreach ($classes as $key => $class) {
                 if ($key == 0) : ?>
@@ -65,6 +82,7 @@
         <?php
             }
         }
+    }
         ?>
     </div>
 </div>
