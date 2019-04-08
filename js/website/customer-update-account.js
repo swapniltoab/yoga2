@@ -5,10 +5,10 @@
         $('#js-update-user-btn').click(function (e) {
             e.preventDefault();
 
-            // $(".error-message").empty();
-            // if (!validateForm()) {
-            //     return false;
-            // }
+             $(".error-message").empty();
+             if (!validateForm()) {
+                 return false;
+             }
 
             let data = $('#usedAccountEdit').serializeArray();
             let password = data[1].value;
@@ -62,8 +62,10 @@
 
         $(".error-message").empty();
         var result = true;
-        var password = $(".js-pass").val();
-        var confirmPassword = $(".js-confirm-pass").val();
+        var password1 = $("#password1").val();
+        var confirmPassword = $("#confirm_password").val();
+        //console.log('password', password1);
+        //console.log('confirmPassword', confirmPassword);
 
         $(".js-required").each(function () {
             var input_value = $(this).val().trim();
@@ -85,7 +87,10 @@
                     var isValidPass = validatePass(input_value);
                     if (!isValidPass) {
                         result = false;
-                        $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Please a Strong password');
+                        $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters');
+                    }
+                    if (password1 != confirmPassword) {
+                        $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Password not matching');
                     }
                 }
 
@@ -109,7 +114,7 @@
                     var isValidZip = validateZip(input_value);
                     if (!isValidZip) {
                         result = false;
-                        $(this).parent().closest('.js-form-control').find('.error-message').empty().text('Enter only 6 digit mobile number');
+                        $(this).parent().closest('.js-form-control').find('.error-message').empty().text('Enter only 6 digit Zip code');
                     }
                 }
 
@@ -128,6 +133,15 @@
             return false;
         }
         return true;
+    }
+
+    function validatePass(input_value) {
+        var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$/;
+        if (!pattern.test(input_value)) {
+            return false;
+        }
+        return true;
+
     }
 
     function validateOnlyText(input_value) {

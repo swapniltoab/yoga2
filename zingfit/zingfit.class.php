@@ -80,7 +80,6 @@ class ZingFit
 
             $response = wp_remote_get($url, $args);
             $classtypes = json_decode(wp_remote_retrieve_body($response), true);
-
             update_option("zingfit_classtypes", $classtypes);
         }
 

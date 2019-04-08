@@ -122,6 +122,85 @@ button {
     right: 5px;
 }
 
+.drop-down {
+display:inline-block;
+}
+
+.row.schedule-table-header {
+    text-align: center;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: #F2B826 !important;
+    width: 180px;
+    color: rgba(0,0,0,1) !important;
+    border-radius: 10px;
+    font-family: Open Sans;
+    font-weight: 700;
+    font-size: 14px;
+    font-style: normal;
+    padding: 10px 15px;
+}
+
+.btn:hover,
+.btn-register:hover {
+    background-color: #c1850d !important;
+}
+
+.drop-down:after {
+
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: -25px;
+    vertical-align: -3px;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+
+}
+
+.col-md-9.wrap-form-grp {
+    display: flex;
+}
+
+.agreeTerms-check input[type="checkbox"] {
+    margin-bottom: 2px !important;
+    margin-right: 10px;
+    height: 10px !important;
+}
+
+label.col-md-9.custom-control.agreeTerms-check {
+    margin-left: 50px;
+}
+
+input#btn_register {
+    margin-top: 10px;
+}
+
+select#selectDate,
+select#selectYear,
+select#selectMonth {
+    padding: 8px 15px;
+    border: 1px solid #000;
+    margin-right: 10px;
+}
+
+.btn-register{
+    background-color: #F2B826 !important;
+    width: auto;
+    color: rgba(0,0,0,1) !important;
+    font-family: Open Sans;
+    font-weight: 400;
+    font-size: 12px;
+    font-style: normal;
+    padding: 10px 15px;
+}
+    
 .error-message {}
 
 @media (min-width:768px) {

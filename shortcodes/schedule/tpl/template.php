@@ -1,3 +1,20 @@
+<div class="schedule-table-container">
+    <div class="row schedule-table-header">
+        <div class="col-md-12">
+            <div class="filter-wrap">
+                <div class="drop-down">
+                    <button type="button" id="drop-Down-Class-Btn drop-down-after" class="btn">Class Type
+                    </button>
+                </div>
+                <div class="drop-down">
+                    <button type="button" id="drop-Down-Instructor-Btn drop-down-after" class="btn">Instructor
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="main-calender-div">
     <div class="schedule-table-week-controller text-uppercase small bg-white text-center pt-2 pb-2 font-weight-bold">
         <div class="container">
@@ -52,7 +69,7 @@
                                                 </div>
                                                 <?php echo $class['instructor_name'] ?><br>
                                                 <?php //echo $class['room_Id'] ?><br>
-                                                <a href="/book/?roomId=<?php echo $class['room_Id'] ?>" class="reserve" type="button" data-room-id="<?php echo $class['room_Id'] ?>">RESERVE</a>
+                                                <a href="/book/?roomId=<?php echo $class['room_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>">RESERVE</a>
                                             </div>
                                         </div>
                                     </div>
