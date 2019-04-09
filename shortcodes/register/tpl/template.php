@@ -137,7 +137,7 @@
       </div>
     </div>
 
-    <div class="form-check-inline js-form-control row" required>
+    <!--<div class="form-check-inline js-form-control row" required>
 
       <label class="col-md-3 form-label" for="region">
       <b>Region</b>
@@ -163,7 +163,7 @@
         </div>
         <span class="error-message" style="color:red"></span>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group row">
 

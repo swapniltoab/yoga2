@@ -11,6 +11,7 @@
             }
 
             let data = $('#registerform').serializeArray();
+            console.log(data);
             let password = data[1].value;
 
             var ajax_url = zingfit_js_var.ajaxurl;
