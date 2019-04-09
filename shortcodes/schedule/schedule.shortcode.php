@@ -17,6 +17,8 @@ class ZingFit_Schedule_Shortcode
     {
         global $zingfit;
         $classes = $zingfit->getClasses();
+        // $classTypes = $zingfit->getClassTypes();
+       //$classTypes=[];
 
         $availSlots = [];
         $days = [];

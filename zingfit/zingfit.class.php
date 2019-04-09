@@ -81,6 +81,28 @@ class ZingFit
             $response = wp_remote_get($url, $args);
             $classtypes = json_decode(wp_remote_retrieve_body($response), true);
             update_option("zingfit_classtypes", $classtypes);
+            return $classtypes;
+        }
+
+    }
+
+     public function getAllInstructors(){
+         
+        $zingfit_access_token = get_transient('zingfit_access_token');
+        $regions = get_option('zingfit_regions');
+        
+        if ($zingfit_access_token) {
+            $url = $this->apiUrl.'instructors';
+            $args = array(
+                'headers' => array(
+                    'Authorization' => 'Bearer ' . $zingfit_access_token,
+                    'X-ZINGFIT-REGION-ID' => '811593826090091886',
+                ),
+            );
+
+            $response = wp_remote_get($url, $args);
+            $allInstructors = json_decode(wp_remote_retrieve_body($response), true);
+            return $allInstructors;
         }
 
     }
@@ -417,4 +439,5 @@ class ZingFit
         return $bookSpot;
     }
 
+    
 }

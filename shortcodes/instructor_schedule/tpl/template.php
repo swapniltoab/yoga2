@@ -27,6 +27,7 @@
      <div id="schedule-table" class="schedule-table row no-gutters" data-currenttime="1550488645">
 
         <?php
+        
         foreach($schedule as $classes){
 
             if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
@@ -68,7 +69,7 @@
                                             </div>
                                             <?php echo $class['instructor_name'] ?><br>
                                             <?php //echo $class['room_Id'] ?><br>
-                                            <a href="/book/?roomId=<?php echo $class['room_Id']?>" class="reserve" type="button" data-room-id="<?php echo $class['room_Id']?>">RESERVE</a>
+                                            <a href="/book/?roomId=<?php echo $class['room_Id']?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id']?>">RESERVE</a>
                                         </div>
                                     </div>
                                 </div>

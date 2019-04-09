@@ -3,19 +3,30 @@
         <div class="col-md-12">
             <div class="filter-wrap">
                 <div class="drop-down">
-                    <!-- <button type="button" id="drop-Down-Class-Btn drop-down-after" class="btn">Class Type
-                    </button> -->
-                     <select id="select-class-type" class="" name="select-class-type" required>
-                        <option value="Type1">Type 1</option>
-                        <option value="Type2">Type 2</option>
+                    <select id="select-class-type " class="" name="select-class-type">
+                        <option value=" ">Select Class Type</option>
+                    <?php
+                    global $zingfit;
+                    $classTypes = $zingfit->getClassTypes();
+                    foreach($classTypes as $classType){
+                        //print_r($classTypes);
+                        $classtypeName = $classType['name'];
+                      //echo $classtypeName;?>
+                        <option class="" value="<?php echo $classtypeName ?>"><?php echo $classtypeName ?></option>
+                    <?php }
+                    ?>
                      </select>
                 </div>
                 <div class="drop-down">
-                    <!-- <button type="button" id="drop-Down-Instructor-Btn drop-down-after" class="btn">Instructor
-                    </button> -->
-                    <select id="select-instructor" class="" name="select-instructor" required>
-                        <option value="Instructor1">Instructor 1</option>
-                        <option value="Instructor2">Instructor 2</option>
+                    <select id="select-instructor" class="" name="select-instructor">
+                            <option value=" ">Select Class Type</option>
+                        <?php 
+                        $allInstructors = $zingfit->getAllInstructors();
+                        foreach($allInstructors as $instructors){
+                        $instructorName = $instructors['fullName'];
+                        ?>
+                        <option class="" value="<?php echo $instructorName ?>"><?php echo $instructorName ?></option>
+                        <?php } ?>
                      </select>
                 </div>
             </div>
