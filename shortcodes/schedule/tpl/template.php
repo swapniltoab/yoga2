@@ -3,12 +3,20 @@
         <div class="col-md-12">
             <div class="filter-wrap">
                 <div class="drop-down">
-                    <button type="button" id="drop-Down-Class-Btn drop-down-after" class="btn">Class Type
-                    </button>
+                    <!-- <button type="button" id="drop-Down-Class-Btn drop-down-after" class="btn">Class Type
+                    </button> -->
+                     <select id="select-class-type" class="" name="select-class-type" required>
+                        <option value="Type1">Type 1</option>
+                        <option value="Type2">Type 2</option>
+                     </select>
                 </div>
                 <div class="drop-down">
-                    <button type="button" id="drop-Down-Instructor-Btn drop-down-after" class="btn">Instructor
-                    </button>
+                    <!-- <button type="button" id="drop-Down-Instructor-Btn drop-down-after" class="btn">Instructor
+                    </button> -->
+                    <select id="select-instructor" class="" name="select-instructor" required>
+                        <option value="Instructor1">Instructor 1</option>
+                        <option value="Instructor2">Instructor 2</option>
+                     </select>
                 </div>
             </div>
         </div>
@@ -34,6 +42,7 @@
 
         <?php
         foreach ($schedule as $classes) {
+            //  print_r($schedule);
             if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
                 <div class="col-lg bg-white text-uppercase small class-day" id="">
                     <div class="">

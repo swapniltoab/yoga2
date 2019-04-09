@@ -32,11 +32,11 @@ class ZingFit_Instructor_Schedule_Shortcode
 
         $time = strtotime("now");
 
-        for($i=0; $i<=6; $i++){
+        for($i=0; $i<=13; $i++){
             $temp = [];
             $next = strtotime("+".$i." day");
             $temp['day'] = date('l',$next);
-            $temp['date'] = date('d-m',$next);
+            $temp['date'] = date('m-d',$next);
             array_push($days, $temp);
         }
 
@@ -46,8 +46,11 @@ class ZingFit_Instructor_Schedule_Shortcode
             $classDate = $class['classDate'];
             $classDate = explode('T', $classDate);
             $Date = $classDate[0];
+            //echo 'Date...'.$Date;
             $classDay = date('l', strtotime($Date));
+            $date = date('m-d', strtotime($Date));
             $stringDate = strtotime($Date);
+            $tempClass = [];
 
             $dateArr = explode('-', $Date);
             $dateStr = $dateArr[2].'.'.$dateArr[1].'.'.$dateArr[0];
@@ -58,25 +61,26 @@ class ZingFit_Instructor_Schedule_Shortcode
             $time = date('h:i A', strtotime($classDate[1]));
 
             $tempClass['day'] = $classDay;
-            $tempClass['date'] = $dateStr;
+            $tempClass['date'] = $date;
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
 
-            if (is_array($availSlots[$classDay])) {
-                array_push($availSlots[$classDay], $tempClass);
+            if (is_array($availSlots[$date])) { 
+                array_push($availSlots[$date], $tempClass);
             } else {
-                $availSlots[$classDay][0] = $tempClass;
+                $availSlots[$date][0] = $tempClass;
             }
         }
 
         foreach($days as $k => $day){
-            if (!array_key_exists($day['day'],$availSlots))
+            if (!array_key_exists($day['date'],$availSlots))
             {
-                $schedule[$day['day']]['isEmpty'] = true;
-                $schedule[$day['day']][] = $day;
+                $schedule[$day['date']]['isEmpty'] = true;
+                $schedule[$day['date']][] = $day;
+                // print_r($day);
             } else {
-                $schedule[$day['day']] = $availSlots[$day['day']];
+                $schedule[$day['date']] = $availSlots[$day['date']];
             }
         }
 
