@@ -70,15 +70,14 @@
                                 </div>
                     <?php endif;?>
                                 <div class="classes-container">
-                                    <div id="" class="class-container p-3 row no-gutters  not-private " data-room="" data-classid="" data-classdate="" data-classinstructorname="" data-gender="">
+                                    <div id="" class="class-container p-3 row no-gutters  not-private " data-room="<?php echo $class['room_Id'] ?>" data-classid="<?php echo $class['class_Id'] ?>" data-classdate="" data-classinstructorname="" data-gender="">
                                         <div class="col-7 col-lg-12">
                                             <div class="class-instructor position-relative">
                                                 <div class="class-time">
                                                 <?php echo $class['time'] ?>
                                                 </div>
                                                 <?php echo $class['instructor_name'] ?><br>
-                                                <?php //echo $class['room_Id'] ?><br>
-                                                <a href="/book/?roomId=<?php echo $class['room_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>">RESERVE</a>
+                                                <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
                                             </div>
                                         </div>
                                     </div>

@@ -212,6 +212,20 @@ class ZingFit
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
+    public function getBookableClassDetail($zingfit_user_access_token, $regionId, $classId)
+    {
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            )
+        );
+        $url = $this->apiUrl.'classes/'.$classId.'/spots/details';
+
+        $response = wp_remote_get($url,$args);
+        return json_decode(wp_remote_retrieve_body($response), true);
+    }
+
     public function getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId)
     {
         $bodyData = [
@@ -364,8 +378,8 @@ class ZingFit
         );
 
         $response = wp_remote_get($url, $args);
-        $userCardsData = json_decode($response['body']);
-        return $userCardsData;
+        $CustomerActiveMySeries = json_decode($response['body']);
+        return $CustomerActiveMySeries;
     }
 
     public function getCustomerMySeriesExpired($zingfit_user_access_token, $regionId)
@@ -380,8 +394,27 @@ class ZingFit
         );
 
         $response = wp_remote_get($url, $args);
-        $userCardsData = json_decode($response['body']);
-        return $userCardsData;
+        $CustomerExpiredMySeries = json_decode($response['body']);
+        return $CustomerExpiredMySeries;
+    }
+
+    public function getCustomerBookSpot($zingfit_user_access_token, $regionId, $classId, $data)
+    {
+
+        $url = $this->apiUrl.'classes/'.$classId.'/spots';
+        $args = array(
+            'method'     => 'PUT',
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => json_encode($data),
+        );
+
+        $response = wp_remote_post($url, $args);
+        $bookSpot = json_decode($response['body']);
+        return $bookSpot;
     }
 
 }

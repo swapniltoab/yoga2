@@ -25,7 +25,7 @@ if ($_POST && $_POST != '') {
         $cardInfo = $zingfit->saveCustomerCreditCard($zingfit_user_access_token, $regionId, $info);
     }
 
-    error_log('$info ..'.print_r($cardInfo,1));
+    // error_log('$info ..'.print_r($cardInfo,1));
     // if ($cardInfo['error'] || $cardInfo['error'] == 'Not found.') {
     //     echo '<h2>Failed to save card! Please try again.</h2>';
     // } else {
