@@ -16,16 +16,16 @@ if ($zingfit_access_token) {
 
 <div class="container" style="padding: 50px 20px">
 
-    <div class="row">
+    <!-- <div class="row">
         <select>
             <option value="">Select Rigion</option>
-            <?php foreach($regions as $region): ?>
-                <option value="<?php echo $region['id'] ?>"><?php echo $region['name'] ?></option>
-            <?php endforeach; ?>
+            <?php //foreach($regions as $region): ?>
+                <option value="<?php // echo $region['id'] ?>"><?php // echo $region['name'] ?></option>
+            <?php // endforeach; ?>
         </select>
     </div>
 
-    <hr>
+    <hr> -->
 
     <?php foreach($serieses as $series): ?>
     <div class="row">

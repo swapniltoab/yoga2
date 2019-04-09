@@ -352,4 +352,36 @@ class ZingFit
         return $userCardsData;
     }
 
+    public function getCustomerMySeriesActive($zingfit_user_access_token, $regionId)
+    {
+        $url = $this->apiUrl.'account/series';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $userCardsData = json_decode($response['body']);
+        return $userCardsData;
+    }
+
+    public function getCustomerMySeriesExpired($zingfit_user_access_token, $regionId)
+    {
+        $url = $this->apiUrl.'account/series/expired';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $userCardsData = json_decode($response['body']);
+        return $userCardsData;
+    }
+
 }

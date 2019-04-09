@@ -49,10 +49,10 @@ if ($reserveSpots['error'] && $reserveSpots['error'] == 'Not found.') {?>
             $j = 1;
             $x = 1;
             for($i = 1; $i<=$reserveSpots['maxSpotCount']; $i++):
-                $top = ($j*80)+50;
-                $left = ($x*80)+50;
+                $top = ($j*50)+70;
+                $left = ($x*50)+70;
                 $x++;
-                if($i%10 == 0){
+                if($i%15 == 0){
                     $j++;
                     $x = 1;
                 }

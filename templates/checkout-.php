@@ -21,7 +21,7 @@ if ($zingfit_user_access_token) {
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
 }
 
-if ($seriesOrderId['error'] || $seriesOrderId['error'] == 'Not found.') {?>
+if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $seriesOrderId['error'] == 'Not found.')) {?>
 
 <div class="container" style="padding: 50px 20px">
 
