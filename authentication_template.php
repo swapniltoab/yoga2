@@ -15,8 +15,16 @@ get_header();
         </div>
 
         <div class="col-sm-6 right_col">
-            <input class="js-ShowLoginForm btn hideElement" type="submit" value="SIGN IN >" /><br>
-            <input class="js-ShowRegisterForm btn" type="submit" value="SIGN UP >" />
+            <div class="div-form-sec">
+                <span class="js-ShowLoginForm hideElement span-text-sec">Already have Yoga 2.0 account, please sign in.</span><br>
+                <input class="js-ShowLoginForm btn hideElement" type="submit" value="SIGN IN >" /><br>
+            </div>
+            
+            <div class="div-form-sec">
+                <span class="js-ShowRegisterForm span-text-sec">In order to reserve a spot, please create a Yoga 2.0 account</span><br>
+                <input class="js-ShowRegisterForm btn" type="submit" value="SIGN UP >" />
+            </div>
+            
         </div>
 
     </div>

@@ -23,7 +23,7 @@ class ZingFit_Schedule_Shortcode
         $schedule = [];
 
         $time = strtotime("now");
-
+        
         for($i=0; $i<=6; $i++){
             $temp = [];
             $next = strtotime("+".$i." day");

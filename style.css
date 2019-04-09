@@ -229,10 +229,11 @@ select#selectMonth {
 }
 
 .right_col {
-    background-color: red;
+    background-image:url(http://yoga20.wpengine.com/wp-content/uploads/2019/04/1.-hero-image-3.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 5px solid #f2b826;
 }
 
 .form_row {
@@ -322,3 +323,18 @@ label.user-account-right-label {
     /* background-color: #ccc; */
     text-align: center;
   }
+
+  .div-form-sec {
+      text-align: center;
+  }
+
+  .span-text-sec
+   {
+    font-size: 14px !important;
+    color: #f2b826 !important;
+    margin-bottom: 10px !important;
+}
+    input.js-ShowRegisterForm.btn,
+    input.js-ShowLoginForm.btn {
+    margin-top: 20px;
+}
