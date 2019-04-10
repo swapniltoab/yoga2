@@ -42,7 +42,7 @@
                             },
                             success: (userResponse) => {
                                 if (userResponse.status === true) {
-                                    window.location.href = '/';
+                                    window.location.href = '/account/';
                                 } else {
                                     alert('Failed WP registration');
                                 }

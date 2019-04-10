@@ -46,16 +46,16 @@ class ZingFit_Instructor_Schedule_Shortcode
             $classDate = $class['classDate'];
             $classDate = explode('T', $classDate);
             $Date = $classDate[0];
-            //echo 'Date...'.$Date;
             $classDay = date('l', strtotime($Date));
             $date = date('m-d', strtotime($Date));
             $stringDate = strtotime($Date);
+            $classTypeName = $class['classType'];
             $tempClass = [];
+
 
             $dateArr = explode('-', $Date);
             $dateStr = $dateArr[2].'.'.$dateArr[1].'.'.$dateArr[0];
 
-            //print_r($dateStr);
             $tempClass = [];
 
             $time = date('h:i A', strtotime($classDate[1]));
@@ -65,7 +65,8 @@ class ZingFit_Instructor_Schedule_Shortcode
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
-
+            $tempClass['classType'] = $class['classType'];
+           
             if (is_array($availSlots[$date])) { 
                 array_push($availSlots[$date], $tempClass);
             } else {
@@ -78,7 +79,6 @@ class ZingFit_Instructor_Schedule_Shortcode
             {
                 $schedule[$day['date']]['isEmpty'] = true;
                 $schedule[$day['date']][] = $day;
-                // print_r($day);
             } else {
                 $schedule[$day['date']] = $availSlots[$day['date']];
             }

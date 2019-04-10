@@ -45,7 +45,7 @@
     </div>
 
     <div class="js-form-control row">
-      <label class="col-md-3 form-label" for="phone"><b>PRIMARY PHONE NUMBER</b></label>
+      <label class="col-md-3 form-label" for="phone"><b>PHONE NUMBER</b></label>
       <div class="col-md-9">
         <input type="tel" class="js-required form-input js-mob" name="phone" required><br>
         <span class="error-message" style="color:red"></span>

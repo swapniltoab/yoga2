@@ -15,13 +15,6 @@
 
     <div>
 
-        <?php
-        // print_r($instructorClasses);
-
-        //print_r($schedule);
-
-
-        ?>
     </div>
 
      <div id="schedule-table" class="schedule-table row no-gutters" data-currenttime="1550488645">
@@ -66,6 +59,9 @@
                                         <div class="class-instructor position-relative">
                                             <div class="class-time">
                                             <?php echo $class['time'] ?>
+                                            </div>
+                                            <div class="class-type">
+                                            <?php echo $class['classType'] ?>
                                             </div>
                                             <?php echo $class['instructor_name'] ?><br>
                                             <?php //echo $class['room_Id'] ?><br>
