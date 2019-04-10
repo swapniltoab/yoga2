@@ -23,7 +23,7 @@ class ZingFit_Schedule_Shortcode
         $schedule = [];
 
         $time = strtotime("now");
-        
+
         for($i=0; $i<=13; $i++){
             $temp = [];
             $next = strtotime("+".$i." day");
@@ -54,6 +54,7 @@ class ZingFit_Schedule_Shortcode
             $tempClass['classType'] = $classtype;
             $tempClass['classTypeId'] = $classtypeId;
             $tempClass['instructorId'] = $instructorId;
+            $tempClass['class_Id'] = $class['id'];
 
             if (is_array($availSlots[$date])) {
                 array_push($availSlots[$date], $tempClass);
@@ -61,17 +62,17 @@ class ZingFit_Schedule_Shortcode
                 $availSlots[$date][0] = $tempClass;
             }
         }
-        
+
         foreach($days as $k => $day){
-            
+
             if (!array_key_exists($day['date'],$availSlots))
-            {   
+            {
                 $schedule[$day['date']]['isEmpty'] = true;
                 $schedule[$day['date']][] = $day;
             } else {
                  $schedule[$day['date']] = $availSlots[$day['date']];
             }
-            
+
         }
         
         ob_start();
