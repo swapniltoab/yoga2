@@ -124,6 +124,7 @@ $currentUserDataBillingInfo = [
             <div class="div-table-col" align="center">TYPE</div>
             <div  class="div-table-col">NUMBER</div>
             <div  class="div-table-col">EXPIRATION</div>
+            <div  class="div-table-col">ACTION</div>
         </div>
 
         <?php foreach($userCardsData as $key => $Card){
@@ -134,6 +135,7 @@ $currentUserDataBillingInfo = [
                 <div class="div-table-col"><?php echo $Card->cardType ?></div>
                 <div class="div-table-col"><?php echo $Card->lastFour ?></div>
                 <div class="div-table-col"><?php echo $date ?></div>
+                <div class="div-table-col"><a href="javscript:void(0)" class="js-delete-cc-card" data-cardId="<?php echo $Card->id ?>">Delete Card</a></div>
             </div>
         <?php }?>
 

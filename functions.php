@@ -15,6 +15,7 @@ function yoga_enqueue() {
     wp_enqueue_script( 'customer-update-account', yoga_uri . '/js/website/customer-update-account.js', array('jquery'), true );
     wp_enqueue_script( 'customer-login', yoga_uri . '/js/website/customer-login.js', array('jquery'), true );
     wp_enqueue_script( 'book-slot', yoga_uri . '/js/website/book-slot.js', array('jquery'), true );
+    wp_enqueue_script( 'delete-cc-card', yoga_uri . '/js/website/delete-cc-card.js', array('jquery'), true );
     wp_enqueue_script( 'schedule_reserve', yoga_uri . '/js/website/schedule_reserve.js', array('jquery'), true );
     wp_enqueue_script( 'yoga_common', yoga_uri . '/js/website/common.js', array('jquery'), true );
 
@@ -27,6 +28,7 @@ function yoga_enqueue() {
 add_action( 'admin_enqueue_scripts', 'yoga_admin_enqueue' );
 function yoga_admin_enqueue() {
     wp_enqueue_script( 'admin-setting', yoga_uri . '/js/admin-setting.js', array('jquery'), true );
+    wp_enqueue_script( 'admin-zingfit-update', yoga_uri . '/js/admin-zingfit-update.js', array('jquery'), true );
 
     wp_localize_script('admin-setting', 'zingfit_js_var_admin', array(
         'ajaxurl' => admin_url('admin-ajax.php')
@@ -50,11 +52,13 @@ endif;
 
 
 include_once yoga_path . '/admin/ajax-functions/zingfit_access_token.php';
+include_once yoga_path . '/admin/ajax-functions/zingfit_update_apis.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_register.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_update.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_login.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_schedule_reserve.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_book_slot.php';
+include_once yoga_path . '/admin/ajax-functions/zingfit_delete_cc_card.php';
 
 include_once yoga_path . '/shortcodes/schedule/schedule.shortcode.php';
 new ZingFit_Schedule_Shortcode();

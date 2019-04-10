@@ -60,6 +60,7 @@ class ZingFit
             $regions = json_decode(wp_remote_retrieve_body($response), true);
 
             update_option("zingfit_regions", $regions);
+            return $regions;
         }
 
     }
@@ -87,10 +88,10 @@ class ZingFit
     }
 
      public function getAllInstructors(){
-         
+
         $zingfit_access_token = get_transient('zingfit_access_token');
         $regions = get_option('zingfit_regions');
-        
+
         if ($zingfit_access_token) {
             $url = $this->apiUrl.'instructors';
             $args = array(
@@ -127,7 +128,9 @@ class ZingFit
                 $site = json_decode(wp_remote_retrieve_body($response), true);
                 array_push($sites, $site);
             }
+
             update_option("zingfit_sites", $sites);
+            return $site;
         }
     }
 
@@ -439,5 +442,20 @@ class ZingFit
         return $bookSpot;
     }
 
-    
+    public function deleteCustomerCard($zingfit_user_access_token, $regionId, $cardId)
+    {
+        $url = $this->apiUrl.'account/cardsonfile/'.$cardId;
+        $args = array(
+            'method'     => 'DELETE',
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => '811593826090091886',
+            ),
+        );
+
+        $response = wp_remote_post($url, $args);
+        $deleteCard = json_decode($response['body']);
+        return $deleteCard;
+    }
 }

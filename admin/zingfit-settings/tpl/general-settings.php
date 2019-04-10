@@ -78,6 +78,28 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     </td>
 </tr>
 
+<tr class="seperater-tr">
+    <th scope="row">
+        <label for="zingfit-access-token">ZingFit Region:</label>
+    </th>
+
+    <td>
+        <button type="button" class="js-updateZingfitRegions" id="updateZingfitRegions">Update Regions</button>
+        <span class="description">To update regions from zingfit user portal to sinc</span>
+    </td>
+</tr>
+
+<tr class="seperater-tr">
+    <th scope="row">
+        <label for="zingfit-access-token">ZingFit Sites:</label>
+    </th>
+
+    <td>
+        <button type="button" class="js-updateZingfitSites" id="updateZingfitSites">Update Sites</button>
+        <span class="description">To update sites from zingfit user portal to sinc</span>
+    </td>
+</tr>
+
 <?php
 endif;
 ?>
