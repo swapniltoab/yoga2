@@ -23,7 +23,7 @@
                 },
                 success: (response) => {
                     if (response.status === true) {
-                        window.location.href = '/';
+                        window.location.href = '/account/';
                     } else {
                         alert('Failed WP login');
                     }

@@ -17,8 +17,6 @@ class ZingFit_Schedule_Shortcode
     {
         global $zingfit;
         $classes = $zingfit->getClasses();
-        // $classTypes = $zingfit->getClassTypes();
-       //$classTypes=[];
 
         $availSlots = [];
         $days = [];
@@ -35,6 +33,9 @@ class ZingFit_Schedule_Shortcode
         }
 
         foreach ($classes as $class) {
+            $classtype = $class['classType'];
+            $classtypeId = $class['classTypeId'];
+            $instructorId = $class['instructorId'];
             $classDate = $class['classDate'];
             $classDate = explode('T', $classDate);
             $Date = $classDate[0];
@@ -50,6 +51,9 @@ class ZingFit_Schedule_Shortcode
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
+            $tempClass['classType'] = $classtype;
+            $tempClass['classTypeId'] = $classtypeId;
+            $tempClass['instructorId'] = $instructorId;
 
             if (is_array($availSlots[$date])) {
                 array_push($availSlots[$date], $tempClass);
@@ -69,8 +73,7 @@ class ZingFit_Schedule_Shortcode
             }
             
         }
-        // print_r($schedule);
-
+        
         ob_start();
         include 'tpl/template.php';
         return ob_get_clean();
