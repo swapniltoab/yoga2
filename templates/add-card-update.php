@@ -21,7 +21,7 @@ if ($_POST && $_POST != '') {
     ];
 
     if ($zingfit_user_access_token) {
-        global $zinfit;
+        global $zingfit;
         $cardInfo = $zingfit->saveCustomerCreditCard($zingfit_user_access_token, $regionId, $info);
     }
 

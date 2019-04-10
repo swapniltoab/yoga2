@@ -11,7 +11,7 @@ $regionId = '811593826090091886';
 $seriesId = '';
 
 if ($zingfit_user_access_token) {
-    global $zinfit;
+    global $zingfit;
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
 }
 

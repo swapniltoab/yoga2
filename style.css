@@ -247,11 +247,10 @@ select#selectMonth {
 }
 
 .floor-shape {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
-    line-height: 28px;
-    background: #d50032;
+    line-height: 40px;
     display: inline-block;
 }
 
@@ -260,6 +259,18 @@ select#selectMonth {
     font-weight: 600;
     text-align: center;
     position: absolute;
+}
+
+span.spot-num {
+    font-size: 12px;
+}
+
+.spot-Available{
+    background: #F2B826;
+}
+
+.spot-Enrolled{
+    background: #c1850d;
 }
 
 

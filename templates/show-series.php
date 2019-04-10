@@ -9,23 +9,12 @@ $zingfit_access_token = get_transient('zingfit_access_token');
 $regionId = '811593826090091886';
 
 if ($zingfit_access_token) {
-    global $zinfit;
+    global $zingfit;
     $serieses = $zingfit->getSeries($zingfit_access_token, $regionId);
 }
 ?>
 
 <div class="container" style="padding: 50px 20px">
-
-    <!-- <div class="row">
-        <select>
-            <option value="">Select Rigion</option>
-            <?php //foreach($regions as $region): ?>
-                <option value="<?php // echo $region['id'] ?>"><?php // echo $region['name'] ?></option>
-            <?php // endforeach; ?>
-        </select>
-    </div>
-
-    <hr> -->
 
     <?php foreach($serieses as $series): ?>
     <div class="row">

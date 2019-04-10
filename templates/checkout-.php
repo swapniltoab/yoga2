@@ -17,7 +17,7 @@ if ($_GET && $_GET != '') {
 }
 
 if ($zingfit_user_access_token) {
-    global $zinfit;
+    global $zingfit;
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
 }
 
