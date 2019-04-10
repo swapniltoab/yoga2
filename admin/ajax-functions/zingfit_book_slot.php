@@ -17,9 +17,6 @@ function zingfit_book_slot()
         $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     }
 
-    error_log('$myActiveSerieses ... '.print_r($myActiveSerieses,1));
-
-
     // if (is_wp_error($user)) {
     //     echo json_encode(array('status' => false, 'error' => $user->get_error_message()));
     // } else{

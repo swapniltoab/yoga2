@@ -15,8 +15,6 @@ if ($zingfit_user_access_token) {
     $myExpiredSerieses = $zingfit->getCustomerMySeriesExpired($zingfit_user_access_token, $regionId);
 }
 
-error_log('$myExpiredSerieses ... '.print_r($myExpiredSerieses,1));
-error_log('$myActiveSerieses ... '.print_r($myActiveSerieses,1));
 ?>
 
 <div class="container user-account-container">

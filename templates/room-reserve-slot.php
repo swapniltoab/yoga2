@@ -17,7 +17,7 @@ if ($_GET && $_GET != '') {
         global $zingfit;
         $reserveSpots = $zingfit->getBookableClassDetail($zingfit_user_access_token, $regionId, $classId);
     }
-    error_log('$reserveSpots ..'.print_r($reserveSpots,1));
+
     if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>
 
     <div class="container" style="padding: 50px 20px">
@@ -49,8 +49,8 @@ if ($_GET && $_GET != '') {
                 $i = 0;
                 while($i < $reserveSpots['room']['maxSpotCount']) :
                     $i++;
-                    $top = ($j*50)+70;
-                    $left = ($x*50)+70;
+                    $top = ($j*80)+70;
+                    $left = ($x*55)+70;
                     $x++;
                     if($i%17 == 0){
                         $j++;

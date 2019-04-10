@@ -49,11 +49,6 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     $zingfit = new ZingFit($zingfit_client_id, $zingfit_client_secret, $zingfit_api_url);
 endif;
 
-
-
-
-
-
 include_once yoga_path . '/admin/ajax-functions/zingfit_access_token.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_update_apis.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_register.php';

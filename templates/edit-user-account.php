@@ -11,6 +11,17 @@ $regionId = '811593826090091886';
 
 $currentUserID = get_current_user_id();
 $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
+
+$states = [
+    "AL" => "Alabama", "AK" => "Alaska", "AZ" => "Arizona", "AR" => "Arkansas", "CA" => "California", "CO" => "Colorado", "CT" => "Connecticut",
+    "DE" => "Delaware", "DC" => "District Of Columbia", "FL" => "Florida", "GA" => "Georgia", "HI" => "Hawaii", "ID" => "Idaho", "IL" => "Illinois",
+    "IN" => "Indiana", "IA" => "Iowa", "KS" => "Kansas", "KY" => "Kentucky", "LA" => "Louisiana", "ME" => "Maine", "MD" => "Maryland", "MA" => "Massachusetts",
+    "MI" => "Michigan", "MN" => "Minnesota", "MS" => "Mississippi", "MO" => "Missouri", "MT" => "Montana", "NE" => "Nebraska", "NV" => "Nevada",
+    "NH" => "New Hampshire", "NJ" => "New Jersey", "NM" => "New Mexico", "NY" => "New York", "NC" => "North Carolina", "ND" => "North Dakota",
+    "OH" => "Ohio", "OK" => "Oklahoma", "OR" => "Oregon", "PA" => "Pennsylvania", "RI" => "Rhode Island", "SC" => "South Carolina", "SD" => "South Dakota",
+    "TN" => "Tennessee", "TX" => "Texas", "UT" => "Utah", "VT" => "Vermont", "VA" => "Virginia", "WA" => "Washington", "WV" => "West Virginia",
+    "WI" => "Wisconsin", "WY" => "Wyoming"
+    ]
 ?>
 
 <div class="container" style="padding: 50px 20px">
@@ -41,7 +52,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             Password
                             </label>
                             <div class="col-md-9">
-                                <input name="password" required="" type="password" class="form-control js-required js-pass" id="password1" placeholder="" autocomplete="" value="">
+                                <input name="password" required="" type="password" class="form-control js-pass" id="password1" placeholder="" autocomplete="" value="">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -51,7 +62,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             Confirm Password
                             </label>
                             <div class="col-md-9">
-                                <input name="confirm_password" required="" type="password" class="form-control js-required js-pass" id="confirm_password" placeholder="" autocomplete="" value="">
+                                <input name="confirm_password" required="" type="password" class="form-control js-pass" id="confirm_password" placeholder="" autocomplete="" value="">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -129,62 +140,19 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                                 <div class="col-md-9">
                                     <select id="state" class="form-control form-input js-required" name="state" required>
                                     <option value="">Select State</option>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option value="CA">California</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="CT">Connecticut</option>
-                                    <option value="DE">Delaware</option>
-                                    <option value="DC">District Of Columbia</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="GA">Georgia</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="IL">Illinois</option>
-                                    <option value="IN">Indiana</option>
-                                    <option value="IA">Iowa</option>
-                                    <option value="KS">Kansas</option>  
-                                    <option value="KY">Kentucky</option>
-                                    <option value="LA">Louisiana</option>
-                                    <option value="ME">Maine</option>
-                                    <option value="MD">Maryland</option>
-                                    <option value="MA">Massachusetts</option>
-                                    <option value="MI">Michigan</option>
-                                    <option value="MN">Minnesota</option>
-                                    <option value="MS">Mississippi</option>
-                                    <option value="MO">Missouri</option>
-                                    <option value="MT">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="NH">New Hampshire</option>
-                                    <option value="NJ">New Jersey</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="NY">New York</option>
-                                    <option value="NC">North Carolina</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="OH">Ohio</option>
-                                    <option value="OK">Oklahoma</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="PA">Pennsylvania</option>
-                                    <option value="RI">Rhode Island</option>
-                                    <option value="SC">South Carolina</option>
-                                    <option value="SD">South Dakota</option>
-                                    <option value="TN">Tennessee</option>
-                                    <option value="TX">Texas</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="VT">Vermont</option>
-                                    <option value="VA">Virginia</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="WV">West Virginia</option>
-                                    <option value="WI">Wisconsin</option>
-                                    <option value="WY">Wyoming</option>
+                                    <?php
+                                    $optionsHTML = '';
+                                    foreach($states as $key => $val) :
+                                        $selected = $currentUserData['state'] == $key ? "selected" : '';
+                                        $optionsHTML .= '<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
+                                    endforeach;
+                                    echo $optionsHTML;
+                                    ?>
                                     </select><br>
                                     <span class="error-message" style="color:red"></span>
                                 </div>
                             </div>
- 
+
                         <div class="form-group required row js-form-control">
                             <label class="col-md-3 col-form-label text-md-right " for="zip">
                             Zip
@@ -232,7 +200,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             Address
                             </label>
                             <div class="col-md-9">
-                                <input name="billing_address" required="" type="input" class="form-control js-required" id="billing_address" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingAddress']?>">
+                                <input name="billingAddress" required="" type="input" class="form-control js-required" id="billing_address" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingAddress']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -242,7 +210,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                             Zip
                             </label>
                             <div class="col-md-9">
-                                <input name="billing_zip" required="" type="input" class="form-control js-required js-zip" id="billing_zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingZip']?>">
+                                <input name="billingZip" required="" type="input" class="form-control js-required js-zip" id="billing_zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingZip']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>

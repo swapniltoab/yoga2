@@ -24,33 +24,29 @@
                     'formData': data
                 },
                 success: (response) => {
-                    if (response.status === true) {
-                        let userdata = response.userdata;
-                        if (response.response_code == '406') {
-                            alert('User is already exists in zingfit api, please use another email/username');
-                            return false;
-                        }
-                        $.ajax({
-                            type: 'POST',
-                            dataType: 'json',
-                            url: ajax_url,
-                            data: {
-                                'action': 'zingfit_customer_update_wp_user',
-                                'userdata': userdata,
-                                'password': password
-                            },
-                            success: (userResponse) => {
-                                if (userResponse.status === true) {
-                                    window.location.href = '/';
-                                } else {
-                                    alert('Failed WP registration');
-                                }
-                            }
-                        });
+                    // if (response.status === true) {
+                    //     let userdata = response.message;
+                    //     $.ajax({
+                    //         type: 'POST',
+                    //         dataType: 'json',
+                    //         url: ajax_url,
+                    //         data: {
+                    //             'action': 'zingfit_customer_update_wp_user',
+                    //             'userdata': userdata,
+                    //             'password': password
+                    //         },
+                    //         success: (userResponse) => {
+                    //             if (userResponse.status === true) {
+                    //                 window.location.href = '/account';
+                    //             } else {
+                    //                 alert('Failed');
+                    //             }
+                    //         }
+                    //     });
 
-                    } else {
-                        alert('Failed from zingfit registration');
-                    }
+                    // } else {
+                    //     alert('Failed from zingfit registration');
+                    // }
 
                 }
             });

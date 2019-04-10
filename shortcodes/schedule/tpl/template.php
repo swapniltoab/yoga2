@@ -9,7 +9,7 @@
                     global $zingfit;
                     $classTypes = $zingfit->getClassTypes();
                     foreach($classTypes as $classType){
-                        
+
                         $classtypeName = $classType['name'];
                         $classtypeId = $classType['id'];
                    ?>
@@ -21,7 +21,7 @@
                 <div class="drop-down">
                     <select id="select-instructor" class="" name="select-instructor">
                             <option value="all-instructor">Select Instructor</option>
-                        <?php 
+                        <?php
                         $allInstructors = $zingfit->getAllInstructors();
                         foreach($allInstructors as $instructors){
                         $instructorName = $instructors['fullName'];
@@ -54,7 +54,7 @@
 
         <?php
         foreach ($schedule as $classes) {
-            
+
             if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
                 <div class="col-lg bg-white text-uppercase small class-day" id="">
                     <div class="">
@@ -73,7 +73,6 @@
                 else {
                 $length = count($classes);
                 foreach ($classes as $key => $class) {
-                      error_log(print_r($class,1));
                     if ($key == 0): ?>
                         <div class="col-lg bg-white text-uppercase small class-day" id="">
                             <div class="">

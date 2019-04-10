@@ -372,6 +372,7 @@ class ZingFit
 
         $response = wp_remote_post($url, $args);
         $userdata = json_decode($response['body']);
+        return $userdata;
     }
 
     public function getCustomerCardsOfFile($zingfit_user_access_token, $regionId)
