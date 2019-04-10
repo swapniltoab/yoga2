@@ -198,7 +198,7 @@ $currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
                         <hr>
 
                         <div class="form-group required row">
-                            <h2 class="col-md-3 col-form-label text-md-right">
+                            <h2 class="col-md-3 card-title text-md-right">
                             Billing Info
                             </h2>
                             <div class="col-md-9">
