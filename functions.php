@@ -51,6 +51,9 @@ endif;
 
 
 
+
+
+
 include_once yoga_path . '/admin/ajax-functions/zingfit_access_token.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_update_apis.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_register.php';
@@ -73,7 +76,3 @@ include_once yoga_path . '/shortcodes/instructor_schedule/instructor_schedule.sh
 new ZingFit_Instructor_Schedule_Shortcode();
 
 $zingfit->getClassTypes();
-
-$regionId = '811593826090091886';
-$zingfit_access_token = get_transient('zingfit_access_token');
-// $zingfit->getGateways($zingfit_access_token, $regionId);

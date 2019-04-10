@@ -19,20 +19,7 @@ function zingfit_customer_register()
     $param['birthDate'] = isset($param['birthDate']) ? $birthDate : "";
 
     global $zingfit;
-    $response = $zingfit->getAuthenticate();
-
-    $zingfit_access_token = get_transient('zingfit_access_token');
-
-    $args = array(
-        'headers' => array(
-            'Authorization' => 'Bearer ' . $zingfit_access_token,
-            'Content-Type' => 'application/json;charset=UTF-8',
-            'X-ZINGFIT-REGION-ID' => '811593826090091886',
-        ),
-        'body' => json_encode($param),
-    );
-
-    $response = wp_remote_post('https://api.zingfit.com/account', $args);
+    $response = $zingfit->registerUser($param);
     $userdata = json_decode($response['body']);
 
     if ($userdata) {

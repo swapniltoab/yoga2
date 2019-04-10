@@ -40,6 +40,24 @@
             });
         });
 
+        $(document).on('click', '#updateZingfitGateways', function (e) {
+
+            e.preventDefault();
+            var ajax_url = zingfit_js_var_admin.ajaxurl;
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: ajax_url,
+                data: {
+                    'action': 'zingfit_update_gateways'
+                },
+                success: (response) => {
+                    alert(response.message);
+                }
+            });
+        });
+
     });
 
 })(jQuery);

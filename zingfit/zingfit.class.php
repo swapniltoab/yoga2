@@ -87,7 +87,7 @@ class ZingFit
 
     }
 
-     public function getAllInstructors(){
+    public function getAllInstructors(){
 
         $zingfit_access_token = get_transient('zingfit_access_token');
         $regions = get_option('zingfit_regions');
@@ -158,6 +158,24 @@ class ZingFit
             }
         }
 
+    }
+
+    public function registerUser($param){
+
+        $zingfit_access_token = get_transient('zingfit_access_token');
+        $url = $this->apiUrl.'account';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => '811593826090091886',
+            ),
+            'body' => json_encode($param),
+        );
+
+        $response = wp_remote_post($url, $args);
+
+        return $response;
     }
 
     public function getGateways($zingfit_access_token, $regionId)

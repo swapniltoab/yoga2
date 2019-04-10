@@ -100,6 +100,17 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     </td>
 </tr>
 
+<tr class="seperater-tr">
+    <th scope="row">
+        <label for="zingfit-access-token">ZingFit Gateways:</label>
+    </th>
+
+    <td>
+        <button type="button" class="js-updateZingfitGateways" id="updateZingfitGateways">Update Gateways</button>
+        <span class="description">To update gateways from zingfit user portal to sinc</span>
+    </td>
+</tr>
+
 <?php
 endif;
 ?>
