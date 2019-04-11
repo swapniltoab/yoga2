@@ -41,6 +41,13 @@ $currentUserDataBillingInfo = [
 <div class="container user-account-container">
 
     <div class="row">
+        <div class="header-btn-wrapper">
+            <a href="#" class="btn yoga-btn">Exclusive content</a>
+            <a href="/account/my-series" class="btn yoga-btn">My Series</a>
+        </div>
+    </div>
+
+    <div class="row">
 
         <div class="user-account-header">
             <h3 class="yoga-h3 float-left">My Info</h3>

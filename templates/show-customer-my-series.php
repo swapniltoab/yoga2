@@ -17,14 +17,16 @@ if ($zingfit_user_access_token) {
 
 ?>
 
+<div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
+        <h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
+</div>
+
 <div class="container user-account-container">
 
     <div class="row">
-
         <div class="user-account-header">
             <h3 class="yoga-h3 float-left">My Series (Active)</h3>
         </div>
-
     </div>
 
     <div class="table-responsive">
