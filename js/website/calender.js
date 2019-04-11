@@ -2,12 +2,12 @@
     var selectedClassType = null;
     var selectedInstructor = null;
     $(window).load(function () {
-        $('div#schedule-table .col-lg:lt(7)').addClass('active').show();
+        $('.desk-calender div.schedule-table .col-lg:lt(7)').addClass('active').show();
 
-        let classDay = $('.class-day');
+        let classDay = $('.desk-calender .class-day');
 
-        $('.next').click(function () {
-            $(".this-week-banner").text('Next week');
+        $('.desk-calender .next').click(function () {
+            $(".desk-calender .this-week-banner").text('Next week');
 
             classDay.each((index, ele) => {
 
@@ -21,8 +21,8 @@
             });
         });
 
-        $('.prev').click(function () {
-            $(".this-week-banner").text('This week');
+        $('.desk-calender .prev').click(function () {
+            $(".desk-calender .this-week-banner").text('This week');
 
             classDay.each((index, ele) => {
 
@@ -30,6 +30,38 @@
                     $(ele).removeClass('active');
                 } else {
                     $(ele).addClass('active');
+                }
+            });
+        });
+
+
+
+        $('.mob-calender div.schedule-table .test:lt(7)').show();
+
+        let classDayMob = $('.mob-calender .test');
+
+        $('.mob-calender .next').click(function () {
+            $(".mob-calender .this-week-banner").text('Next week');
+
+            classDayMob.each((index, ele) => {
+
+                if (index < 7) {
+                    $(ele).hide();
+                } else {
+                    $(ele).show();
+                }
+            });
+        });
+
+        $('.mob-calender .prev').click(function () {
+            $(".mob-calender .this-week-banner").text('This week');
+
+            classDayMob.each((index, ele) => {
+
+                if (index > 6) {
+                    $(ele).hide();
+                } else {
+                    $(ele).show();
                 }
             });
         });

@@ -74,8 +74,10 @@ body {
     margin-left: -15px;
 }
 
-.schedule-table-week-controller .next,
-.schedule-table-week-controller .prev {
+.schedule-table-week-controller .desk-next,
+.schedule-table-week-controller .desk-prev,
+.schedule-table-week-controller .mob-next,
+.schedule-table-week-controller .mob-prev {
     display: inline-block;
     cursor: pointer;
 }
@@ -205,28 +207,18 @@ select#selectMonth {
 
 @media (min-width:768px) {
     .showOnMobile,
-    .mob-div {
+     {
         display: none;
     }
     
 }
 
-@media (min-width: 992px) {
-    .col-lg {
-        -ms-flex-preferred-size: 0;
-        flex-basis: 0;
-        -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        max-width: 100%;
-    }
-}
-
-.schedule-table.row>.class-day:not(.active) {
+.schedule-table.row>.class-day:not(.active){
     display: none;
 }
 
-.schedule-table.row>.class-day.active {
+.schedule-table.row>.class-day.active,
+.class-day.active-sec{
     display: block;
 }
 
@@ -388,11 +380,38 @@ label.user-account-right-label {
 }
 }
 
-@media(max-width:900px) {
-.desktop-div {
+@media(max-width:992px) {
+.desk-calender {
     display: none;
 }
-.mob-div {
-    display: block !important;
+.mob-calender {
+    display: block;
 }
+.class-day-title.p-3 {
+    padding: 10px !important;
+}
+.class-instructor.position-relative {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+}
+
+@media (min-width: 992px) {
+    .col-lg {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+    .desk-calender {
+    display: block;
+}
+.mob-calender {
+    display: none;
+}
+
 }
