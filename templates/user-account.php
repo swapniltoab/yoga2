@@ -45,7 +45,7 @@ $currentUserDataBillingInfo = [
         <div class="user-account-header">
             <h3 class="yoga-h3 float-left">My Info</h3>
             <span class="yoga-span float-right">
-                <a href="/account/edit/" class="yoga-a js-edit-user-info">eidt info</a>
+                <a href="/account/edit/" class="yoga-a js-edit-user-info">edit info</a>
             </span>
         </div>
 
@@ -122,27 +122,33 @@ $currentUserDataBillingInfo = [
 
     </div>
 
-    <div class="div-table">
 
-        <div class="div-table-row">
-            <div class="div-table-col" align="center">TYPE</div>
-            <div  class="div-table-col">NUMBER</div>
-            <div  class="div-table-col">EXPIRATION</div>
-            <div  class="div-table-col">ACTION</div>
-        </div>
-
-        <?php foreach($userCardsData as $key => $Card){
-            $strDate = strtotime($Card->expiration);
-            $date = date('m/y',$strDate);
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>TYPE</th>
+                <th>NUMBER</th>
+                <th>EXPIRATION</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($userCardsData as $key => $Card){
+                $strDate = strtotime($Card->expiration);
+                $date = date('m/y',$strDate);
             ?>
-            <div class="div-table-row">
-                <div class="div-table-col"><?php echo $Card->cardType ?></div>
-                <div class="div-table-col"><?php echo $Card->lastFour ?></div>
-                <div class="div-table-col"><?php echo $date ?></div>
-                <div class="div-table-col"><a href="javscript:void(0)" class="js-delete-cc-card" data-cardId="<?php echo $Card->id ?>">Delete Card</a></div>
-            </div>
-        <?php }?>
-
+            <tr>
+                <td><?php echo ($key+1) ?></td>
+                <td><?php echo $Card->cardType ?></td>
+                <td><?php echo $Card->lastFour ?></td>
+                <td><?php echo $date ?></td>
+                <td><a href="javscript:void(0)" class="js-delete-cc-card" data-cardId="<?php echo $Card->id ?>">Delete Card</a></td>
+            </tr>
+            <?php }?>
+            </tbody>
+        </table>
     </div>
 
 </div>

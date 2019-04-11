@@ -51,7 +51,11 @@ function zingfit_customer_update_wp_user()
     update_user_meta($user_id, 'homeRegion', $customer['homeRegion']);
 
     if ($user_id) {
-        wp_set_password($password, $user_id);
+        if($password && $password != ''){
+            wp_set_password($password, $user_id);
+            // wp_set_current_user($user_id);
+            // wp_set_auth_cookie($user_id);
+        }
         echo json_encode(array('status' => true));
     } else {
         echo json_encode(array('status' => false));

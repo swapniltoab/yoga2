@@ -16,7 +16,19 @@ if ($_GET && $_GET != '') {
     if ($zingfit_user_access_token && $classId != '') {
         global $zingfit;
         $reserveSpots = $zingfit->getBookableClassDetail($zingfit_user_access_token, $regionId, $classId);
+        $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     }
+
+    $latestExpiringSeries = [];
+    $seriesExpiringDates = [];
+
+    foreach($userActiveSerieses->content as $key => $activeSeriese){
+        $expiringDate = $activeSeriese->expiringDate;   // date("Y-m-d", strtotime($activeSeriese->expiringDate));
+        $seriesExpiringDates[] = $expiringDate;
+    }
+
+    $key = array_search(min($seriesExpiringDates), $seriesExpiringDates);
+    $latestExpiringSeries = $userActiveSerieses->content[$key];
 
     if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>
 
@@ -32,39 +44,25 @@ if ($_GET && $_GET != '') {
     <div class="container" style="padding: 50px 20px">
 
         <div class="row">
-            <h2>Reserve</h2>
-        </div>
-        <hr>
-
-        <div class="row">
             <h3><?php echo $reserveSpots['room']['name'] ?></h3>
         </div>
         <hr>
 
         <div class="row">
-            <div class="room-main-img-sec" style="background-image: url(<?php echo yoga_uri.'/images/room/desktop-room.jpg'; ?>); width: 100%;height: 500px; background-repeat: no-repeat; position: relative;">
-                <?php
-                $j = 1;
-                $x = 1;
-                $i = 0;
-                while($i < $reserveSpots['room']['maxSpotCount']) :
-                    $i++;
-                    $top = ($j*80)+70;
-                    $left = ($x*55)+70;
-                    $x++;
-                    if($i%17 == 0){
-                        $j++;
-                        $x = 1;
-                    }
-                    ?>
-                    <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i-1]['status'] ?>"
-                        id="spotcell<?php echo $reserveSpots['spots'][$i-1]['id'] ?>"
-                        data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
-                        data-spotid="<?php echo $reserveSpots['spots'][$i-1]['id'] ?>"
-                        style="top: <?php echo $top ?>px; left: <?php echo $left ?>px;">
-                        <span class="spot-num"><?php echo $reserveSpots['spots'][$i-1]['label'] ?></span>
-                    </a>
-                <?php endwhile; ?>
+            <div class="room-main-img-sec" style="">
+                <div class="slots-wrapper">
+                    <?php
+                    $i = 0;
+                    for($i=0; $i < 51; $i++) : ?>
+                        <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
+                            id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
+                            data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
+                            data-spotid="<?php echo $reserveSpots['spots'][$i]['id'] ?>"
+                            data-seriesId="<?php echo $latestExpiringSeries->seriesId ?>">
+                            <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
+                        </a>
+                    <?php endfor; ?>
+                </div>
             </div>
         </div>
 

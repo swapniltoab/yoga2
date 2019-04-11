@@ -14,10 +14,10 @@ function zingfit_customer_login()
 
     global $zingfit;
     $wpUserId = $user->ID;
-    $is_zingfit_customer_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
-    if (false === $is_zingfit_customer_access_token) {
+    // $is_zingfit_customer_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+    // if (false === $is_zingfit_customer_access_token) {
         $zingfit->getUserAuthenticate($username, $password, $wpUserId);
-    }
+    // }
 
     if (is_wp_error($user)) {
         echo json_encode(array('status' => false, 'error' => $user->get_error_message()));

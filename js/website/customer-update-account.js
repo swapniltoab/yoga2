@@ -24,29 +24,29 @@
                     'formData': data
                 },
                 success: (response) => {
-                    // if (response.status === true) {
-                    //     let userdata = response.message;
-                    //     $.ajax({
-                    //         type: 'POST',
-                    //         dataType: 'json',
-                    //         url: ajax_url,
-                    //         data: {
-                    //             'action': 'zingfit_customer_update_wp_user',
-                    //             'userdata': userdata,
-                    //             'password': password
-                    //         },
-                    //         success: (userResponse) => {
-                    //             if (userResponse.status === true) {
-                    //                 window.location.href = '/account';
-                    //             } else {
-                    //                 alert('Failed');
-                    //             }
-                    //         }
-                    //     });
+                    if (response.status === true) {
+                        let userdata = response.message;
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            url: ajax_url,
+                            data: {
+                                'action': 'zingfit_customer_update_wp_user',
+                                'userdata': userdata,
+                                'password': password
+                            },
+                            success: (userResponse) => {
+                                if (userResponse.status === true) {
+                                    window.location.href = '/account';
+                                } else {
+                                    alert('Failed');
+                                }
+                            }
+                        });
 
-                    // } else {
-                    //     alert('Failed from zingfit registration');
-                    // }
+                    } else {
+                        alert('Failed from zingfit registration');
+                    }
 
                 }
             });
@@ -60,8 +60,20 @@
         var result = true;
         var password1 = $("#password1").val();
         var confirmPassword = $("#confirm_password").val();
-        //console.log('password', password1);
-        //console.log('confirmPassword', confirmPassword);
+
+        $(".js-pass").each(function () {
+            var input_value = $(this).val().trim();
+            if(input_value.length > 0){
+                var isValidPass = validatePass(input_value);
+                if (!isValidPass) {
+                    result = false;
+                    $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters');
+                }
+                if (password1 != confirmPassword) {
+                    $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Password not matching');
+                }
+            }
+        });
 
         $(".js-required").each(function () {
             var input_value = $(this).val().trim();
@@ -76,17 +88,6 @@
                     if (!isValidEmail) {
                         result = false;
                         $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Please Enter valid email');
-                    }
-                }
-
-                if ($(this).hasClass('js-pass')) {
-                    var isValidPass = validatePass(input_value);
-                    if (!isValidPass) {
-                        result = false;
-                        $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters');
-                    }
-                    if (password1 != confirmPassword) {
-                        $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Password not matching');
                     }
                 }
 

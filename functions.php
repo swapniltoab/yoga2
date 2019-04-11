@@ -47,6 +47,12 @@ $zingfit_api_url = $settings['general']["zingfit_api_url"];
 
 if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     $zingfit = new ZingFit($zingfit_client_id, $zingfit_client_secret, $zingfit_api_url);
+
+    $is_zingfit_access_token = get_transient('zingfit_access_token');
+    if (false === $is_zingfit_access_token) {
+        $zingfit->getAuthenticate();
+    }
+
 endif;
 
 include_once yoga_path . '/admin/ajax-functions/zingfit_access_token.php';

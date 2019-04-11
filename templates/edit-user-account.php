@@ -30,11 +30,6 @@ $states = [
 
 <div class="container" style="padding: 50px 20px">
 
-    <div class="row">
-        <h2>Checkout</h2>
-    </div>
-    <hr>
-
     <div class="card mb-2">
         <div class="card-body">
             <form id="usedAccountEdit" class="" method="POST" action="">
@@ -52,7 +47,7 @@ $states = [
                         </div>
 
                         <div class="form-group required row js-form-control">
-                            <label class="col-md-3 col-form-label text-md-right " for="password">
+                            <label class="col-md-3 col-form-label text-md-right" for="password">
                             Password
                             </label>
                             <div class="col-md-9">
@@ -62,7 +57,7 @@ $states = [
                         </div>
 
                         <div class="form-group required row js-form-control">
-                            <label class="col-md-3 col-form-label text-md-right " for="confirm_password">
+                            <label class="col-md-3 col-form-label text-md-right" for="confirm_password">
                             Confirm Password
                             </label>
                             <div class="col-md-9">

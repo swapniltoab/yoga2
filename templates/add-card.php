@@ -26,11 +26,11 @@ $zingfit_gateways = get_option("zingfit_gateways");
 
 <div class="container" style="padding: 50px 20px">
 
-    <div class="row">
+    <!-- <div class="row">
         <h2>ADD NEW CARD</h2>
     </div>
 
-    <hr>
+    <hr> -->
 
     <div class="card mb-2">
         <div class="card-body">
@@ -55,7 +55,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
                     </div>
                 </div>
 
-                <h3 class="card-title">BILLING DETAILS</h3>
+                <h4 class="card-title my-4">BILLING DETAILS</h4>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group required row">

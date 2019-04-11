@@ -41,7 +41,7 @@
             $(".js-container").each(function () {
                 var classDataVal = $(this).data("class-type");
                 var instructorDataVal= $(this).data("instructor");
-               
+
                 if (classtype == 'all-class' && selectedInstructor == 'all-instructor'){
                     $(this).show();
                 } else {
@@ -61,7 +61,7 @@
                             }
                         }
                     } else {
-                       
+
                         if (classtype == classDataVal) {
                             $(this).show(200);
                         } else {
@@ -70,25 +70,25 @@
                     }
                 }
 
-                
+
             });
-            
+
         });
 
         $("#select-instructor").change(function () {
             var instructor = $('#select-instructor  :selected').val();
             selectedInstructor = instructor;
-           
+
             $(".js-container").each(function () {
                 var instructorDataVal = $(this).data("instructor");
                 var classDataVal = $(this).data("class-type");
-           
+
                 if (selectedClassType == 'all-class' && instructor == 'all-instructor') {
-                   
+
                     $(this).show();
                 } else {
                     if (selectedClassType != null && selectedClassType != "all-class") {
-           
+
                         if (instructor == 'all-instructor' && selectedClassType != "all-class"){
                             if (selectedClassType == classDataVal) {
                                 $(this).show(200);
@@ -102,9 +102,9 @@
                                 $(this).hide(200);
                             }
                         }
-                        
+
                     } else {
-                      
+
                         if (instructor == instructorDataVal) {
                             $(this).show(200);
                         } else {
@@ -114,6 +114,6 @@
                 }
             });
         });
-        
+
     });
 })(jQuery);

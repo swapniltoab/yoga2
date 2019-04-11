@@ -4,7 +4,13 @@ function zingfit_book_slot()
 {
 
     $classId = $_POST['classId'];
-    $spotId = $_POST['spotId'];
+    // $spotId = $_POST['spotId'];
+    // $seriesId = $_POST['seriesId'];
+
+    $data = [
+        'spotId' => $_POST['spotId'],
+        'seriesItemId' => $_POST['seriesId']
+    ];
 
 
     $regions = get_option('zingfit_regions');
@@ -14,7 +20,7 @@ function zingfit_book_slot()
 
     if ($zingfit_user_access_token) {
         global $zingfit;
-        $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
+        $bookSpot = $zingfit->customerBookSpot($zingfit_user_access_token, $regionId, $classId, $data);
     }
 
     // if (is_wp_error($user)) {

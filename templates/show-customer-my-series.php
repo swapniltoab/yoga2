@@ -27,28 +27,31 @@ if ($zingfit_user_access_token) {
 
     </div>
 
-    <div class="div-table">
-
-        <div class="div-table-row">
-            <div class="div-table-col" align="center">Series Name</div>
-            <div  class="div-table-col">Purchase Date</div>
-            <div  class="div-table-col">Expiration Date</div>
-        </div>
-
-        <?php foreach($myActiveSerieses->content as $key => $activeSeriese){
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Series Name</th>
+                <th>Purchase Date</th>
+                <th>Expiration Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($myActiveSerieses->content as $key => $activeSeriese){
             $purchaseDate = date("d M, Y", strtotime($activeSeriese->purchaseDate));
             $expiringDate = date("d M, Y", strtotime($activeSeriese->expiringDate));
             ?>
-            <div class="div-table-row">
-                <div class="div-table-col"><?php echo $activeSeriese->seriesName ?></div>
-                <div class="div-table-col"><?php echo $purchaseDate ?></div>
-                <div class="div-table-col"><?php echo $expiringDate ?></div>
-            </div>
-        <?php }?>
-
+            <tr>
+                <td><?php echo ($key+1) ?></td>
+                <td><?php echo $activeSeriese->seriesName ?></td>
+                <td><?php echo $purchaseDate ?></td>
+                <td><?php echo $expiringDate ?></td>
+            </tr>
+            <?php }?>
+            </tbody>
+        </table>
     </div>
-
-    <hr>
 
     <div class="row">
 
@@ -58,27 +61,31 @@ if ($zingfit_user_access_token) {
 
     </div>
 
-    <div class="div-table">
-
-        <div class="div-table-row">
-            <div class="div-table-col" align="center">Series Name</div>
-            <div  class="div-table-col">Purchase Date</div>
-            <div  class="div-table-col">Expiration Date</div>
-        </div>
-
-        <?php foreach($myExpiredSerieses->content as $key => $expiredSeriese){
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Series Name</th>
+                <th>Purchase Date</th>
+                <th>Expiration Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($myExpiredSerieses->content as $key => $expiredSeriese){
             $purchaseDate = date("d M, Y", strtotime($expiredSeriese->purchaseDate));
             $expiredDate = date("d M, Y", strtotime($expiredSeriese->expiredDate));
             ?>
-            <div class="div-table-row">
-                <div class="div-table-col"><?php echo $expiredSeriese->seriesName ?></div>
-                <div class="div-table-col"><?php echo $purchaseDate ?></div>
-                <div class="div-table-col"><?php echo $expiredDate ?></div>
-            </div>
-        <?php }?>
-
+            <tr>
+                <td><?php echo ($key+1) ?></td>
+                <td><?php echo $expiredSeriese->seriesName ?></td>
+                <td><?php echo $purchaseDate ?></td>
+                <td><?php echo $expiredDate ?></td>
+            </tr>
+            <?php }?>
+            </tbody>
+        </table>
     </div>
-
 
 </div>
 

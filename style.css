@@ -123,7 +123,7 @@ button {
 }
 
 .drop-down {
-display:inline-block;
+    display: inline-block;
 }
 
 .row.schedule-table-header {
@@ -135,7 +135,7 @@ display:inline-block;
 .btn {
     background-color: #F2B826 !important;
     width: 180px;
-    color: rgba(0,0,0,1) !important;
+    color: rgba(0, 0, 0, 1) !important;
     border-radius: 10px;
     font-family: Open Sans;
     font-weight: 700;
@@ -190,10 +190,10 @@ select#selectMonth {
     margin-right: 10px;
 }
 
-.btn-register{
+.btn-register {
     background-color: #F2B826 !important;
     width: auto;
-    color: rgba(0,0,0,1) !important;
+    color: rgba(0, 0, 0, 1) !important;
     font-family: Open Sans;
     font-weight: 400;
     font-size: 12px;
@@ -204,11 +204,12 @@ select#selectMonth {
 .error-message {}
 
 @media (min-width:768px) {
+
     .showOnMobile,
     .mob-div {
         display: none;
     }
-    
+
 }
 
 @media (min-width: 992px) {
@@ -231,7 +232,7 @@ select#selectMonth {
 }
 
 .right_col {
-    background-image:url(http://yoga20.wpengine.com/wp-content/uploads/2019/04/1.-hero-image-3.jpg);
+    background-image: url(http://yoga20.wpengine.com/wp-content/uploads/2019/04/1.-hero-image-3.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -256,25 +257,66 @@ select#selectMonth {
     display: inline-block;
 }
 
-.spot {
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    position: absolute;
-}
-
 span.spot-num {
     font-size: 12px;
 }
 
-.spot-Available{
+.spot-Available {
     background: #F2B826;
 }
 
-.spot-Enrolled{
+.spot-Enrolled {
     background: #c1850d;
 }
 
+.room-main-img-sec {
+    background-image: url("images/room/desktop-room.jpg");
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 767px) {
+    .room-main-img-sec {
+        background-image: url("images/room/mobile-room.jpg");
+        height: auto;
+        padding: 20px 0px 20px 64px;
+        background-size: cover;
+        border-right: 18px solid #ccc;
+    }
+}
+
+.slots-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+    .slots-wrapper {
+        max-width: 258px;
+        justify-content: center;
+    }
+}
+
+.slots-wrapper .spot {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .slots-wrapper .spot {
+        margin: 10px 20px;
+    }
+}
 
 /* User account page css */
 
@@ -316,37 +358,46 @@ label.user-account-right-label {
     float: right;
 }
 
+#saveCreditCardForm #card-errors {
+    font-size: 12px;
+    color: #ff0000;
+    line-height: 1;
+    margin-top: 15px;
+}
 
 .div-table {
     width: auto;
     background-color: #eee;
-    border-spacing: 5px; /* cellspacing:poor IE support for  this */
-  }
-  .div-table-row {
+    border-spacing: 5px;
+    /* cellspacing:poor IE support for  this */
+}
+
+.div-table-row {
     display: table-row;
     width: auto;
     clear: both;
-  }
-  .div-table-col {
+}
+
+.div-table-col {
     float: left;
     display: table-column;
     width: 250px;
     text-align: center;
-  }
+}
 
-  .div-form-sec {
-      text-align: center;
-  }
+.div-form-sec {
+    text-align: center;
+}
 
-  .span-text-sec
-   {
+.span-text-sec {
     font-size: 22px !important;
     color: #f2b826 !important;
     margin-bottom: 10px !important;
     font-weight: 700;
 }
-    input.js-ShowRegisterForm.btn,
-    input.js-ShowLoginForm.btn {
+
+input.js-ShowRegisterForm.btn,
+input.js-ShowLoginForm.btn {
     margin-top: 20px;
 }
 
@@ -354,9 +405,11 @@ label.user-account-right-label {
     background-color: #f2b826 !important;
     border: 1px solid #000 !important;
 }
+
 .class-time {
     font-weight: 700;
 }
+
 .page-title-div {
     height: 502px;
     vertical-align: middle;
@@ -366,6 +419,7 @@ label.user-account-right-label {
     align-items: center;
     justify-content: center;
 }
+
 .page-title-sec {
     letter-spacing: 0px;
     text-transform: initial;
@@ -384,15 +438,16 @@ label.user-account-right-label {
 
 @media(max-width:768px) {
     .drop-down select {
-    min-width: 0 !important;
-}
+        min-width: 0 !important;
+    }
 }
 
 @media(max-width:900px) {
-.desktop-div {
-    display: none;
-}
-.mob-div {
-    display: block !important;
-}
+    .desktop-div {
+        display: none;
+    }
+
+    .mob-div {
+        display: block !important;
+    }
 }

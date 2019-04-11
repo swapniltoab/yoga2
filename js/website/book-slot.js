@@ -7,8 +7,7 @@
 
             let classId = $(this).data('classid');
             let spotId = $(this).data('spotid');
-            console.log('data', classId);
-            console.log('data', spotId);
+            let seriesId = $(this).data('seriesid');
 
             // return false;
 
@@ -21,7 +20,8 @@
                 data: {
                     'action': 'zingfit_book_slot',
                     'classId': classId,
-                    'spotId': spotId
+                    'spotId': spotId,
+                    'seriesId': seriesId
                 },
                 success: (response) => {
                     // if (response.status === true) {
