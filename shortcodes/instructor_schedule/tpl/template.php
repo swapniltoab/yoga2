@@ -57,13 +57,15 @@
                                 <div id="" class="class-container p-3 row no-gutters  not-private " data-room="" data-classid="" data-classdate="" data-classinstructorname="" data-gender="">
                                     <div class="col-7 col-lg-12">
                                         <div class="class-instructor position-relative">
-                                            <div class="class-time">
-                                            <?php echo $class['time'] ?>
-                                            </div>
                                             <div class="class-type">
-                                            <?php echo $class['classType'] ?>
+                                                <?php echo $class['classType'] ?>
                                             </div>
-                                            <?php echo $class['instructor_name'] ?><br>
+                                            <div class="instructor-name">
+                                                <?php echo $class['instructor_name'] ?><br>
+                                             </div>
+                                            <div class="class-time">
+                                                <?php echo $class['time'] ?>
+                                            </div>
                                             <?php //echo $class['room_Id'] ?><br>
                                             <a href="/book/?roomId=<?php echo $class['room_Id']?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id']?>">RESERVE</a>
                                         </div>

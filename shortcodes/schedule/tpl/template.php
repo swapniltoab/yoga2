@@ -4,7 +4,7 @@
             <div class="filter-wrap">
                 <div class="drop-down">
                     <select id="select-class-type" class="" name="select-class-type">
-                        <option value="all-class">Select Class Type</option>
+                        <option value="all-class">Class Type</option>
                     <?php
                     global $zingfit;
                     $classTypes = $zingfit->getClassTypes();
@@ -20,7 +20,7 @@
                 </div>
                 <div class="drop-down">
                     <select id="select-instructor" class="" name="select-instructor">
-                            <option value="all-instructor">Select Instructor</option>
+                            <option value="all-instructor">Instructor</option>
                         <?php
                         $allInstructors = $zingfit->getAllInstructors();
                         foreach($allInstructors as $instructors){
@@ -42,7 +42,7 @@
                 <div class="col-2">
                     <span data-action="prev" class="prev navigator greyed">&lt;&lt;</span>
                 </div>
-                <div class="col-8 this-week-banner date-display active">This Week</div>
+                <div class="col-8 this-week-banner date-display active">This Week<</div>
                     <span data-action="next" class="next navigator">&gt;&gt;</span>
                 </div>
             </div>
@@ -85,14 +85,16 @@
                                     <div id="" class="class-container p-3 row no-gutters  not-private " data-room="<?php echo $class['room_Id'] ?>" data-classid="<?php echo $class['class_Id'] ?>" data-classdate="" data-classinstructorname="" data-gender="">
                                         <div class="col-7 col-lg-12">
                                             <div class="class-instructor position-relative">
-                                                <div class="class-time">
-                                                <?php echo $class['time'] ?>
-                                                </div>
                                                 <div class="class-type">
-                                                <?php echo $class['classType'] ?>
+                                                    <?php echo $class['classType'] ?>
                                                 </div>
-                                                <?php echo $class['instructor_name'] ?><br>
-                                                <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                                <div class="instructor-name">
+                                                    <?php echo $class['instructor_name'] ?><br>
+                                                </div>
+                                                <div class="class-time">
+                                                   <?php echo $class['time'] ?>
+                                                </div>                                            
+                                                  <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
                                             </div>
                                         </div>
                                     </div>

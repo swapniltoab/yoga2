@@ -2,9 +2,13 @@
 
 /*template name: Zingfit Edit User Account */
 
-get_header();
+get_header(); ?>
 
-$regions = get_option('zingfit_regions');
+<div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
+<h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
+</div>
+
+<?php $regions = get_option('zingfit_regions');
 $wpUserId = get_current_user_id();
 $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
 $regionId = '811593826090091886';
