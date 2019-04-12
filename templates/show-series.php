@@ -20,7 +20,8 @@ if ($zingfit_access_token) {
 
 <div class="container" style="padding: 50px 20px">
 
-    <?php foreach($serieses as $series): ?>
+    <?php foreach($serieses as $series):
+        $currency = $series['price']['currency'] == 'USD' ? '$' : $series['price']['currency'];?>
     <div class="row">
         <div class="col-md-6">
             <h2><?php echo $series['name'] ?></h2>
@@ -28,7 +29,7 @@ if ($zingfit_access_token) {
         </div>
 
         <div class="col-md-3">
-            <span><?php echo $series['price']['amount'] ?> <?php echo $series['price']['currency'] ?></span>
+            <span><?php echo $currency . $series['price']['amount'] ?></span>
         </div>
 
         <div class="col-md-3">

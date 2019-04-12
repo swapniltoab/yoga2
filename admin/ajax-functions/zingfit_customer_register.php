@@ -62,6 +62,9 @@ function zingfit_customer_register_wp_user()
     update_user_meta($user_id, 'agreeTerms', $agreed);
     update_user_meta($user_id, 'homeRegion', $customer['homeRegion']);
 
+    global $zingfit;
+    $zingfit->getUserAuthenticate($customer['username'], $password, $user_id);
+
     if ($user_id) {
         wp_set_current_user($user_id);
         wp_set_auth_cookie($user_id);

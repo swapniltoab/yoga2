@@ -20,17 +20,14 @@ if ($zingfit_user_access_token) {
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
 }
 
+$currentUserID = get_current_user_id();
+$currentUserData = get_user_meta($currentUserID, 'zingfit_customer_data', true);
+
 $zingfit_gateways = get_option("zingfit_gateways");
 
 ?>
 
 <div class="container" style="padding: 50px 20px">
-
-    <!-- <div class="row">
-        <h2>ADD NEW CARD</h2>
-    </div>
-
-    <hr> -->
 
     <div class="card mb-2">
         <div class="card-body">
@@ -63,7 +60,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
                             First Name
                             </label>
                             <div class="col-md-9">
-                                <input name="firstName" required="" type="input" class="form-control " id="firstName" placeholder="" autocomplete="" value="">
+                                <input name="firstName" type="input" class="form-control " id="firstName" value="<?php echo $currentUserData['firstName'] ?>">
                             </div>
                         </div>
 
@@ -72,7 +69,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
                             Last Name
                             </label>
                             <div class="col-md-9">
-                                <input name="lastName" required="" type="input" class="form-control " id="lastName" placeholder="" autocomplete="" value="">
+                                <input name="lastName" type="input" class="form-control " id="lastName" value="<?php echo $currentUserData['lastName'] ?>">
                             </div>
                         </div>
 
@@ -81,7 +78,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
                             Address
                             </label>
                             <div class="col-md-9">
-                                <input name="address" required="" type="input" class="form-control " id="address" placeholder="" autocomplete="" value="">
+                                <input name="billingAddress" type="input" class="form-control" id="address" value="<?php echo $currentUserData['billingAddress'] ?>">
                             </div>
                         </div>
 
@@ -90,7 +87,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
                             Zip
                             </label>
                             <div class="col-md-9">
-                                <input name="zip" required="" type="input" class="form-control " id="zip" placeholder="" autocomplete="" value="">
+                                <input name="zip" type="input" class="form-control " id="zip" value="<?php echo $currentUserData['billingZip'] ?>">
                             </div>
                         </div>
 
@@ -173,7 +170,7 @@ $zingfit_gateways = get_option("zingfit_gateways");
     hiddenInput.setAttribute('name', 'stripeToken');
     hiddenInput.setAttribute('value', token.id);
     form.appendChild(hiddenInput);
-    // form.submit();
+    form.submit();
     }
 </script>
 

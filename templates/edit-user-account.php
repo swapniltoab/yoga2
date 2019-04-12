@@ -2,6 +2,8 @@
 
 /*template name: Zingfit Edit User Account */
 
+if(is_user_logged_in()){
+
 get_header(); ?>
 
 <div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
@@ -91,7 +93,7 @@ $states = [
                             Primary Phone Number
                             </label>
                             <div class="col-md-9">
-                                <input name="primary_phone_number" required="" type="input" class="form-control js-required js-mob" id="primary_phone_number" placeholder="" autocomplete="" value="<?php echo $currentUserData['phone']?>">
+                                <input name="phone" maxlength="10" required="" type="input" class="form-control js-required js-mob" id="primary_phone_number" placeholder="" autocomplete="" value="<?php echo $currentUserData['phone']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -101,7 +103,7 @@ $states = [
                             Secondary Phone Number
                             </label>
                             <div class="col-md-9">
-                                <input name="secondary_phone_number" required="" type="input" class="form-control js-mob" id="secondary_phone_number" placeholder="" autocomplete="" value="<?php echo $currentUserData['phone2']?>">
+                                <input name="phone2" maxlength="10" required="" type="input" class="form-control js-mob" id="secondary_phone_number" placeholder="" autocomplete="" value="<?php echo $currentUserData['phone2']?>">
                             </div>
                         </div>
 
@@ -129,7 +131,7 @@ $states = [
                             City
                             </label>
                             <div class="col-md-9">
-                                <input name="city" required="" type="input" class="form-control js-required js-text-only" id="city" placeholder="" autocomplete="" value="<?php echo $currentUserData['city']?>">
+                                <input name="city" required="" type="input" class="form-control js-required" id="city" placeholder="" autocomplete="" value="<?php echo $currentUserData['city']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -157,7 +159,7 @@ $states = [
                             Zip
                             </label>
                             <div class="col-md-9">
-                                <input name="zip" required="" type="input" class="form-control js-required js-zip" id="zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['zip']?>">
+                                <input name="zip" maxlength="5" required="" type="input" class="form-control js-required js-zip" id="zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['zip']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -209,7 +211,7 @@ $states = [
                             Zip
                             </label>
                             <div class="col-md-9">
-                                <input name="billingZip" required="" type="input" class="form-control js-required js-zip" id="billing_zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingZip']?>">
+                                <input name="billingZip" maxlength="5" required="" type="input" class="form-control js-required js-zip" id="billing_zip" placeholder="" autocomplete="" value="<?php echo $currentUserData['billingZip']?>">
                                 <span class="error-message" style="color:red"></span>
                             </div>
                         </div>
@@ -238,4 +240,9 @@ $states = [
 
 <?php
 get_footer();
+} else {
+    $url = home_url();
+    wp_redirect($url);
+    exit;
+}
 ?>

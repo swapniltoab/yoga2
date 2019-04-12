@@ -17,8 +17,9 @@ if ($zingfit_user_access_token) {
 
 ?>
 
-<div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
+<div class="row page-title-div flex-column" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
         <h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
+        <a href="#" class="btn yoga-btn">Buy More Series</a>
 </div>
 
 <div class="container user-account-container">

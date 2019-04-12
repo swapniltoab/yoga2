@@ -65,8 +65,6 @@
         var result = true;
         var password1 = $("#password1").val();
         var confirmPassword = $("#confirm_password").val();
-        //console.log('password', password1);
-        //console.log('confirmPassword', confirmPassword);
 
         $(".js-required").each(function () {
             var input_value = $(this).val().trim();
@@ -115,7 +113,7 @@
                     var isValidZip = validateZip(input_value);
                     if (!isValidZip) {
                         result = false;
-                        $(this).parent().closest('.js-form-control').find('.error-message').empty().text('Enter only 6 digit Zip code');
+                        $(this).parent().closest('.js-form-control').find('.error-message').empty().text('Enter only 5 digit Zip code');
                     }
                 }
 
@@ -163,7 +161,7 @@
     }
 
     function validateZip(input_value) {
-        var pattern = /^\d{6}$/;
+        var pattern = /^\d{5}$/;
         if (!pattern.test(input_value)) {
             return false;
         }

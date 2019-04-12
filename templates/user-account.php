@@ -2,6 +2,8 @@
 
 /*template name: Zingfit User Account */
 
+if(is_user_logged_in()){
+
 get_header(); ?>
 
 <div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
@@ -16,7 +18,7 @@ $userCardsData = '';
 
 if ($zingfit_user_access_token) {
     global $zingfit;
-    $seriesOrderId = $zingfit->getCustomerData($zingfit_user_access_token, $regionId);
+    $customerData = $zingfit->getCustomerData($zingfit_user_access_token, $regionId);
     $userCardsData = $zingfit->getCustomerCardsOfFile($zingfit_user_access_token, $regionId);
 }
 
@@ -162,4 +164,9 @@ $currentUserDataBillingInfo = [
 
 <?php
 get_footer();
+} else {
+    $url = home_url();
+    wp_redirect($url);
+    exit;
+}
 ?>

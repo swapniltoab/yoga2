@@ -17,7 +17,6 @@ function zingfit_customer_update()
     $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
     $regionId = '811593826090091886';
 
-    error_log('$zingfit_user_access_token '.print_r($zingfit_user_access_token,1));
     if ($zingfit_user_access_token) {
         global $zingfit;
         $userdata = $zingfit->updateCustomerInfo($zingfit_user_access_token, $regionId, $param);

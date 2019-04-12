@@ -214,12 +214,9 @@ class ZingFit
         $response = wp_remote_post($url, $args);
         $api_response = json_decode(wp_remote_retrieve_body($response), true);
 
-        // $is_zingfit_customer_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
-        // if (false === $is_zingfit_customer_access_token) {
-            $zingfit_customer_access_token = $api_response['access_token'];
-            $expires_in = $api_response['expires_in'];
-            set_transient('zingfit_customer_access_token_'.$wpUserId, $zingfit_customer_access_token, $expires_in);
-        // }
+        $zingfit_customer_access_token = $api_response['access_token'];
+        $expires_in = $api_response['expires_in'];
+        set_transient('zingfit_customer_access_token_'.$wpUserId, $zingfit_customer_access_token, $expires_in);
 
         return $api_response;
     }
