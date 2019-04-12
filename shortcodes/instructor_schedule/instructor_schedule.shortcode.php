@@ -37,6 +37,7 @@ class ZingFit_Instructor_Schedule_Shortcode
             $next = strtotime("+".$i." day");
             $temp['day'] = date('l',$next);
             $temp['date'] = date('m-d',$next);
+            $temp['weekDate'] = date('M j Y',$next);
             array_push($days, $temp);
         }
 
@@ -49,6 +50,7 @@ class ZingFit_Instructor_Schedule_Shortcode
             $classDay = date('l', strtotime($Date));
             $date = date('m-d', strtotime($Date));
             $stringDate = strtotime($Date);
+            $weekDate = date('M j Y',strtotime($Date));
             $classTypeName = $class['classType'];
             $tempClass = [];
 
@@ -66,6 +68,7 @@ class ZingFit_Instructor_Schedule_Shortcode
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
             $tempClass['classType'] = $class['classType'];
+            $tempClass['weekDate'] = $weekDate;
            
             if (is_array($availSlots[$date])) { 
                 array_push($availSlots[$date], $tempClass);

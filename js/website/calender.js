@@ -41,6 +41,13 @@
         $('.mob-calender .next').click(function () {
             $(".mob-calender .this-week-banner").text('Next week');
 
+            $('.nav-tabs div:nth-child(8)').trigger('click');
+
+            // $('.nav-tabs div:nth-child(8)').addClass('active');
+            // $('.tab-content div:nth-child(8)').addClass('active');
+            // $('.tab-content div:nth-child(1)').removeClass('active');
+
+         
             classDayMob.each((index, ele) => {
 
                 if (index < 7) {
@@ -53,6 +60,14 @@
 
         $('.mob-calender .prev').click(function () {
             $(".mob-calender .this-week-banner").text('This week');
+            $('.nav-tabs > div').removeClass('active');
+            $('.tab-content > div').removeClass('active');
+            $('.nav-tabs div:nth-child(1)').addClass('active');
+            $('.tab-content div:nth-child(1)').addClass('active');
+            // $('.tab-content div:nth-child(8)').removeClass('active');
+            
+            var cur_dt = $('.nav-tabs div:nth-child(1)').attr('data-cur-dt');
+            $('.js-current-dt').empty().text(cur_dt);
 
             classDayMob.each((index, ele) => {
 
@@ -72,7 +87,7 @@
                 var classDataVal = $(this).data("class-type");
                 var instructorDataVal = $(this).data("instructor");
 
-                if (classtype == 'all-class' && selectedInstructor == 'all-instructor') {
+                if ((classtype == 'all-class' && selectedInstructor == null) || (classtype == 'all-class' && selectedInstructor == 'all-instructor')) {
                     $(this).show();
                 } else {
                     if (selectedInstructor != null && selectedInstructor != "all-instructor") {
@@ -113,7 +128,7 @@
                 var instructorDataVal = $(this).data("instructor");
                 var classDataVal = $(this).data("class-type");
 
-                if (selectedClassType == 'all-class' && instructor == 'all-instructor') {
+                if ((selectedClassType == 'all-class' && instructor == 'all-instructor') || (selectedClassType == null && instructor == 'all-instructor')) {
 
                     $(this).show();
                 } else {
@@ -144,6 +159,15 @@
                 }
             });
         });
+
+        $(document).on('click','.js-day-div',function(){
+            console.log('clivked');
+            var cur_dt = $(this).attr('data-cur-dt');
+            $('.js-current-dt').empty().text(cur_dt);
+        });
+
+        var cur_dt = $('.js-day-div.active').attr('data-cur-dt');
+        $('.js-current-dt').text(cur_dt);
 
     });
 })(jQuery);

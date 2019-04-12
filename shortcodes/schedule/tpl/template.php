@@ -119,7 +119,12 @@
                 <div class="col-2">
                     <span data-action="prev" class="prev navigator greyed">&lt;&lt;</span>
                 </div>
-                <div class="col-8 this-week-banner date-display active">This Week</div>
+                <div class="col-8">
+                    <div class="this-week-banner date-display active">
+                    This Week
+                    </div>
+                    <div class="js-current-dt"></div>
+                </div>
                     <span data-action="next" class="next navigator">&gt;&gt;</span>
                 </div>
             </div>
@@ -131,9 +136,13 @@
         <div class="col-lg bg-white text-uppercase small" id="">
                     <div class="nav nav-tabs">
         <?php
+        $i = 0;
         foreach ($schedule as $classes) {
+             $i++;
+            $active = $i == 1 ? 'active' : '';
+           // print_r($classes);
              if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
-                        <div data-toggle="tab" class="test" href="#menu-<?php echo $classes[0]['date'] ?>" style="display:none">
+                        <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $classes[0]['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                             <div class="class-day-title p-3">
                                 <h3 class="font-weight-bold"><?php echo substr($classes[0]['day'], 0, 2) ?></h3>
                             </div>
@@ -142,8 +151,9 @@
                 else {
                     $length = count($classes);
                     foreach ($classes as $key => $class) {
+                        
                         if ($key == 0): ?>
-                                <div data-toggle="tab" class="test" href="#menu-<?php echo $class['date'] ?>" style="display:none">
+                                <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $class['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                                     <div class="class-day-title p-3">
                                         <h3 class="font-weight-bold"><?php echo substr($class['day'], 0, 2); ?></h3>
                                     </div>
@@ -176,12 +186,13 @@
                 foreach ($classes as $key => $class) {
                      if ($key == 0):
                     ?>
-                     <div id="menu-<?php echo $class['date'] ?>" class="classes-container js-container tab-pane <?php echo $active ?>" data-instructor="<?php echo $class['instructor_name'] ?>" data-class-type="<?php echo $class['classType'] ?>">
+                     <div id="menu-<?php echo $class['date'] ?>" class="classes-container tab-pane <?php echo $active ?>">
                      <?php
                      endif;
                      ?>
+                     <div class="js-container" data-instructor="<?php echo $class['instructor_name'] ?>" data-class-type="<?php echo $class['classType'] ?>">
                         <div class="class-instructor position-relative">
-                            <div class="col-7">
+                            <div class="col-8 px-0">
                             <div class="class-type">
                                 <?php echo $class['classType'] ?>
                             </div>
@@ -192,8 +203,9 @@
                                 <?php echo $class['time'] ?>
                             </div>
                 </div>
-                         <div class="col-5">
+                         <div class="col-4 px-0">
                             <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                        </div>
                         </div>
                         </div>
                     <?php  if ($key == ($length - 1)): ?>
