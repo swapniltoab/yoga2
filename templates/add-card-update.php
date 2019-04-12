@@ -33,11 +33,9 @@ if ($_POST && $_POST != '') {
     }
 
     if ($cardInfo['error'] || $cardInfo['error'] == 'Not found.') {
-        $html .= '<h2>Failed to save card! Please try again.</h2>';
+        $html .= '<h2>Failed to save your card! Please try again.</h2>';
     } else {
-        $html .= '<h2>Successfull saved card!.</h2>';
-        $html .= '<p>Card Last 4 digits are:</p>'.$cardInfo->lastFour;
-        $html .= '<p>and Card Type is:</p>'.$cardInfo->cardType;
+        $html .= '<h2>Your card is added successfully!.</h2>';
     }
 
 } else{

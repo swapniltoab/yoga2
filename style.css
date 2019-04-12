@@ -453,7 +453,7 @@ input.js-ShowLoginForm.btn {
     }
 
     .class-day-title.p-3 {
-        padding: 10px !important;
+        padding: 5px !important;
     }
 
     .class-instructor.position-relative {
@@ -540,7 +540,7 @@ a.yoga-btn {
 }
 
 .test.js-day-div.active {
-    background: red;
+    background: #F2B826;
 }
 
 @media screen and (max-width: 767px) {
