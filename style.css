@@ -74,8 +74,8 @@ body {
     margin-left: -15px;
 }
 
-.schedule-table-week-controller .desk-next,
-.schedule-table-week-controller .desk-prev,
+.schedule-table-week-controller .next,
+.schedule-table-week-controller .prev,
 .schedule-table-week-controller .mob-next,
 .schedule-table-week-controller .mob-prev {
     display: inline-block;
@@ -461,6 +461,13 @@ input.js-ShowLoginForm.btn {
         justify-content: center;
         align-items: center;
     }
+	.filter-wrap {
+    width: 100% !important;
+    display: flex;
+	justify-content:center;
+	align-items:center;
+}
+
 
 }
 
@@ -541,4 +548,9 @@ a.yoga-btn {
         padding: 8px 0px;
         border-bottom: 1px solid rgb(238, 238, 238);
     }
+}
+
+div#schedule-table {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
