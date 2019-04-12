@@ -41,11 +41,6 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
 
 <div class="container" style="padding: 50px 20px">
 
-    <div class="row">
-        <h2>Checkout</h2>
-    </div>
-    <hr>
-
     <div class="card mb-2">
         <div class="card-body">
             <form id="stripeform" class="" method="POST" action="/charge-card/">
@@ -77,9 +72,9 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
                         </div>
 
                         <div class="form-group  row">
-                            <label class="col-md-3 col-form-label text-md-right " for="saveCard">
+                            <!-- <label class="col-md-3 col-form-label text-md-right " for="saveCard">
                             Save My Card
-                            </label>
+                            </label> -->
 
                             <!-- <div class="col-md-9">
                                 <label class="custom-control custom-checkbox">

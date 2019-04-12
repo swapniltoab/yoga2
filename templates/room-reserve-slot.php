@@ -9,7 +9,13 @@ $wpUserId = get_current_user_id();
 $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
 $regionId = '811593826090091886';
 $classId = '';
+?>
 
+<div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
+<h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
+</div>
+
+<?php
 if ($_GET && $_GET != '') {
     $classId = $_GET['classId'];
 
