@@ -55,6 +55,42 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
 
 endif;
 
+$ddd = $_SERVER['REQUEST_URI'];
+
+if($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] == '/the-warriors-way'){
+// 854350814192338856
+    if(is_user_logged_in()){
+        $seriesId = [];
+        $regions = get_option('zingfit_regions');
+        $wpUserId = get_current_user_id();
+        $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+        $regionId = '811593826090091886';
+
+        if ($zingfit_user_access_token) {
+            global $zingfit;
+            $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
+        }
+
+        foreach($myActiveSerieses->content as $key => $series){
+            $seriesId[] = $series->id;
+        }
+
+        if(in_array('854350814192338856', $seriesId)){
+
+        } else {
+            $url = home_url();
+            wp_redirect($url);
+            exit;
+        }
+
+    } else {
+        $url = home_url();
+        wp_redirect($url);
+        exit;
+    }
+
+}
+
 include_once yoga_path . '/admin/ajax-functions/zingfit_access_token.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_update_apis.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_customer_register.php';

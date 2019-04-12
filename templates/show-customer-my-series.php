@@ -15,6 +15,7 @@ if ($zingfit_user_access_token) {
     $myExpiredSerieses = $zingfit->getCustomerMySeriesExpired($zingfit_user_access_token, $regionId);
 }
 
+error_log('$myActiveSerieses ...'.print_r($myActiveSerieses,1));
 ?>
 
 <div class="row page-title-div flex-column" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
