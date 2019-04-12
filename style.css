@@ -74,8 +74,8 @@ body {
     margin-left: -15px;
 }
 
-.schedule-table-week-controller .desk-next,
-.schedule-table-week-controller .desk-prev,
+.schedule-table-week-controller .next,
+.schedule-table-week-controller .prev,
 .schedule-table-week-controller .mob-next,
 .schedule-table-week-controller .mob-prev {
     display: inline-block;
