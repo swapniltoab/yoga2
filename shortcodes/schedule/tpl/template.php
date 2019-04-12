@@ -192,7 +192,7 @@
                      ?>
                      <div class="js-container" data-instructor="<?php echo $class['instructor_name'] ?>" data-class-type="<?php echo $class['classType'] ?>">
                         <div class="class-instructor position-relative">
-                            <div class="col-8 px-0">
+                            <div class="col-7 px-0">
                             <div class="class-type">
                                 <?php echo $class['classType'] ?>
                             </div>
@@ -203,7 +203,7 @@
                                 <?php echo $class['time'] ?>
                             </div>
                 </div>
-                         <div class="col-4 px-0">
+                         <div class="col-5">
                             <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
                         </div>
                         </div>
