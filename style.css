@@ -496,8 +496,49 @@ input.js-ShowLoginForm.btn {
     .header-btn-wrapper {
         padding: 0 0 30px;
     }
+    .class-day-title {
+        border-bottom: 0px;
+    }
+    .class-day-title h3 {
+        margin-bottom: 0px;
+    }
+    .test.js-day-div.active .class-day-title h3 {
+        color: #ffffff;
+    }
+    .nav.nav-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        margin: 0px 15px;
+
+    }
+    .btn-register{
+        padding: 10px 8px;
+        font-size: 14px;
+        display: block;
+        border: none;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
 }
 
 a.yoga-btn {
     text-transform: uppercase;
+}
+
+.tab-content {
+    background-color: #fff !important;
+}
+
+.test.js-day-div.active {
+    background: red;
+}
+
+@media screen and (max-width: 767px) {
+    .js-container {
+        padding: 8px 0px;
+        border-bottom: 1px solid rgb(238, 238, 238);
+    }
 }
