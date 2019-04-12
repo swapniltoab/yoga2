@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <div class="classes-container">
+                    <div class="classes-container p-3">
                         <span>No Data Available</span>
                     </div>
 
