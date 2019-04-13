@@ -467,6 +467,9 @@ input.js-ShowLoginForm.btn {
 	justify-content:center;
 	align-items:center;
 }
+.page-title-sec {
+    font-size: 90px !important;
+}
 
 
 }
