@@ -387,7 +387,7 @@ label.user-account-right-label {
 }
 
 .span-text-sec {
-    font-size: 22px !important;
+    font-size: 20px !important;
     color: #f2b826 !important;
     margin-bottom: 10px !important;
     font-weight: 700;
@@ -617,7 +617,7 @@ div#schedule-table {
 
     .mobile-series .series-price {
         float: right;
-        margin-top: 9px;
+        margin-top: 7px;
         font-size: 18px;
         font-weight: 600;
     }
