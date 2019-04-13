@@ -21,7 +21,7 @@ get_header();
             </div>
 
             <div class="div-form-sec">
-                <span class="js-ShowRegisterForm span-text-sec">In order to reserve a spot, please create a Yoga 2.0 account</span><br>
+                <span class="js-ShowRegisterForm span-text-sec">Please create a Yoga2.0 account to reserve a mat.<br>“Yoga2.0 account to reserve a mat.”</span><br>
                 <input class="js-ShowRegisterForm btn" type="submit" value="SIGN UP >" />
             </div>
 
