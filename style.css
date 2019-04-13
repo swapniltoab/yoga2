@@ -170,13 +170,13 @@ button {
     display: flex;
 }
 
-.agreeTerms-check input[type="checkbox"] {
+.agreeTerms-check input[type="checkbox"], .liability-check input[type="checkbox"] {
     margin-bottom: 2px !important;
     margin-right: 10px;
     height: 10px !important;
 }
 
-label.col-md-9.custom-control.agreeTerms-check {
+label.col-md-9.custom-control.agreeTerms-check, label.col-md-9.custom-control.liability-check{
     margin-left: 50px;
 }
 
@@ -313,6 +313,12 @@ span.spot-num {
 
 .container.user-account-container {
     padding: 50px 30px;
+}
+
+@media(max-width:768px) {
+    .container.user-account-container {
+        padding: 30px;
+    }
 }
 
 .user-account-header {
@@ -453,7 +459,7 @@ input.js-ShowLoginForm.btn {
     }
 
     .class-day-title.p-3 {
-        padding: 10px !important;
+        padding: 5px !important;
     }
 
     .class-instructor.position-relative {
@@ -505,6 +511,7 @@ input.js-ShowLoginForm.btn {
 @media(max-width:768px) {
     .header-btn-wrapper {
         padding: 0 0 30px;
+        display: grid;
     }
     .class-day-title {
         border-bottom: 0px;
@@ -538,12 +545,19 @@ a.yoga-btn {
     text-transform: uppercase;
 }
 
+@media(max-width:768px) {
+    a.yoga-btn {
+        margin: 5px;
+        min-width: 320px;
+    }
+}
+
 .tab-content {
     background-color: #fff !important;
 }
 
 .test.js-day-div.active {
-    background: red;
+    background: #F2B826;
 }
 
 @media screen and (max-width: 767px) {
@@ -556,4 +570,63 @@ a.yoga-btn {
 div#schedule-table {
     margin-left: 0px !important;
     margin-right: 0px !important;
+}
+
+@media(max-width:768px) {
+    .show-series {
+        flex-direction: column;
+    }
+
+    .show-series .series-info {
+        margin-bottom: 30px;
+    }
+
+    .show-series .series-price {
+        margin: 0 0 10px 10px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .show-series .series-button {
+        margin-bottom: 20px;
+    }
+
+    .show-series .series-button a{
+        min-width: 140px;
+    }
+}
+
+.mobile-series{
+    display: none;
+}
+
+@media(max-width:768px) {
+
+    .desktop-series{
+        display: none;
+    }
+
+    .mobile-series{
+        display: block;
+    }
+
+    .mobile-series .series-info {
+        width: 80%;
+        float: left;
+    }
+
+    .mobile-series .series-price {
+        float: right;
+        margin-top: 9px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .mobile-series .show-series .series-button {
+        margin-bottom: 20px;
+    }
+
+    .mobile-series .show-series .series-button a{
+        min-width: 140px;
+    }
 }

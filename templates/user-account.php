@@ -44,8 +44,9 @@ $currentUserDataBillingInfo = [
 
     <div class="row">
         <div class="header-btn-wrapper">
-            <a href="#" class="btn yoga-btn">Exclusive content</a>
+            <a href="/the-warriors-way" class="btn yoga-btn">Exclusive content</a>
             <a href="/account/my-series" class="btn yoga-btn">My Series</a>
+            <a href="/account/my-attendance" class="btn yoga-btn">My Attendance</a>
         </div>
     </div>
 

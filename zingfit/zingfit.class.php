@@ -423,6 +423,22 @@ class ZingFit
         return $CustomerActiveMySeries;
     }
 
+    public function getCustomerMyAttendance($zingfit_user_access_token, $regionId)
+    {
+        $url = $this->apiUrl.'account/classes?page=0&size=100';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $CustomerMyAttendance = json_decode($response['body']);
+        return $CustomerMyAttendance;
+    }
+
     public function getCustomerMySeriesExpired($zingfit_user_access_token, $regionId)
     {
         $url = $this->apiUrl.'account/series/expired';

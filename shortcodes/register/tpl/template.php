@@ -148,7 +148,13 @@
 
     <div class="row">
       <label class="col-md-9 custom-control agreeTerms-check">
-        <input type="checkbox" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="#">Terms & Conditions</a>
+        <input type="checkbox" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="/terms/" target="_blank">Terms & Conditions</a>
+      </label><br>
+    </div>
+
+    <div class="row">
+      <label class="col-md-9 custom-control liability-check">
+        <input type="checkbox" name="liabilityTerms" style="margin-bottom:15px" required><a href="#" target="_blank">Liability Waiver and Pricing</a>
       </label><br>
     </div>
 
