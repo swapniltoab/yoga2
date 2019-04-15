@@ -6,7 +6,7 @@ get_header();
 ?>
 
 <div class="container">
-    <div class="row form_row">
+    <div class="row form_row login_register_form_row">
         <div class="col-sm-6">
             <?php
                 echo do_shortcode('[zingfit_login]');

@@ -97,7 +97,7 @@
 
       <label class="col-md-3 form-label" for="birthDate">Date of Birth:</label>
 
-      <div class="col-md-9 wrap-form-grp">
+      <div class="col-md-9 wrap-form-grp form-select-dob">
 
         <div class="js-form-control">
           <select id="selectMonth" class="form-input js-required" name="selectMonth" style="width:auto;" class="form-control">
@@ -154,7 +154,7 @@
 
     <div class="row">
       <label class="col-md-9 custom-control liability-check">
-        <input type="checkbox" name="liabilityTerms" style="margin-bottom:15px" required><a href="#" target="_blank">Liability Waiver and Pricing</a>
+        <input type="checkbox" name="liabilityTerms" style="margin-bottom:15px" required><a href="https://yoga2point0.com/wp-content/uploads/2019/04/3020820-yoga2.0-liability-waiver.docx.pdf" target="_blank">Liability Waiver and Pricing</a>
       </label><br>
     </div>
 

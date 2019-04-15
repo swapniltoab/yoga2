@@ -11,6 +11,7 @@ function zingfit_customer_register()
     }
 
     $param['agreeTerms'] = isset($param['agreeTerms']) ? true : false;
+    $param['liabilityTerms'] = isset($param['liabilityTerms']) ? true : false;
     $month = $param['selectMonth'];
     $date = $param['selectDate'];
     $year = $param['selectYear'];
@@ -52,6 +53,7 @@ function zingfit_customer_register_wp_user()
     );
 
     $agreed = isset($customer['agreeTerms']) ? true : false;
+    $liabilityTerms = isset($customer['liabilityTerms']) ? true : false;
 
     update_user_meta($user_id, 'zingfit_user_id', $customer['id']);
     update_user_meta($user_id, 'phone', $customer['phone']);
@@ -60,6 +62,7 @@ function zingfit_customer_register_wp_user()
     update_user_meta($user_id, 'state', $customer['state']);
     update_user_meta($user_id, 'zip', $customer['zip']);
     update_user_meta($user_id, 'agreeTerms', $agreed);
+    update_user_meta($user_id, 'liabilityTerms', $liabilityTerms);
     update_user_meta($user_id, 'homeRegion', $customer['homeRegion']);
 
     global $zingfit;

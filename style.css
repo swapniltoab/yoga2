@@ -102,6 +102,16 @@ button {
     color: #000 !important;
 }
 
+@media(max-width:768px) {
+    .login_register_form_row .form-label {
+        width: 185px;
+    }
+
+    .login_register_form_row .form-input {
+        width: 190px;
+    }
+}
+
 .js-form-control.row {
     padding: 5px 0;
 }
@@ -234,6 +244,21 @@ select#selectMonth {
     padding-top: 3em;
     padding-bottom: 3em;
     background-color: #fff;
+}
+
+@media(max-width:768px) {
+    .login_register_form_row {
+        flex-direction: column;
+    }
+
+    .login_register_form_row .right_col {
+        margin-top: 40px;
+        padding: 20px;
+    }
+
+    .form-select-dob{
+        flex-direction: column;
+    }
 }
 
 .hideElement {

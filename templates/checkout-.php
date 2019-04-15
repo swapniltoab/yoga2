@@ -13,6 +13,7 @@ $wpUserId = get_current_user_id();
 $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
 $regionId = '811593826090091886';
 $seriesId = '';
+$zingfit_gateways = get_option("zingfit_gateways");
 
 if ($_GET && $_GET != '') {
     $seriesId = $_GET['seriesId'];
@@ -150,7 +151,7 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
 
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
-    var stripe = Stripe('pk_test_UdhwXywU0Tn9rEV538K3Pihw');
+    var stripe = Stripe('<?php echo $zingfit_gateways[0]['stripeKey']?>');
 
     var elements = stripe.elements();
 
