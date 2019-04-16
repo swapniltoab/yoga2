@@ -2,6 +2,8 @@
 
 /*template name: Zingfit Checkout */
 
+if(is_user_logged_in()){
+
 get_header();?>
 
 <div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
@@ -213,4 +215,9 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
 <?php
 }
 get_footer();
+} else {
+    $url = home_url();
+    wp_redirect($url.'/register/');
+    exit;
+}
 ?>

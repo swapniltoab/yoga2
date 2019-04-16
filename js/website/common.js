@@ -6,7 +6,8 @@
 			jQuery(this).hide(500);
 			jQuery('#loginform').show(500);
 			jQuery('.js-ShowRegisterForm').show(500);
-			jQuery('span.js-ShowLoginForm.hideElement.span-text-sec').hide(500);
+			jQuery('.js-ShowRegisterFormSpan').show(500);
+			jQuery('span.js-ShowLoginFormSpan.hideElement.span-text-sec').hide(500);
 		});
 
 		jQuery('.js-ShowRegisterForm').click(function () {
@@ -14,7 +15,8 @@
 			jQuery(this).hide(500);
 			jQuery('#registerform').show(500);
 			jQuery('.js-ShowLoginForm').show(500);
-			jQuery('span.js-ShowRegisterForm.span-text-sec').hide(500);
+			jQuery('.js-ShowLoginFormSpan').show(500);
+			jQuery('span.js-ShowRegisterFormSpan.span-text-sec').hide(500);
 		});
 	});
 

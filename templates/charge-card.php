@@ -2,6 +2,8 @@
 
 /*template name: Zingfit Charge Card */
 
+if(is_user_logged_in()){
+
 get_header(); ?>
 
 <div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
@@ -47,4 +49,10 @@ if ($_POST && $_POST != '') {
     echo $html;
 
 get_footer();
+
+} else {
+    $url = home_url();
+    wp_redirect($url.'/register/');
+    exit;
+}
 ?>
