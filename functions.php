@@ -59,6 +59,8 @@ $ddd = $_SERVER['REQUEST_URI'];
 
 if($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] == '/the-warriors-way'){
 // 854350814192338856
+
+if( ! current_user_can('administrator')){
     if(is_user_logged_in()){
         $seriesId = [];
         $regions = get_option('zingfit_regions');
@@ -79,15 +81,16 @@ if($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] ==
 
         } else {
             $url = home_url();
-            wp_redirect($url);
+            wp_redirect($url.'/no-access');
             exit;
         }
 
     } else {
         $url = home_url();
-        wp_redirect($url);
+        wp_redirect($url.'/no-access');
         exit;
     }
+}
 
 }
 
