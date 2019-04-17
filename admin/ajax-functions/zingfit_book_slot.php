@@ -4,8 +4,6 @@ function zingfit_book_slot()
 {
 
     $classId = $_POST['classId'];
-    // $spotId = $_POST['spotId'];
-    // $seriesId = $_POST['seriesId'];
 
     $data = [
         'spotId' => $_POST['spotId'],
@@ -23,6 +21,10 @@ function zingfit_book_slot()
         $bookSpot = $zingfit->customerBookSpot($zingfit_user_access_token, $regionId, $classId, $data);
     }
 
+
+    echo json_encode([
+        'response' => $bookSpot
+    ]);
     // if (is_wp_error($user)) {
     //     echo json_encode(array('status' => false, 'error' => $user->get_error_message()));
     // } else{

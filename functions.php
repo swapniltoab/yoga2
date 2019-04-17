@@ -49,7 +49,7 @@ if($zingfit_client_id && $zingfit_client_secret && $zingfit_api_url) :
     $zingfit = new ZingFit($zingfit_client_id, $zingfit_client_secret, $zingfit_api_url);
 
     $is_zingfit_access_token = get_transient('zingfit_access_token');
-    if (false === $is_zingfit_access_token) {
+    if ($is_zingfit_access_token === '') {
         $zingfit->getAuthenticate();
     }
 

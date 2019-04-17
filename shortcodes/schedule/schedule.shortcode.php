@@ -80,7 +80,7 @@ class ZingFit_Schedule_Shortcode
             }
 
         }
-        
+
         ob_start();
         include 'tpl/template.php';
         return ob_get_clean();

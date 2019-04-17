@@ -27,14 +27,21 @@ if ($_GET && $_GET != '') {
 
     $latestExpiringSeries = [];
     $seriesExpiringDates = [];
+    $customerSeriesId = '';
 
-    foreach($userActiveSerieses->content as $key => $activeSeriese){
-        $expiringDate = $activeSeriese->expiringDate;   // date("Y-m-d", strtotime($activeSeriese->expiringDate));
-        $seriesExpiringDates[] = $expiringDate;
+    if(is_array($userActiveSerieses->content) && !empty($userActiveSerieses->content)){
+        foreach($userActiveSerieses->content as $key => $activeSeriese){
+            $expiringDate = $activeSeriese->expiringDate;   // date("Y-m-d", strtotime($activeSeriese->expiringDate));
+            $seriesExpiringDates[] = $expiringDate;
+        }
+
+        $key = array_search(min($seriesExpiringDates), $seriesExpiringDates);
+        $latestExpiringSeries = $userActiveSerieses->content[$key];
     }
 
-    $key = array_search(min($seriesExpiringDates), $seriesExpiringDates);
-    $latestExpiringSeries = $userActiveSerieses->content[$key];
+    if(!empty($latestExpiringSeries)) {
+        $customerSeriesId = $latestExpiringSeries->seriesId;
+    }
 
     if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>
 
@@ -58,16 +65,17 @@ if ($_GET && $_GET != '') {
             <div class="room-main-img-sec" style="">
                 <div class="slots-wrapper">
                     <?php
-                    $i = 0;
-                    for($i=0; $i < 51; $i++) : ?>
+                    for($i=0; $i < $reserveSpots['room']['maxSpotCount']; $i++) :
+                        if(array_key_exists('spots',$reserveSpots)) : ?>
                         <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
                             id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
                             data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
                             data-spotid="<?php echo $reserveSpots['spots'][$i]['id'] ?>"
-                            data-seriesId="<?php echo $latestExpiringSeries->seriesId ?>">
+                            data-seriesId="<?php echo $customerSeriesId ?>">
                             <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
                         </a>
-                    <?php endfor; ?>
+                    <?php endif;
+                        endfor; ?>
                 </div>
             </div>
         </div>
