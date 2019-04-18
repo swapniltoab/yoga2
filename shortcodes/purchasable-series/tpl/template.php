@@ -13,7 +13,7 @@
         </div>
 
         <div class="col-md-3 series-button">
-            <a href="/checkout/?seriesId=<?php echo $series['id'] ?>" data-series-id="<?php echo $series['id'] ?>" class="btn" >Buy This Series</a>
+            <a href="/checkout/?seriesId=<?php echo $series['id'] ?>" data-series-id="<?php echo $series['id'] ?>" class="btn" >BUY THIS PACKAGE</a>
         </div>
     </div>
     <hr>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-md-3 series-button">
-            <a href="/checkout/?seriesId=<?php echo $series['id'] ?>" data-series-id="<?php echo $series['id'] ?>" class="btn" >Buy This Series</a>
+            <a href="/checkout/?seriesId=<?php echo $series['id'] ?>" data-series-id="<?php echo $series['id'] ?>" class="btn" >BUY THIS PACKAGE</a>
         </div>
     </div>
     <hr>

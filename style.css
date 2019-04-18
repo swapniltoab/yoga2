@@ -655,3 +655,9 @@ div#schedule-table {
         min-width: 140px;
     }
 }
+
+.yoga-divider {
+    border: 1px solid #FFF;
+    width: 350px;
+    margin: 10px 0 10px;
+}

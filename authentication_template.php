@@ -16,12 +16,12 @@ get_header();
 
         <div class="col-sm-6 right_col">
             <div class="div-form-sec">
-                <span class="js-ShowLoginFormSpan hideElement span-text-sec">Already have Yoga 2.0 account, please sign in.</span><br>
+                <span class="js-ShowLoginFormSpan hideElement span-text-sec">Already have a Yoga2.0 account?</span><br>
                 <input class="js-ShowLoginForm btn hideElement" type="submit" value="SIGN IN >" /><br>
             </div>
 
             <div class="div-form-sec">
-                <span class="js-ShowRegisterFormSpan span-text-sec">Please create a Yoga2.0 account to reserve a mat.<br>“Yoga2.0 account to reserve a mat.”</span><br>
+                <span class="js-ShowRegisterFormSpan span-text-sec">Create a Yoga2.0 account to reserve your mat!</span><br>
                 <input class="js-ShowRegisterForm btn" type="submit" value="SIGN UP >" />
             </div>
 
@@ -34,6 +34,6 @@ get_header();
 get_footer();
 } else {
     $url = home_url();
-    wp_redirect($url);
+    wp_redirect($url.'/account/');
     exit;
 }?>

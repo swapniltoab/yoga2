@@ -35,7 +35,7 @@ class ZingFit
 
         $is_zingfit_access_token = get_transient('zingfit_access_token');
 
-        if ($is_zingfit_access_token === '') {
+        if ($is_zingfit_access_token == '') {
             $zingfit_access_token = $api_response['access_token'];
             $expires_in = $api_response['expires_in'];
             set_transient('zingfit_access_token', $zingfit_access_token, $expires_in);

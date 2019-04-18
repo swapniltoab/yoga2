@@ -6,8 +6,9 @@ if(is_user_logged_in()){
 
 get_header(); ?>
 
-<div class="row page-title-div" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
+<div class="row page-title-div flex-column" style="background-image: url(<?php echo yoga_uri.'/images/HeroImage.jpg'; ?>); width: 100%;background-repeat: no-repeat;">
 <h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
+<div class="yoga-divider"></div>
 </div>
 
 <?php $regions = get_option('zingfit_regions');
@@ -45,7 +46,7 @@ $currentUserDataBillingInfo = [
     <div class="row">
         <div class="header-btn-wrapper">
             <a href="/the-warriors-way" class="btn yoga-btn">Exclusive content</a>
-            <a href="/account/my-series" class="btn yoga-btn">My Series</a>
+            <a href="/account/my-series" class="btn yoga-btn">My PACKAGES</a>
             <a href="/account/my-attendance" class="btn yoga-btn">My Attendance</a>
         </div>
     </div>
@@ -167,7 +168,7 @@ $currentUserDataBillingInfo = [
 get_footer();
 } else {
     $url = home_url();
-    wp_redirect($url);
+    wp_redirect($url.'/register/');
     exit;
 }
 ?>
