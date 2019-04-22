@@ -40,7 +40,7 @@ if ($_GET && $_GET != '') {
     }
 
     if(!empty($latestExpiringSeries)) {
-        $customerSeriesId = $latestExpiringSeries->seriesId;
+        $customerSeriesId = $latestExpiringSeries->id;
     }
 
     if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>

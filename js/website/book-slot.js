@@ -5,11 +5,13 @@
         $('.js-book-class-spot').click(function (e) {
             e.preventDefault();
 
+            if ($(this).hasClass('spot-Enrolled')) {
+                return false;
+            }
+
             let classId = $(this).data('classid');
             let spotId = $(this).data('spotid');
             let seriesId = $(this).data('seriesid');
-
-            // return false;
 
             let ajax_url = zingfit_js_var.ajaxurl;
 
@@ -24,12 +26,8 @@
                     'seriesId': seriesId
                 },
                 success: (response) => {
-                    console.log(response.response);
-                    // if (response.status === true) {
-                    //     window.location.href = '/';
-                    // } else {
-                    //     alert('Failed WP login');
-                    // }
+                    console.log(response);
+                    window.location.href = '/book/confirm/';
                 }
             });
         });

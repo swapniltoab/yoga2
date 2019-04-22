@@ -455,7 +455,7 @@ class ZingFit
         return $CustomerExpiredMySeries;
     }
 
-    public function customerBookSpot($zingfit_user_access_token, $regionId, $classId, $data)
+    public function customerBookSpot($zingfit_user_access_token, $regionId, $classId, $spotId, $seriesId)
     {
 
         $url = $this->apiUrl.'classes/'.$classId.'/spots';
@@ -463,10 +463,10 @@ class ZingFit
             'method'     => 'PUT',
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
-                'Content-Type' => 'application/json;charset=UTF-8',
+                'Content-Type' => 'application/x-www-form-urlencoded',
                 'X-ZINGFIT-REGION-ID' => $regionId,
             ),
-            'body' => json_encode($data),
+            'body' => 'spotId='.$spotId.'&seriesItemId='.$seriesId,
         );
 
         $response = wp_remote_post($url, $args);
@@ -489,5 +489,21 @@ class ZingFit
         $response = wp_remote_post($url, $args);
         $deleteCard = json_decode($response['body']);
         return $deleteCard;
+    }
+
+    public function getClassInfo($zingfit_access_token, $regionId, $classId)
+    {
+        $url = $this->apiUrl.'classes/'.$classId;
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $classInfo = json_decode($response['body']);
+        return $classInfo;
     }
 }

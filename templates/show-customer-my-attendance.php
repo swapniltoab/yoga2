@@ -35,7 +35,8 @@ if ($zingfit_user_access_token) {
             </thead>
             <tbody>
             <?php foreach($customerMyAttendance->content as $key => $attendance){
-            $date = date("d M, Y", strtotime($attendance->classDate));
+            $date = date("d M, Y h:i A", strtotime($attendance->classDate));
+            error_log('$datez .. '.print_r($date,1));
             ?>
             <tr>
                 <td><?php echo ($key+1) ?></td>

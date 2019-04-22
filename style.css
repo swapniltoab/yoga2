@@ -283,6 +283,7 @@ span.spot-num {
 
 .spot-Enrolled {
     background: #c1850d;
+    cursor: not-allowed;
 }
 
 .room-main-img-sec {
