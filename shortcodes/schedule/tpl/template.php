@@ -13,7 +13,7 @@
                         $classtypeName = $classType['name'];
                         $classtypeId = $classType['id'];
                    ?>
-                        <option class="" value="<?php echo $classtypeName ?>"><?php echo $classtypeName ?></option>
+                        <option class="" value="<?php echo $classtypeId ?>"><?php echo $classtypeName ?></option>
                     <?php }
                     ?>
                      </select>
@@ -23,10 +23,12 @@
                             <option value="all-instructor">Instructor Name</option>
                         <?php
                         $allInstructors = $zingfit->getAllInstructors();
+                        //print_r($allInstructors);
                         foreach($allInstructors as $instructors){
                         $instructorName = $instructors['fullName'];
+                        $instructorId = $instructors['id'];
                         ?>
-                        <option class="" value="<?php echo str_replace(" ","",$instructorName) ?>"><?php echo $instructorName ?></option>
+                        <option class="" value="<?php echo $instructorId ?>"><?php echo $instructorName ?></option>
                         <?php } ?>
                      </select>
                 </div>
@@ -82,7 +84,7 @@
                                     <span><?php echo $class['date'] ?></span>
                                 </div>
                     <?php endif;?>
-                                <div class="classes-container js-container" data-instructor="<?php echo $class['instructor_name'] ?>" data-class-type="<?php echo $class['classType'] ?>">
+                                <div class="classes-container js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classTypeId'] ?>">
                                     <div id="" class="class-container p-3 row no-gutters  not-private " data-room="<?php echo $class['room_Id'] ?>" data-classid="<?php echo $class['class_Id'] ?>" data-classdate="" data-classinstructorname="" data-gender="">
                                         <div class="col-7 col-lg-12">
                                             <div class="class-instructor position-relative">
@@ -190,7 +192,7 @@
                      <?php
                      endif;
                      ?>
-                     <div class="js-container" data-instructor="<?php echo $class['instructor_name'] ?>" data-class-type="<?php echo $class['classType'] ?>">
+                     <div class="js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classType'] ?>">
                         <div class="class-instructor position-relative">
                             <div class="col-7 px-0">
                             <div class="class-type">
