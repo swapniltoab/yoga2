@@ -43,6 +43,11 @@ if ($_GET && $_GET != '') {
         $customerSeriesId = $latestExpiringSeries->id;
     }
 
+    $date = date("d M, Y", strtotime($reserveSpots['classDetails']['classDate']));
+    $time = date("h:i A", strtotime($reserveSpots['classDetails']['classDate']));
+    $classType = $reserveSpots['classDetails']['classType'];
+    $instructorName = $reserveSpots['classDetails']['instructorName'];
+
     if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>
 
     <div class="container" style="padding: 50px 20px">
@@ -57,7 +62,7 @@ if ($_GET && $_GET != '') {
     <div class="container" style="padding: 50px 20px">
 
         <div class="row">
-            <h3><?php echo $reserveSpots['room']['name'] ?></h3>
+            <h3><?php echo $date. ' | '.$time.' | '.$instructorName.' | '.$classType.' | '.$reserveSpots['room']['name']?></h3>
         </div>
         <hr>
 
