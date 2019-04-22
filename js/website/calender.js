@@ -85,6 +85,7 @@
 
             $(".js-container").each(function () {
                 var classDataVal = $(this).data("class-type");
+               // console.log('classDataVal', classDataVal);
                 var instructorDataVal = $(this).data("instructor");
 
                 if ((classtype == 'all-class' && selectedInstructor == null) || (classtype == 'all-class' && selectedInstructor == 'all-instructor')) {
@@ -122,6 +123,7 @@
 
         $("#select-instructor").change(function () {
             var instructor = $('#select-instructor  :selected').val();
+            console.log('instructor', instructor);
             selectedInstructor = instructor;
 
             $(".js-container").each(function () {
