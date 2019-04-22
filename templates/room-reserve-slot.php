@@ -66,7 +66,9 @@ if ($_GET && $_GET != '') {
                 <div class="slots-wrapper">
                     <?php
                     for($i=0; $i < $reserveSpots['room']['maxSpotCount']; $i++) :
-                        if(array_key_exists('spots',$reserveSpots)) : ?>
+                        if(array_key_exists('spots',$reserveSpots)) :
+                            if($i < count($reserveSpots['spots'])) :
+                        ?>
                         <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
                             id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
                             data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
@@ -75,6 +77,7 @@ if ($_GET && $_GET != '') {
                             <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
                         </a>
                     <?php endif;
+                        endif;
                         endfor; ?>
                 </div>
             </div>
