@@ -56,7 +56,7 @@ if ($_GET && $_GET != '') {
     $classType = $reserveSpots['classDetails']['classType'];
     $instructorName = $reserveSpots['classDetails']['instructorName'];
 
-    if (array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) {?>
+    if ((array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) || $reserveSpots == '') {?>
 
     <div class="container" style="padding: 50px 20px">
         <div class="row">
