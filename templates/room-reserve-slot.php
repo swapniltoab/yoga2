@@ -26,6 +26,13 @@ if ($_GET && $_GET != '') {
         $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     }
 
+    error_log('$reserveSpots ... '.print_r($reserveSpots,1));
+
+    $style = '';
+    if($reserveSpots['room']['name'] == 'Studio 2'){
+        $style = 'style="margin:10px 33px;"';
+    }
+
     $latestExpiringSeries = [];
     $seriesExpiringDates = [];
     $customerSeriesId = '';
@@ -84,7 +91,8 @@ if ($_GET && $_GET != '') {
                             id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
                             data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
                             data-spotid="<?php echo $reserveSpots['spots'][$i]['id'] ?>"
-                            data-seriesId="<?php echo $customerSeriesId ?>">
+                            data-seriesId="<?php echo $customerSeriesId ?>"
+                            <?php echo $style ?>>
                             <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
                         </a>
                     <?php endif;

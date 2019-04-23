@@ -266,18 +266,18 @@ select#selectMonth {
 }
 
 .floor-shape {
-    height: 40px;
+    height: 80px;
     width: 40px;
-    border-radius: 50%;
-    line-height: 40px;
+    line-height: 80px;
     display: inline-block;
+    border: 1px solid #F2B826;
 }
 
 span.spot-num {
     font-size: 12px;
 }
 
-.spot-Available {
+.spot-Available:hover {
     background: #F2B826;
 }
 
@@ -323,7 +323,7 @@ span.spot-num {
 }
 
 .slots-wrapper .spot {
-    color: #fff;
+    color: #000;
     font-weight: 600;
     text-align: center;
     margin: 10px 5px;
@@ -331,7 +331,13 @@ span.spot-num {
 
 @media screen and (max-width: 767px) {
     .slots-wrapper .spot {
-        margin: 10px 20px;
+        margin: 4px 20px;
+    }
+
+    .floor-shape {
+        height: 60px;
+        width: 30px;
+        line-height: 60px;
     }
 }
 
