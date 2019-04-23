@@ -1,9 +1,9 @@
 <?php
 
-/*template name: Zingfit Spot Confirm */
+/*template name: Zingfit Spot Failed */
 
 session_start();
-if($_SESSION['spot_book'] == true){
+if($_SESSION['spot_book'] != true){
 
 get_header(); ?>
 
@@ -19,17 +19,8 @@ $status = $_SESSION['spot_book_status'];
 $html = '';
 $html .= '<div class="p-5 text-center">';
 
-if($status == true){
-
-    $spotId = $_SESSION['spot_book_spotId'];
-    $zingfit_access_token = get_transient('zingfit_access_token');
-    $regionId = '811593826090091886';
-    $classId = $message->classId;
-    global $zingfit;
-    $classInfo = $zingfit->getClassInfo($zingfit_access_token, $regionId, $classId);
-    $classDateTime = date("d M, Y h:i A", strtotime($classInfo->classDate));
-
-    $html .= '<h2>Successfully booked your spot! <br> Your Spot Id is:'.$spotId.' <br> on '.$classDateTime.' by '.$classInfo->instructorName.' of type '.$classInfo->classType.'</h2>';
+if($status == false){
+    $html .= '<h2>'.$message.' </h2>';
     $html .= '<a href="/account" class="btn mt-5 yoga-btn">BACK TO ACCOUNT</a>';
 }
 

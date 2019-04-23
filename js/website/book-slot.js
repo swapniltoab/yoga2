@@ -27,7 +27,18 @@
                 },
                 success: (response) => {
                     console.log(response);
-                    window.location.href = '/book/confirm/';
+                    if(response.status == true){
+                        window.location.href = '/book/confirm/';
+                    } else {
+                        $('.response-message').text(response.message);
+                        $('.book-spot-response').show();
+                        jQuery('html, body').animate({
+                            scrollTop: jQuery("div.book-spot-response").offset().top-150
+                        }, 1000)
+                        setTimeout(function(){
+                            $('.book-spot-response').hide();
+                        },10000);
+                    }
                 }
             });
         });

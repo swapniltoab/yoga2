@@ -506,4 +506,21 @@ class ZingFit
         $classInfo = json_decode($response['body']);
         return $classInfo;
     }
+
+    public function getSeriesInfoById($zingfit_access_token, $regionId, $seriesId)
+    {
+        $url = $this->apiUrl.'series/'.$seriesId;
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $seriesInfo = json_decode($response['body']);
+        return $seriesInfo;
+    }
+
 }

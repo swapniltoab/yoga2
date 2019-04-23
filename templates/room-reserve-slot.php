@@ -2,6 +2,7 @@
 
 /*template name: Zingfit Room Reserve Layout */
 
+if(is_user_logged_in()){
 get_header();
 
 $regions = get_option('zingfit_regions');
@@ -31,7 +32,7 @@ if ($_GET && $_GET != '') {
 
     if(is_array($userActiveSerieses->content) && !empty($userActiveSerieses->content)){
         foreach($userActiveSerieses->content as $key => $activeSeriese){
-            $expiringDate = $activeSeriese->expiringDate;   // date("Y-m-d", strtotime($activeSeriese->expiringDate));
+            $expiringDate = $activeSeriese->expiringDate;
             $seriesExpiringDates[] = $expiringDate;
         }
 
@@ -65,6 +66,11 @@ if ($_GET && $_GET != '') {
             <h3><?php echo $date. ' | '.$time.' | '.$instructorName.' | '.$classType.' | '.$reserveSpots['room']['name']?></h3>
         </div>
         <hr>
+
+        <div class="book-spot-response row hideElement">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <span class="response-message"></span>
+        </div>
 
         <div class="row">
             <div class="room-main-img-sec" style="">
@@ -103,4 +109,9 @@ if ($_GET && $_GET != '') {
 <?php
 }
 get_footer();
+} else {
+    $url = home_url();
+    wp_redirect($url.'/register/');
+    exit;
+}
 ?>

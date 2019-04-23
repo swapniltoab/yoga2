@@ -66,6 +66,12 @@
         var password1 = $("#password1").val();
         var confirmPassword = $("#confirm_password").val();
 
+        $(".js-required-checked").each(function(){
+            if( !$(this).is(':checked')){
+                $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Please checked this checkbox');
+            }
+        });
+
         $(".js-required").each(function () {
             var input_value = $(this).val().trim();
 

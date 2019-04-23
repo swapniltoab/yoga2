@@ -47,7 +47,7 @@
     <div class="js-form-control row">
       <label class="col-md-3 form-label" for="phone"><b>PHONE NUMBER</b></label>
       <div class="col-md-9">
-        <input type="tel" class="js-required form-input js-mob" name="phone" required><br>
+        <input type="tel" maxlength="10" class="js-required form-input js-mob" name="phone" required><br>
         <span class="error-message" style="color:red"></span>
       </div>
     </div>
@@ -146,15 +146,21 @@
 
     </div>
 
-    <div class="row">
+    <div class="js-form-control row">
       <label class="col-md-9 custom-control agreeTerms-check">
-        <input type="checkbox" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="/terms/" target="_blank">Terms & Conditions</a>
+        <input type="checkbox" class="js-required-checked" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="/terms/" target="_blank">Terms & Conditions</a>
+        <div>
+          <span class="error-message" style="color:red"></span>
+        </div>
       </label><br>
     </div>
 
-    <div class="row">
+    <div class="js-form-control row">
       <label class="col-md-9 custom-control liability-check">
-        <input type="checkbox" name="liabilityTerms" style="margin-bottom:15px" required><a href="https://yoga2point0.com/wp-content/uploads/2019/04/3020820-yoga2.0-liability-waiver.docx.pdf" target="_blank">Liability Waiver and Pricing</a>
+        <input type="checkbox" class="js-required-checked" name="liabilityTerms" style="margin-bottom:15px" required><a href="https://yoga2point0.com/wp-content/uploads/2019/04/3020820-yoga2.0-liability-waiver.docx.pdf" target="_blank">Liability Waiver and Pricing</a>
+        <div>
+          <span class="error-message" style="color:red"></span>
+        </div>
       </label><br>
     </div>
 

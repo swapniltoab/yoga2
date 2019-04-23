@@ -11,6 +11,7 @@ get_header();?>
 </div>
 
 <?php $regions = get_option('zingfit_regions');
+$zingfit_access_token = get_transient('zingfit_access_token');
 $wpUserId = get_current_user_id();
 $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
 $regionId = '811593826090091886';
@@ -18,14 +19,14 @@ $seriesId = '';
 $zingfit_gateways = get_option("zingfit_gateways");
 
 if ($_GET && $_GET != '') {
-    $seriesId = $_GET['seriesId'];
-} else{
 
-}
+if(array_key_exists('seriesId', $_GET)){
 
+$seriesId = $_GET['seriesId'];
 if ($zingfit_user_access_token) {
     global $zingfit;
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
+    $seriesInfo = $zingfit->getSeriesInfoById($zingfit_access_token, $regionId, $seriesId);
 }
 
 if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $seriesOrderId['error'] == 'Not found.')) {?>
@@ -33,18 +34,43 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
 <div class="container" style="padding: 50px 20px">
 
     <div class="row">
-        <h2>Nothing Found</h2>
+        <h2><?php echo $seriesOrderId['error']?></h2>
     </div>
     <hr>
 
 </div>
 
 <?php } else {
-    ?>
+?>
 
-<div class="container" style="padding: 50px 20px">
+<div class="container" >
 
-    <div class="card mb-2">
+    <div class="package-info" style="padding: 50px 20px">
+        <h2>Package Detail</h2>
+
+        <div class="package-detail">
+            <span>Name:</span>
+            <span><?php echo $seriesInfo->name ?></span>
+        </div>
+
+        <div class="package-detail">
+            <span>Description:</span>
+            <span><?php echo $seriesInfo->description ?></span>
+        </div>
+
+        <div class="package-detail">
+            <span>Price:</span>
+            <span><?php echo '$'.$seriesInfo->price->amount ?></span>
+        </div>
+
+        <div class="package-detail">
+            <span>Type:</span>
+            <span><?php echo $seriesInfo->seriesType ?></span>
+        </div>
+
+    </div>
+
+    <div class="card mb-2" style="padding: 50px 20px">
         <div class="card-body">
             <form id="stripeform" class="" method="POST" action="/charge-card/">
                 <input type="hidden" name="orderId" value="<?php echo $seriesOrderId['id'] ?>">
@@ -212,6 +238,27 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
     }
 </script>
 
+<?php
+}
+} else{ ?>
+    <div class="container" style="padding: 50px 20px">
+
+    <div class="row">
+        <h2>Invalid access to the page</h2>
+    </div>
+    <hr>
+
+    </div>
+<?php
+}
+} else{ ?>
+    <div class="container" style="padding: 50px 20px">
+
+        <div class="row">
+            <h2>Invalid access to the page</h2>
+        </div>
+
+    </div>
 <?php
 }
 get_footer();
