@@ -16,7 +16,7 @@ if ($zingfit_access_token) {
     global $zingfit;
     $serieses = $zingfit->getSeries($zingfit_access_token, $regionId);
 }
-error_log('$serieses  .. '.print_r($serieses,1));
+
 ?>
 
 <div class="container desktop-series" style="padding: 50px 20px">

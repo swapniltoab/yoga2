@@ -21,7 +21,7 @@
      <div id="schedule-table" class="schedule-table row no-gutters" data-currenttime="1550488645">
 
         <?php
-        
+
         foreach($schedule as $classes){
 
             if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
@@ -118,7 +118,7 @@
         foreach ($schedule as $classes) {
              $i++;
             $active = $i == 1 ? 'active' : '';
-           // print_r($classes);
+
              if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
                         <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $classes[0]['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                             <div class="class-day-title p-3">
@@ -129,7 +129,7 @@
                 else {
                     $length = count($classes);
                     foreach ($classes as $key => $class) {
-                        
+
                         if ($key == 0): ?>
                                 <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $class['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                                     <div class="class-day-title p-3">

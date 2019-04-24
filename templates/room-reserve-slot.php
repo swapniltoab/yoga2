@@ -26,8 +26,6 @@ if ($_GET && $_GET != '') {
         $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     }
 
-    error_log('$reserveSpots ... '.print_r($reserveSpots,1));
-
     $style = '';
     if($reserveSpots['room']['name'] == 'Studio 2'){
         $style = 'style="margin:10px 33px;"';
@@ -55,7 +53,7 @@ if ($_GET && $_GET != '') {
     $time = date("h:i A", strtotime($reserveSpots['classDetails']['classDate']));
     $classType = $reserveSpots['classDetails']['classType'];
     $instructorName = $reserveSpots['classDetails']['instructorName'];
-// error_log('$reserveSpots ... '.print_r($reserveSpots,1));
+
     if ((array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) || $reserveSpots == '') {?>
 
     <div class="container" style="padding: 50px 20px">
@@ -73,6 +71,10 @@ if ($_GET && $_GET != '') {
             <h3><?php echo $date. ' | '.$time.' | '.$instructorName.' | '.$classType.' | '.$reserveSpots['room']['name']?></h3>
         </div>
         <hr>
+
+        <div class="row spot-book-avail-img-div">
+            <img src="<?php echo yoga_uri ?>/images/room/available.png" />
+        </div>
 
         <div class="book-spot-response row hideElement">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>

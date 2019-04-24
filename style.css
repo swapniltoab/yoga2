@@ -712,3 +712,18 @@ div#schedule-table {
     display: inline-block;
     background: #000;
 }
+
+.spot-book-avail-img-div {
+    margin: 5% 0;
+}
+
+.spot-book-avail-img-div > img {
+    margin: 0 auto;
+}
+
+@media(max-width:768px) {
+
+    .spot-book-avail-img-div > img {
+        width: 100%;
+    }
+}
