@@ -328,6 +328,8 @@ class ZingFit
         $url = $this->apiUrl.'payments/'.$orderId.'/creditcard';
 
         $response = wp_remote_post($url,$args);
+        print_r('$response charge credit card ===>  ');
+        print_r($response);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 

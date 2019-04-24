@@ -30,7 +30,7 @@
                     if(response.status == true){
                         window.location.href = '/book/confirm/';
                     } else {
-                        $('.response-message').text(response.message);
+                        $('.response-message').html(response.message);
                         $('.book-spot-response').show();
                         jQuery('html, body').animate({
                             scrollTop: jQuery("div.book-spot-response").offset().top-150

@@ -68,7 +68,7 @@
 
         $(".js-required-checked").each(function(){
             if( !$(this).is(':checked')){
-                $(this).parent().closest('.js-form-control').find(".error-message").empty().text('Please checked this checkbox');
+                $(this).parent().closest('.js-form-control').find(".error-message").empty().text('This is required');
             }
         });
 

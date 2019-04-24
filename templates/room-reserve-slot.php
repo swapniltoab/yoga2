@@ -55,7 +55,7 @@ if ($_GET && $_GET != '') {
     $time = date("h:i A", strtotime($reserveSpots['classDetails']['classDate']));
     $classType = $reserveSpots['classDetails']['classType'];
     $instructorName = $reserveSpots['classDetails']['instructorName'];
-
+// error_log('$reserveSpots ... '.print_r($reserveSpots,1));
     if ((array_key_exists('error', $reserveSpots) && ($reserveSpots['error'] || $reserveSpots['error'] == 'Not found.')) || $reserveSpots == '') {?>
 
     <div class="container" style="padding: 50px 20px">
@@ -86,6 +86,12 @@ if ($_GET && $_GET != '') {
                     for($i=0; $i < $reserveSpots['room']['maxSpotCount']; $i++) :
                         if(array_key_exists('spots',$reserveSpots)) :
                             if($i < count($reserveSpots['spots'])) :
+                                if($i == 8 && $style == ''): ?>
+                                    <a href="javascript:void(0)" class="spot floor-shape-instructor" >
+                                        <span class="spot-instructor">Instructor</span>
+                                    </a>
+                            <?php
+                            endif;
                         ?>
                         <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
                             id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"

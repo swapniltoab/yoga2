@@ -34,6 +34,8 @@ if ($_POST && $_POST != '') {
         $orderInfo = $zingfit->chargeCreditCard($zingfit_user_access_token, $regionId, $orderId, $checkoutInfo);
     }
 
+    print_r('$orderInfo .... ===>   ');
+    print_r($orderInfo);
     if ($orderInfo['error'] || $orderInfo['error'] == 'Not found.') {
         $html .= '<h2>Failed to make payment! Please try again.</h2>';
     } else {
