@@ -26,11 +26,6 @@ if ($_GET && $_GET != '') {
         $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     }
 
-    $style = '';
-    if($reserveSpots['room']['name'] == 'Studio 2'){
-        $style = 'style="margin:10px 33px;"';
-    }
-
     $latestExpiringSeries = [];
     $seriesExpiringDates = [];
     $customerSeriesId = '';
@@ -81,34 +76,81 @@ if ($_GET && $_GET != '') {
             <span class="response-message"></span>
         </div>
 
-        <div class="row">
-            <div class="room-main-img-sec" style="">
+        <?php if($reserveSpots['room']['name'] == 'Studio 1'){ ?>
+        <div class="row studio1-row">
+            <div class="room-main-img-sec">
+                <div class="slots-wrapper">
+                    <?php
+                    $count = 0;
+                    for($i=0; $i < $reserveSpots['room']['maxSpotCount']; $i++) :
+                        if(array_key_exists('spots',$reserveSpots)) :
+                            if($i < count($reserveSpots['spots'])) :
+                                if($i == 8):
+                                    $count++; ?>
+                                    <a href="javascript:void(0)" class="spot floor-shape-instructor" >
+                                        <span class="spot-instructor"></span>
+                                    </a>
+                                <?php
+                                endif;
+                                if($count%17 == 0): ?>
+                                <div class="test">
+                                <?php endif;
+                                ?>
+                            <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
+                                id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
+                                data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
+                                data-spotid="<?php echo $reserveSpots['spots'][$i]['id'] ?>"
+                                data-seriesId="<?php echo $customerSeriesId ?>" >
+                                <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
+                            </a>
+                            <?php
+                            if($count%17 == 16): ?>
+                            </div>
+                            <?php endif;
+                            ?>
+                        <?php endif;
+                        endif;
+                        $count++;
+                    endfor; ?>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+
+
+        <?php if($reserveSpots['room']['name'] == 'Studio 2'){ ?>
+        <div class="row studio2-row">
+            <div class="room-main-img-sec">
                 <div class="slots-wrapper">
                     <?php
                     for($i=0; $i < $reserveSpots['room']['maxSpotCount']; $i++) :
                         if(array_key_exists('spots',$reserveSpots)) :
                             if($i < count($reserveSpots['spots'])) :
-                                if($i == 8 && $style == ''): ?>
-                                    <a href="javascript:void(0)" class="spot floor-shape-instructor" >
-                                        <span class="spot-instructor">Instructor</span>
-                                    </a>
-                            <?php
-                            endif;
-                        ?>
+                            if($i%8 == 0): ?>
+                            <div class="test">
+                            <?php endif;
+                            ?>
                         <a href="javascript:void(0)" class="spot floor-shape js-book-class-spot spot-<?php echo $reserveSpots['spots'][$i]['status'] ?>"
                             id="spotcell<?php echo $reserveSpots['spots'][$i]['id'] ?>"
                             data-classid="<?php echo $reserveSpots['classDetails']['id'] ?>"
                             data-spotid="<?php echo $reserveSpots['spots'][$i]['id'] ?>"
-                            data-seriesId="<?php echo $customerSeriesId ?>"
-                            <?php echo $style ?>>
+                            data-seriesId="<?php echo $customerSeriesId ?>" >
                             <span class="spot-num"><?php echo $reserveSpots['spots'][$i]['label'] ?></span>
                         </a>
+                        <?php
+                        if($i%8 == 7): ?>
+                        </div>
+                        <?php endif;
+                        ?>
                     <?php endif;
                         endif;
                         endfor; ?>
                 </div>
             </div>
         </div>
+        <?php } ?>
+
+
 
     </div>
 

@@ -12,6 +12,7 @@ $regionId = '811593826090091886';
 if ($zingfit_user_access_token) {
     global $zingfit;
     $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
+    $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
     $myExpiredSerieses = $zingfit->getCustomerMySeriesExpired($zingfit_user_access_token, $regionId);
 }
 
@@ -41,17 +42,34 @@ if ($zingfit_user_access_token) {
             </tr>
             </thead>
             <tbody>
-            <?php foreach($myActiveSerieses->content as $key => $activeSeriese){
+            <?php
+            $count = 0;
+            foreach($myActiveSerieses->content as $key => $activeSeriese){
             $purchaseDate = date("d M, Y", strtotime($activeSeriese->purchaseDate));
             $expiringDate = date("d M, Y", strtotime($activeSeriese->expiringDate));
+            $count++;
             ?>
             <tr>
-                <td><?php echo ($key+1) ?></td>
+                <td><?php echo $count ?></td>
                 <td><?php echo $activeSeriese->seriesName ?></td>
                 <td><?php echo $purchaseDate ?></td>
                 <td><?php echo $expiringDate ?></td>
             </tr>
             <?php }?>
+
+            <?php foreach($myActiveContracts->content as $key => $activeContract){
+            $purchaseDate = date("d M, Y", strtotime($activeContract->purchased[0]->purchaseDate));
+            $expiringDate = date("d M, Y", strtotime($activeContract->purchased[0]->expiringDate));
+            $count++;
+            ?>
+            <tr>
+                <td><?php echo $count ?></td>
+                <td><?php echo $activeContract->purchased[0]->seriesName ?></td>
+                <td><?php echo $purchaseDate ?></td>
+                <td><?php echo $expiringDate ?></td>
+            </tr>
+            <?php }?>
+
             </tbody>
         </table>
     </div>
