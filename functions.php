@@ -73,10 +73,15 @@ if ($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] =
             if ($zingfit_user_access_token) {
                 global $zingfit;
                 $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
+                $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
             }
 
             foreach ($myActiveSerieses->content as $key => $series) {
                 $seriesId[] = $series->id;
+            }
+
+            foreach ($myActiveContracts->content as $key => $activeContract) {
+                $seriesId[] = $activeContract->purchased[0]->seriesId;
             }
 
             if (in_array('854350814192338856', $seriesId)) {
