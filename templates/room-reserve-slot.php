@@ -24,11 +24,28 @@ if ($_GET && $_GET != '') {
         global $zingfit;
         $reserveSpots = $zingfit->getBookableClassDetail($zingfit_user_access_token, $regionId, $classId);
         $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
+        $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
     }
 
     $latestExpiringSeries = [];
     $seriesExpiringDates = [];
+    $latestExpiringContract = [];
+    $contractExpiringDates = [];
+    $finalDate = [];
+    $seriesKey = 'seriesKey';
     $customerSeriesId = '';
+
+
+    if(is_array($myActiveContracts->content) && !empty($myActiveContracts->content)){
+        foreach($myActiveContracts->content as $key => $activeContracts){
+            $expiringDate = $activeContracts->purchased[0]->expiringDate;
+            $contractExpiringDates[] = $expiringDate;
+        }
+
+        $key = array_search(min($contractExpiringDates), $contractExpiringDates);
+        $latestExpiringContract = $myActiveContracts->content[$key];
+        $finalDate[] = $latestExpiringContract->purchased[0]->expiringDate;
+    }
 
     if(is_array($userActiveSerieses->content) && !empty($userActiveSerieses->content)){
         foreach($userActiveSerieses->content as $key => $activeSeriese){
@@ -38,10 +55,19 @@ if ($_GET && $_GET != '') {
 
         $key = array_search(min($seriesExpiringDates), $seriesExpiringDates);
         $latestExpiringSeries = $userActiveSerieses->content[$key];
+        $finalDate[] = $latestExpiringSeries->expiringDate;
     }
 
-    if(!empty($latestExpiringSeries)) {
-        $customerSeriesId = $latestExpiringSeries->id;
+    if(!empty($latestExpiringSeries) && !empty($latestExpiringContract)) {
+        $seriesKey = array_search(min($finalDate), $finalDate);
+    }
+
+    if($seriesKey != 'seriesKey') {
+        if($seriesKey == 0){
+            $customerSeriesId = $latestExpiringSeries->id;
+        } else if($seriesKey == 1){
+            $customerSeriesId = $latestExpiringContract->purchased[0]->id;
+        }
     }
 
     $date = date("d M, Y", strtotime($reserveSpots['classDetails']['classDate']));
