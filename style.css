@@ -213,6 +213,7 @@ select#selectMonth {
     font-size: 12px;
     font-style: normal;
     padding: 10px 15px;
+    display: inline-block;
 }
 
 .error-message {}
@@ -350,6 +351,7 @@ span.spot-num {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    margin: 35px 0px;
 }
 
 .studio1-row .test:nth-child(1),
@@ -367,6 +369,12 @@ span.spot-num {
 }
 
 @media screen and (max-width: 767px) {
+
+    .studio1-row .test,
+    .studio2-row .test {
+        margin: 0px;
+    }
+
     .studio2-row .floor-shape{
         height: 60px;
         width: 30px;

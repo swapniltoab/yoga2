@@ -68,7 +68,7 @@
                                                 <?php echo $class['time'] ?>
                                             </div>
                                             <?php //echo $class['room_Id'] ?><br>
-                                            <a href="/book/?roomId=<?php echo $class['room_Id']?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id']?>">RESERVE</a>
+                                            <a href="/book/?roomId=<?php echo $class['room_Id']?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id']?>">RESERVE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -120,22 +120,22 @@
             $active = $i == 1 ? 'active' : '';
 
              if(array_key_exists('isEmpty',$classes) && $classes['isEmpty'] == 1){ ?>
-                        <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $classes[0]['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
+                        <a data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $classes[0]['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                             <div class="class-day-title p-3">
                                 <h3 class="font-weight-bold"><?php echo substr($classes[0]['day'], 0, 2) ?></h3>
                             </div>
-                        </div>
+                        </a>
             <?php }
                 else {
                     $length = count($classes);
                     foreach ($classes as $key => $class) {
 
                         if ($key == 0): ?>
-                                <div data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $class['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
+                                <a data-toggle="tab" class="test js-day-div <?php echo $active ?>" href="#menu-<?php echo $class['date'] ?>" data-cur-dt="<?php echo $classes[0]['weekDate'] ?>" style="display:none">
                                     <div class="class-day-title p-3">
                                         <h3 class="font-weight-bold"><?php echo substr($class['day'], 0, 2); ?></h3>
                                     </div>
-                                </div>
+                                </a>
                         <?php endif;?><?php
                     }
              }
@@ -182,7 +182,7 @@
                             </div>
                 </div>
                          <div class="col-5">
-                            <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" type="button" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                            <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
                         </div>
                         </div>
                         </div>
