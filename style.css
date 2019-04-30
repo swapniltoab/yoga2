@@ -812,3 +812,24 @@ div#schedule-table {
         width: 100%;
     }
 }
+
+
+.attendance-cancel-sec {
+    margin: 0 0 2% 0;
+    text-align: center;
+}
+
+.attendance-cancel-text {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    font-weight: 700;
+}
+
+.row.rememberme-sec {
+    padding: 0 5% 5% 5%;
+}
+
+.rememberme-sec input#rememberme {
+    margin-right: 10px;
+}

@@ -21,6 +21,13 @@
       </div>
     </div>
 
+    <div class="row rememberme-sec">
+      <div class="">
+        <input type="checkbox" class="rememberme" name="rememberme"><br>
+      </div>
+      <label class="" for="rememberme"><b>Remember Me</b></label>
+    </div>
+
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-9">

@@ -60,7 +60,6 @@ endif;
 $ddd = $_SERVER['REQUEST_URI'];
 
 if ($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] == '/the-warriors-way') {
-// 854350814192338856
 
     if (!current_user_can('administrator')) {
         if (is_user_logged_in()) {
@@ -127,19 +126,25 @@ new ZingFit_Purchasable_Series_Shortcode();
 
 $zingfit->getClassTypes();
 
-add_action('wp_logout', 'auto_redirect_after_logout');
-function auto_redirect_after_logout()
-{
-    wp_redirect(home_url());
-    exit();
-}
+// add_action('wp_logout', 'auto_redirect_after_logout');
+// function auto_redirect_after_logout()
+// {
+//     wp_redirect(home_url());
+//     exit();
+// }
 
-function replace_howdy( $wp_admin_bar ) {
-    $my_account=$wp_admin_bar->get_node('my-account');
-    $newtitle = str_replace( 'Howdy,', 'Welcome', $my_account->title );
-    $wp_admin_bar->add_node( array(
-        'id' => 'my-account',
-        'title' => $newtitle,
-    ) );
+// function replace_howdy( $wp_admin_bar ) {
+//     $my_account=$wp_admin_bar->get_node('my-account');
+//     $newtitle = str_replace( 'Howdy,', 'Welcome', $my_account->title );
+//     $wp_admin_bar->add_node( array(
+//         'id' => 'my-account',
+//         'title' => $newtitle,
+//     ) );
+// }
+// add_filter( 'admin_bar_menu', 'replace_howdy',25 );
+
+// add_filter('show_admin_bar', '__return_false');
+
+if (!current_user_can('manage_options')) {
+    show_admin_bar(false);
 }
-add_filter( 'admin_bar_menu', 'replace_howdy',25 );

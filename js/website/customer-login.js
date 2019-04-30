@@ -9,6 +9,7 @@
             let data = $('#loginform').serializeArray();
             let password = data[1].value;
             console.log('data', data);
+            return false;
 
             var ajax_url = zingfit_js_var.ajaxurl;
 

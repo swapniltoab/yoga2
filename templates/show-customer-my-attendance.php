@@ -22,6 +22,10 @@ if ($zingfit_user_access_token) {
 
 <div class="container user-account-container">
 
+    <div class="row attendance-cancel-sec">
+        <h3 class="attendance-cancel-text">To cancel your class spot please call the studio at least 12 hours prior to the scheduled class time at <a href="tel:7735583396" class="attendance-cancel-anchor">773.558.3396</a>.</h3>
+    </div>
+
     <div class="table-responsive">
         <table class="table">
             <thead>
