@@ -236,7 +236,7 @@ select#selectMonth {
 }
 
 .right_col {
-    background-image: url(http://yoga20.wpengine.com/wp-content/uploads/2019/04/1.-hero-image-3.jpg);
+    background-image: url("images/HeroImage.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -830,6 +830,6 @@ div#schedule-table {
     padding: 0 5% 5% 5%;
 }
 
-.rememberme-sec input#rememberme {
+.rememberme-sec input.rememberme {
     margin-right: 10px;
 }

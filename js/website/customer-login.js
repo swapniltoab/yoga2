@@ -8,8 +8,13 @@
 
             let data = $('#loginform').serializeArray();
             let password = data[1].value;
-            console.log('data', data);
-            return false;
+            let remember = false;
+
+            if ($('.rememberme').is(":checked"))
+            {
+                remember = true;
+            }
+            // console.log('data', data);
 
             var ajax_url = zingfit_js_var.ajaxurl;
 
@@ -21,6 +26,7 @@
                     'action': 'zingfit_customer_login',
                     'username': data[0].value,
                     'password': data[1].value,
+                    'remember' : remember
                 },
                 success: (response) => {
                     if (response.status === true) {

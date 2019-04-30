@@ -23,7 +23,7 @@
 
     <div class="row rememberme-sec">
       <div class="">
-        <input type="checkbox" class="rememberme" name="rememberme"><br>
+        <input type="checkbox" class="rememberme" name="rememberme" value="true"><br>
       </div>
       <label class="" for="rememberme"><b>Remember Me</b></label>
     </div>
