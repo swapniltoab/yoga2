@@ -833,3 +833,18 @@ div#schedule-table {
 .rememberme-sec input.rememberme {
     margin-right: 10px;
 }
+
+@media screen and (min-width: 567px) and (max-width: 768px) {
+
+    .register-page-left, .register-page-right {
+        max-width: 100% !important;
+    }
+
+    .register-page-left .col-md-9 input.form-input {
+        width: 100%;
+    }
+
+    .register-page-left #btn_login, .register-page-left #btn_register{
+        width: 100%;
+    }
+}

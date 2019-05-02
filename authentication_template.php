@@ -7,14 +7,14 @@ get_header();
 
 <div class="container">
     <div class="row form_row login_register_form_row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 register-page-left">
             <?php
                 echo do_shortcode('[zingfit_login]');
                 echo do_shortcode('[zingfit_register]');
             ?>
         </div>
 
-        <div class="col-sm-6 right_col">
+        <div class="col-sm-6 right_col register-page-right">
             <div class="div-form-sec">
                 <span class="js-ShowLoginFormSpan hideElement span-text-sec">Already have a Yoga2.0 account?</span><br>
                 <input class="js-ShowLoginForm btn hideElement" type="submit" value="SIGN IN >" /><br>

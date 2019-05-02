@@ -148,7 +148,7 @@
 
     <div class="js-form-control row">
       <label class="col-md-9 custom-control agreeTerms-check">
-        <input type="checkbox" class="js-required-checked" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="/terms/" target="_blank">Terms & Conditions</a>
+        <input type="checkbox" class="js-required-checked" name="agreeTerms" style="margin-bottom:15px" required>I understand and accept <a href="/terms-conditions/" target="_blank">Terms & Conditions</a>
         <div>
           <span class="error-message" style="color:red"></span>
         </div>
