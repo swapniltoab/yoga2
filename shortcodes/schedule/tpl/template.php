@@ -190,7 +190,7 @@
                      <?php
                      endif;
                      ?>
-                     <div class="js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classType'] ?>">
+                     <div class="js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classTypeId'] ?>">
                         <div class="class-instructor position-relative">
                             <div class="col-7 px-0">
                             <div class="class-type">
