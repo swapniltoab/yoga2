@@ -5,12 +5,12 @@ function zingfit_customer_login()
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $remember = $_POST['remember'];
+    $remember = isset($_POST['remember']) && !empty($_POST['remember']) ? true : false;
 
     $creds = array();
-	$creds['user_login'] = $username;
-	$creds['user_password'] = $password;
-	$creds['remember'] = $remember;
+    $creds['user_login'] = $username;
+    $creds['user_password'] = $password;
+    $creds['remember'] = $remember;
     $user = wp_signon( $creds, false );
 
     if ($user->ID) {

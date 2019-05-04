@@ -6,28 +6,25 @@
             e.preventDefault();
 
 
-            let data = $('#loginform').serializeArray();
-            let password = data[1].value;
-            let remember = false;
+            var data = $('#loginform').serializeArray();
+
+            var ajax_url = zingfit_js_var.ajaxurl;
+            var postData = {
+                'action': 'zingfit_customer_login',
+                'username': data[0].value,
+                'password': data[1].value,
+            };
 
             if ($('.rememberme').is(":checked"))
             {
-                remember = true;
+                postData['remember'] = 1;
             }
-            // console.log('data', data);
-
-            var ajax_url = zingfit_js_var.ajaxurl;
 
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 url: ajax_url,
-                data: {
-                    'action': 'zingfit_customer_login',
-                    'username': data[0].value,
-                    'password': data[1].value,
-                    'remember' : remember
-                },
+                data:postData,
                 success: (response) => {
                     if (response.status === true) {
                         window.location.href = '/account/';

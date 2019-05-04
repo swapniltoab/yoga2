@@ -70,7 +70,7 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
 
     </div>
 
-    <div class="card mb-2" style="padding: 50px 20px">
+    <div class="card custom-card mb-2">
         <div class="card-body">
             <form id="stripeform" class="" method="POST" action="/charge-card/">
                 <input type="hidden" name="orderId" value="<?php echo $seriesOrderId['id'] ?>">
@@ -87,12 +87,12 @@ if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $se
                             </div>
                         </div>
 
-                        <div class="row">
-                            <label class="col-md-3 col-form-label text-md-right " for="firstName">
+                        <div class="row cc-info-row">
+                            <label class="col-12 col-md-3 col-form-label text-md-right " for="firstName">
                                 Card Info
                             </label>
 
-                            <div class="col-md-9">
+                            <div class="col-12 col-md-9">
                                 <div id="number" class="form-control StripeElement--empty">
                                     <div id="card-element"></div>
                                     <div id="card-errors" role="alert"></div>

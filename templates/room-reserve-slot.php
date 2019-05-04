@@ -17,7 +17,7 @@ $classId = '';
 </div>
 
 <?php
-if ($_GET && $_GET != '') {
+if ($_GET && !empty($_GET)) {
     $classId = $_GET['classId'];
 
     if ($zingfit_user_access_token && $classId != '') {
