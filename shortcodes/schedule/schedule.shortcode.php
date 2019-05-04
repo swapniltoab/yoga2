@@ -34,6 +34,11 @@ class ZingFit_Schedule_Shortcode
         }
 
         foreach ($classes as $class) {
+
+            if(empty($class['bookable'])){
+                continue;
+            }
+
             $classtype = $class['classType'];
             $classtypeId = $class['classTypeId'];
             $instructorId = $class['instructorId'];

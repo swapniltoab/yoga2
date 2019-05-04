@@ -36,12 +36,12 @@ $zingfit_gateways = get_option("zingfit_gateways");
                 <div class="row">
                     <div class="col-md-8">
 
-                        <div class="row">
-                            <label class="col-md-3 col-form-label text-md-right " for="firstName">
+                        <div class="row cc-info-row">
+                            <label class="col-12 col-md-3 col-form-label text-md-right " for="firstName">
                                 Card Info
                             </label>
 
-                            <div class="col-md-9">
+                            <div class="col-12 col-md-9">
                                 <div id="number" class="form-control StripeElement--empty">
                                     <div id="card-element"></div>
                                     <div id="card-errors" role="alert"></div>
