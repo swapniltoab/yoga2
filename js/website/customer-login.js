@@ -2,6 +2,12 @@
 
     $(document).ready(function () {
 
+        var email = localStorage.getItem('yoga_login_email');
+
+        if(email){
+            $('#login_email').val(email);
+        }
+
         $('#btn_login').click(function (e) {
             e.preventDefault();
 
@@ -27,6 +33,10 @@
                 data:postData,
                 success: (response) => {
                     if (response.status === true) {
+                        if ($('.rememberme').is(":checked"))
+                        {
+                            localStorage.setItem('yoga_login_email',data[0].value);
+                        }
                         window.location.href = '/account/';
                     } else {
                         alert('Failed WP login');
