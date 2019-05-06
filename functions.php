@@ -168,7 +168,8 @@ if (!empty($wpUserId) && $wpUserId != 0) {
 
 function logoutCureentUser()
 {
-    ?>
+    if( !current_user_can('administrator') ){
+?>
   <script type="text/javascript">
 
     function sessionLogout(){
@@ -201,6 +202,7 @@ function logoutCureentUser()
     }
   </script>
 <?php
+    }
 }
 
 function wp_user_session_logout()

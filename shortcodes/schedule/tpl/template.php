@@ -75,7 +75,7 @@
                 else {
                 $length = count($classes);
                 foreach ($classes as $key => $class) {
-                    error_log('$class ... '.print_r($class,1));
+
                     if ($key == 0): ?>
                         <div class="col-lg bg-white text-uppercase small class-day" id="">
                             <div class="">
