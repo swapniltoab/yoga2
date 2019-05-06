@@ -5,14 +5,15 @@ function zingfit_delete_cc_card()
 
     $cardId = $_POST['cardId'];
 
-    $wpUserId = get_current_user_id();
-    $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+    $zingfit_user_access_token = current_user_zingfit_access_token;
     $regionId = '811593826090091886';
     $deleteCard = 'False';
 
     if ($zingfit_user_access_token) {
         global $zingfit;
         $deleteCard = $zingfit->deleteCustomerCard($zingfit_user_access_token, $regionId, $cardId);
+    } else {
+        logoutCureentUser();
     }
 
     if ($deleteCard) {

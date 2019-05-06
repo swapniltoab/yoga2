@@ -216,6 +216,26 @@ select#selectMonth {
     display: inline-block;
 }
 
+.not-bookable {
+    background-color: #ccc !important;
+    width: auto;
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-family: Open Sans;
+    font-weight: 400;
+    font-size: 12px;
+    font-style: normal;
+    padding: 10px 15px;
+    display: inline-block;
+    cursor: not-allowed
+}
+
+@media (max-width: 768px){
+    .not-bookable {
+        display: block;
+        text-align: center;
+    }
+}
+
 .error-message {}
 
 @media (min-width:768px) {

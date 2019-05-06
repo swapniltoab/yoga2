@@ -74,6 +74,7 @@ class ZingFit_Instructor_Schedule_Shortcode
             $tempClass['instructorId'] = $instructorId;
             $tempClass['class_Id'] = $class['id'];
             $tempClass['weekDate'] = $weekDate;
+            $tempClass['bookable'] = $class['bookable'];
 
             if (is_array($availSlots[$date])) {
                 array_push($availSlots[$date], $tempClass);

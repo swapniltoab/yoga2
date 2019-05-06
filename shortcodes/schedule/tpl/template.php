@@ -75,6 +75,7 @@
                 else {
                 $length = count($classes);
                 foreach ($classes as $key => $class) {
+                    error_log('$class ... '.print_r($class,1));
                     if ($key == 0): ?>
                         <div class="col-lg bg-white text-uppercase small class-day" id="">
                             <div class="">
@@ -96,7 +97,11 @@
                                                 <div class="class-time">
                                                    <?php echo $class['time'] ?>
                                                 </div>
-                                                  <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                                <?php if($class['bookable']) { ?>
+                                                    <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                                <?php } else { ?>
+                                                    <div class="reserve not-bookable" >RESERVE</div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -204,7 +209,11 @@
                             </div>
                 </div>
                          <div class="col-5">
-                            <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                            <?php if($class['bookable']) { ?>
+                                <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                            <?php } else { ?>
+                                <div class="reserve not-bookable" >RESERVE</div>
+                            <?php } ?>
                         </div>
                         </div>
                         </div>

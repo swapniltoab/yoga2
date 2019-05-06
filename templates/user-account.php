@@ -11,9 +11,10 @@ get_header(); ?>
 <div class="yoga-divider"></div>
 </div>
 
-<?php $regions = get_option('zingfit_regions');
-$wpUserId = get_current_user_id();
-$zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+<?php
+$regions = get_option('zingfit_regions');
+
+$zingfit_user_access_token = current_user_zingfit_access_token;
 $regionId = '811593826090091886';
 $userCardsData = '';
 
@@ -21,6 +22,8 @@ if ($zingfit_user_access_token) {
     global $zingfit;
     $customerData = $zingfit->getCustomerData($zingfit_user_access_token, $regionId);
     $userCardsData = $zingfit->getCustomerCardsOfFile($zingfit_user_access_token, $regionId);
+} else {
+    logoutCureentUser();
 }
 
 $currentUserID = get_current_user_id();

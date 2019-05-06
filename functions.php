@@ -65,14 +65,15 @@ if ($_SERVER['REQUEST_URI'] == '/the-warriors-way/' || $_SERVER['REQUEST_URI'] =
         if (is_user_logged_in()) {
             $seriesId = [];
             $regions = get_option('zingfit_regions');
-            $wpUserId = get_current_user_id();
-            $zingfit_user_access_token = get_transient('zingfit_customer_access_token_' . $wpUserId);
+            $zingfit_user_access_token = current_user_zingfit_access_token;
             $regionId = '811593826090091886';
 
             if ($zingfit_user_access_token) {
                 global $zingfit;
                 $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
                 $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
+            } else {
+                logoutCureentUser();
             }
 
             foreach ($myActiveSerieses->content as $key => $series) {
@@ -126,12 +127,12 @@ new ZingFit_Purchasable_Series_Shortcode();
 
 $zingfit->getClassTypes();
 
-// add_action('wp_logout', 'auto_redirect_after_logout');
-// function auto_redirect_after_logout()
-// {
-//     wp_redirect(home_url());
-//     exit();
-// }
+add_action('wp_logout', 'auto_redirect_after_logout');
+function auto_redirect_after_logout()
+{
+    wp_redirect(home_url());
+    exit();
+}
 
 // function replace_howdy( $wp_admin_bar ) {
 //     $my_account=$wp_admin_bar->get_node('my-account');
@@ -148,3 +149,69 @@ $zingfit->getClassTypes();
 if (!current_user_can('manage_options')) {
     show_admin_bar(false);
 }
+
+$wpUserId = get_current_user_id();
+if (!empty($wpUserId) && $wpUserId != 0) {
+
+    $current_user_zingfit_access_token = get_user_meta($wpUserId, 'zingfit_customer_access_token', true);
+    $current_user_zingfit_access_token_expires_in = get_user_meta($wpUserId, 'zingfit_customer_access_token_expires_in', true);
+    $current_user_zingfit_access_token_expires_at = get_user_meta($wpUserId, 'zingfit_customer_access_token_expires_at', true);
+
+    $currentTime = time();
+
+    if ($currentTime > $current_user_zingfit_access_token_expires_at) {
+        logoutCureentUser();
+    }
+
+    define('current_user_zingfit_access_token', $current_user_zingfit_access_token);
+}
+
+function logoutCureentUser()
+{
+    ?>
+  <script type="text/javascript">
+
+    function sessionLogout(){
+
+        var ajax_url = zingfit_js_var.ajaxurl;
+        var postData = {
+            'action': 'wp_user_session_logout',
+        };
+
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: ajax_url,
+            data:postData,
+            success: (response) => {
+                if (response.status === true) {
+                    window.location.href = '/register/';
+                } else {
+                    window.location.href = '/register/';
+                }
+            }
+        });
+
+    }
+
+    if (confirm("Session TimeOut! Logging you off.")) {
+       sessionLogout();
+    } else {
+        sessionLogout();
+    }
+  </script>
+<?php
+}
+
+function wp_user_session_logout()
+{
+    $user_id = get_current_user_id();
+    $sessions = WP_Session_Tokens::get_instance($user_id);
+    $sessions->destroy_all();
+
+    echo json_encode(array('status' => true));
+    die();
+
+}
+add_action('wp_ajax_wp_user_session_logout', 'wp_user_session_logout');
+add_action('wp_ajax_nopriv_wp_user_session_logout', 'wp_user_session_logout');

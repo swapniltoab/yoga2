@@ -35,9 +35,9 @@ class ZingFit_Schedule_Shortcode
 
         foreach ($classes as $class) {
 
-            if(empty($class['bookable'])){
-                continue;
-            }
+            // if(empty($class['bookable'])){
+            //     continue;
+            // }
 
             $classtype = $class['classType'];
             $classtypeId = $class['classTypeId'];
@@ -55,7 +55,7 @@ class ZingFit_Schedule_Shortcode
             $time = date('h:i A', strtotime($classDate[1]));
 
             $tempClass['day'] = $classDay;
-            $tempClass['date'] = $date; // substr($Date, 5);
+            $tempClass['date'] = $date;
             $tempClass['time'] = $time;
             $tempClass['instructor_name'] = $class['instructor1'];
             $tempClass['room_Id'] = $class['roomId'];
@@ -64,6 +64,7 @@ class ZingFit_Schedule_Shortcode
             $tempClass['instructorId'] = $instructorId;
             $tempClass['class_Id'] = $class['id'];
             $tempClass['weekDate'] = $weekDate;
+            $tempClass['bookable'] = $class['bookable'];
 
             if (is_array($availSlots[$date])) {
                 array_push($availSlots[$date], $tempClass);

@@ -10,8 +10,8 @@
                  return false;
              }
 
-            let data = $('#usedAccountEdit').serializeArray();
-            let password = data[1].value;
+            var data = $('#usedAccountEdit').serializeArray();
+            var password = data[1].value;
 
             var ajax_url = zingfit_js_var.ajaxurl;
 
@@ -25,7 +25,7 @@
                 },
                 success: (response) => {
                     if (response.status === true) {
-                        let userdata = response.message;
+                        var userdata = response.message;
                         $.ajax({
                             type: 'POST',
                             dataType: 'json',

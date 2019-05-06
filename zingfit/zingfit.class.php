@@ -216,6 +216,13 @@ class ZingFit
 
         $zingfit_customer_access_token = $api_response['access_token'];
         $expires_in = $api_response['expires_in'];
+
+        $currentTime = time();
+        $accessTokenExpireAt = $currentTime + $expires_in;
+
+        update_user_meta($wpUserId, 'zingfit_customer_access_token', $zingfit_customer_access_token);
+        update_user_meta($wpUserId, 'zingfit_customer_access_token_expires_in', $expires_in);
+        update_user_meta($wpUserId, 'zingfit_customer_access_token_expires_at', $accessTokenExpireAt);
         set_transient('zingfit_customer_access_token_'.$wpUserId, $zingfit_customer_access_token, $expires_in);
 
         return $api_response;

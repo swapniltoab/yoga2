@@ -10,10 +10,11 @@ get_header();?>
 <h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
 </div>
 
-<?php $regions = get_option('zingfit_regions');
+<?php
+
+$regions = get_option('zingfit_regions');
 $zingfit_access_token = get_transient('zingfit_access_token');
-$wpUserId = get_current_user_id();
-$zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+$zingfit_user_access_token = current_user_zingfit_access_token;
 $regionId = '811593826090091886';
 $seriesId = '';
 $zingfit_gateways = get_option("zingfit_gateways");
@@ -27,6 +28,8 @@ if ($zingfit_user_access_token) {
     global $zingfit;
     $seriesOrderId = $zingfit->getSeriesOrderID($zingfit_user_access_token, $regionId, $seriesId);
     $seriesInfo = $zingfit->getSeriesInfoById($zingfit_access_token, $regionId, $seriesId);
+} else {
+    logoutCureentUser();
 }
 
 if (array_key_exists('error', $seriesOrderId) && ($seriesOrderId['error'] || $seriesOrderId['error'] == 'Not found.')) {?>

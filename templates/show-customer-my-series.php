@@ -2,11 +2,12 @@
 
 /*template name: Zingfit Customer My Series */
 
+if(is_user_logged_in()){
+
 get_header();
 
 $regions = get_option('zingfit_regions');
-$wpUserId = get_current_user_id();
-$zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+$zingfit_user_access_token = current_user_zingfit_access_token;
 $regionId = '811593826090091886';
 
 if ($zingfit_user_access_token) {
@@ -14,6 +15,8 @@ if ($zingfit_user_access_token) {
     $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
     $myExpiredSerieses = $zingfit->getCustomerMySeriesExpired($zingfit_user_access_token, $regionId);
+} else {
+    logoutCureentUser();
 }
 
 ?>
@@ -112,4 +115,9 @@ if ($zingfit_user_access_token) {
 
 <?php
 get_footer();
+} else {
+    $url = home_url();
+    wp_redirect($url);
+    exit;
+}
 ?>

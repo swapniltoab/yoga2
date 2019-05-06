@@ -6,8 +6,7 @@ if(is_user_logged_in()){
 get_header();
 
 $regions = get_option('zingfit_regions');
-$wpUserId = get_current_user_id();
-$zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+$zingfit_user_access_token = current_user_zingfit_access_token;
 $regionId = '811593826090091886';
 $classId = '';
 ?>
@@ -25,6 +24,8 @@ if ($_GET && !empty($_GET)) {
         $reserveSpots = $zingfit->getBookableClassDetail($zingfit_user_access_token, $regionId, $classId);
         $userActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
         $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
+    } else {
+        logoutCureentUser();
     }
 
     $latestExpiringSeries = [];
@@ -32,7 +33,7 @@ if ($_GET && !empty($_GET)) {
     $latestExpiringContract = [];
     $contractExpiringDates = [];
     $finalDate = [];
-    $seriesKey = 'seriesKey';
+    $seriesKey = 100;
     $customerSeriesId = '';
 
 
@@ -58,11 +59,11 @@ if ($_GET && !empty($_GET)) {
         $finalDate[] = $latestExpiringSeries->expiringDate;
     }
 
-    if(!empty($latestExpiringSeries) && !empty($latestExpiringContract)) {
+    if(!empty($latestExpiringSeries) || !empty($latestExpiringContract)) {
         $seriesKey = array_search(min($finalDate), $finalDate);
     }
 
-    if($seriesKey != 'seriesKey') {
+    if($seriesKey != 100) {
         if($seriesKey == 0){
             $customerSeriesId = $latestExpiringSeries->id;
         } else if($seriesKey == 1){
@@ -79,7 +80,8 @@ if ($_GET && !empty($_GET)) {
 
     <div class="container" style="padding: 50px 20px">
         <div class="row">
-            <h2>Nothing Found. Seems Like invalid Class.</h2>
+            <!-- <h2>Nothing Found. Seems Like invalid Class.</h2> -->
+            <h2 class="attendance-cancel-text">We are sorry, booking for this classed is closed, please call the studio <a href="tel:+13123741029" class="attendance-cancel-anchor">+1 312-374-1029</a> ‭for more information.</h2>
         </div>
     </div>
 

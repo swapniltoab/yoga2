@@ -27,9 +27,9 @@ if($status == true){
     $classId = $message->classId;
     global $zingfit;
     $classInfo = $zingfit->getClassInfo($zingfit_access_token, $regionId, $classId);
-    $classDateTime = date("d M, Y h:i A", strtotime($classInfo->classDate));
+    $classDateTime = date("d M, Y - h:i A", strtotime($classInfo->classDate));
 
-    $html .= '<h2>Successfully booked your spot! <br> Your Spot Id is:'.$spotId.' <br> on '.$classDateTime.' by '.$classInfo->instructorName.' of type '.$classInfo->classType.'</h2>';
+    $html .= '<h2>Confirmed <br>'.$classDateTime.' - Mat #'.$spotId.'<br>'.$classInfo->instructorName.' - '.$classInfo->classType.'</h2>';
     $html .= '<a href="/account" class="btn mt-5 yoga-btn">BACK TO ACCOUNT</a>';
 }
 

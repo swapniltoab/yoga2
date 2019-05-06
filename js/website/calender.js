@@ -4,7 +4,7 @@
     $(window).load(function () {
         $('.desk-calender div.schedule-table .col-lg:lt(7)').addClass('active').show();
 
-        let classDay = $('.desk-calender .class-day');
+        var classDay = $('.desk-calender .class-day');
 
         $('.desk-calender .next').click(function () {
             $(".desk-calender .this-week-banner").text('Next week');
@@ -36,7 +36,7 @@
 
         $('.mob-calender div.schedule-table .test:lt(7)').show();
 
-        let classDayMob = $('.mob-calender .test');
+        var classDayMob = $('.mob-calender .test');
 
         $('.mob-calender .next').click(function () {
             $(".mob-calender .this-week-banner").text('Next week');
@@ -47,7 +47,7 @@
             // $('.tab-content div:nth-child(8)').addClass('active');
             // $('.tab-content div:nth-child(1)').removeClass('active');
 
-         
+
             classDayMob.each((index, ele) => {
 
                 if (index < 7) {
@@ -65,7 +65,7 @@
             $('.nav-tabs div:nth-child(1)').addClass('active');
             $('.tab-content div:nth-child(1)').addClass('active');
             // $('.tab-content div:nth-child(8)').removeClass('active');
-            
+
             var cur_dt = $('.nav-tabs div:nth-child(1)').attr('data-cur-dt');
             $('.js-current-dt').empty().text(cur_dt);
 

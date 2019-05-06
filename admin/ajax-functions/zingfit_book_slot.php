@@ -8,13 +8,14 @@ function zingfit_book_slot()
     $seriesId = $_POST['seriesId'];
 
     $regions = get_option('zingfit_regions');
-    $wpUserId = get_current_user_id();
-    $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+    $zingfit_user_access_token = current_user_zingfit_access_token;
     $regionId = '811593826090091886';
 
     if ($zingfit_user_access_token) {
         global $zingfit;
         $bookSpot = $zingfit->customerBookSpot($zingfit_user_access_token, $regionId, $classId, $spotId, $seriesId);
+    } else {
+        logoutCureentUser();
     }
 
     session_start();

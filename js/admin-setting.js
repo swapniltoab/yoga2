@@ -1,7 +1,7 @@
 (function ($) {
 
     $(document).ready(function () {
-        let generateAccessTokenBtn = document.getElementById('js-zingfit-generate-access-token');
+        var generateAccessTokenBtn = document.getElementById('js-zingfit-generate-access-token');
 
         if (generateAccessTokenBtn !== null) {
             generateAccessTokenBtn.addEventListener('click', (e) => {

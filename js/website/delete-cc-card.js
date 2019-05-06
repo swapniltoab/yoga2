@@ -5,12 +5,12 @@
         $('.js-delete-cc-card').click(function (e) {
             e.preventDefault();
 
-            let cardId = $(this).data('cardid');
+            var cardId = $(this).data('cardid');
             console.log('cardId', cardId);
 
             // return false;
 
-            let ajax_url = zingfit_js_var.ajaxurl;
+            var ajax_url = zingfit_js_var.ajaxurl;
 
             $.ajax({
                 type: 'POST',

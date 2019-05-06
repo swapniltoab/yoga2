@@ -9,11 +9,11 @@
                 return false;
             }
 
-            let classId = $(this).data('classid');
-            let spotId = $(this).data('spotid');
-            let seriesId = $(this).data('seriesid');
+            var classId = $(this).data('classid');
+            var spotId = $(this).data('spotid');
+            var seriesId = $(this).data('seriesid');
 
-            let ajax_url = zingfit_js_var.ajaxurl;
+            var ajax_url = zingfit_js_var.ajaxurl;
 
             $.ajax({
                 type: 'POST',

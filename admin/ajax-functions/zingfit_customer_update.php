@@ -13,13 +13,14 @@ function zingfit_customer_update()
     $password = $param['password'];
 
     $regions = get_option('zingfit_regions');
-    $wpUserId = get_current_user_id();
-    $zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+    $zingfit_user_access_token = current_user_zingfit_access_token;
     $regionId = '811593826090091886';
 
     if ($zingfit_user_access_token) {
         global $zingfit;
         $userdata = $zingfit->updateCustomerInfo($zingfit_user_access_token, $regionId, $param);
+    } else {
+        logoutCureentUser();
     }
 
     if ($userdata) {

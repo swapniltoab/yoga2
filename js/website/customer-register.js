@@ -10,9 +10,9 @@
                 return false;
             }
 
-            let data = $('#registerform').serializeArray();
+            var data = $('#registerform').serializeArray();
             console.log(data);
-            let password = data[1].value;
+            var password = data[1].value;
 
             var ajax_url = zingfit_js_var.ajaxurl;
 
@@ -26,7 +26,7 @@
                 },
                 success: (response) => {
                     if (response.status === true) {
-                        let userdata = response.userdata;
+                        var userdata = response.userdata;
                         if (response.response_code == '406') {
                             alert('User is already exists in zingfit api, please use another email/username');
                             return false;

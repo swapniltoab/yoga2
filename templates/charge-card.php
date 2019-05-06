@@ -10,9 +10,9 @@ get_header(); ?>
 <h1 class="page-title-sec"><?php echo get_the_title(); ?></h1>
 </div>
 
-<?php $regions = get_option('zingfit_regions');
-$wpUserId = get_current_user_id();
-$zingfit_user_access_token = get_transient('zingfit_customer_access_token_'.$wpUserId);
+<?php
+$regions = get_option('zingfit_regions');
+$zingfit_user_access_token = current_user_zingfit_access_token;
 $regionId = '811593826090091886';
 $html = '';
 
@@ -32,6 +32,8 @@ if ($_POST && $_POST != '') {
     if ($zingfit_user_access_token) {
         global $zingfit;
         $orderInfo = $zingfit->chargeCreditCard($zingfit_user_access_token, $regionId, $orderId, $checkoutInfo);
+    } else {
+        logoutCureentUser();
     }
 
     if ($orderInfo['error'] || $orderInfo['error'] == 'Not found.') {
