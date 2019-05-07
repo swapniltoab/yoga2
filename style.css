@@ -769,7 +769,7 @@ div#schedule-table {
     margin: 10px 0 10px;
 }
 
-.book-spot-response {
+.book-spot-response, .cancel-attendace-spot-response {
     padding: 10px;
     background-color: #f44336;
     color: white;

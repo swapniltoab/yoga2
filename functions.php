@@ -17,6 +17,7 @@ function yoga_enqueue()
     wp_enqueue_script('customer-login', yoga_uri . '/js/website/customer-login.js', array('jquery'), true);
     wp_enqueue_script('book-slot', yoga_uri . '/js/website/book-slot.js', array('jquery'), true);
     wp_enqueue_script('delete-cc-card', yoga_uri . '/js/website/delete-cc-card.js', array('jquery'), true);
+    wp_enqueue_script('cancel-spot', yoga_uri . '/js/website/cancel-spot.js', array('jquery'), true);
     wp_enqueue_script('schedule_reserve', yoga_uri . '/js/website/schedule_reserve.js', array('jquery'), true);
     wp_enqueue_script('yoga_common', yoga_uri . '/js/website/common.js', array('jquery'), true);
 
@@ -109,6 +110,7 @@ include_once yoga_path . '/admin/ajax-functions/zingfit_customer_login.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_schedule_reserve.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_book_slot.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_delete_cc_card.php';
+include_once yoga_path . '/admin/ajax-functions/zingfit_cancel_spot.php';
 
 include_once yoga_path . '/shortcodes/schedule/schedule.shortcode.php';
 new ZingFit_Schedule_Shortcode();

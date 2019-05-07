@@ -7,13 +7,15 @@ class ZingFit
     private $client_secret;
     private $apiUrl;
 
-    public function __construct($client_id, $client_secret, $apiUrl){
+    public function __construct($client_id, $client_secret, $apiUrl)
+    {
         $this->client_id = $client_id;
         $this->client_secret = $client_secret;
         $this->apiUrl = $apiUrl;
     }
 
-    public function getAuthenticate(){
+    public function getAuthenticate()
+    {
 
         $id = urlencode($this->client_id);
         $secret = urlencode($this->client_secret);
@@ -28,7 +30,7 @@ class ZingFit
             'body' => 'grant_type=client_credentials',
         );
 
-        $url = $this->apiUrl.'oauth/token';
+        $url = $this->apiUrl . 'oauth/token';
         $response = wp_remote_post($url, $args);
 
         $api_response = json_decode(wp_remote_retrieve_body($response), true);
@@ -44,12 +46,13 @@ class ZingFit
         return $api_response;
     }
 
-    public function getRegions(){
+    public function getRegions()
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
 
         if ($zingfit_access_token) {
-            $url = $this->apiUrl.'regions';
+            $url = $this->apiUrl . 'regions';
             $args = array(
                 'headers' => array(
                     'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -65,13 +68,14 @@ class ZingFit
 
     }
 
-    public function getClassTypes(){
+    public function getClassTypes()
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
         $regions = get_option('zingfit_regions');
 
         if ($zingfit_access_token) {
-            $url = $this->apiUrl.'classtypes';
+            $url = $this->apiUrl . 'classtypes';
             $args = array(
                 'headers' => array(
                     'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -87,13 +91,14 @@ class ZingFit
 
     }
 
-    public function getAllInstructors(){
+    public function getAllInstructors()
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
         $regions = get_option('zingfit_regions');
 
         if ($zingfit_access_token) {
-            $url = $this->apiUrl.'instructors';
+            $url = $this->apiUrl . 'instructors';
             $args = array(
                 'headers' => array(
                     'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -108,7 +113,8 @@ class ZingFit
 
     }
 
-    public function getSites(){
+    public function getSites()
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
         $regions = get_option('zingfit_regions');
@@ -116,7 +122,7 @@ class ZingFit
 
         if ($zingfit_access_token) {
             foreach ($regions as $region) {
-                $url = $this->apiUrl.'sites';
+                $url = $this->apiUrl . 'sites';
                 $args = array(
                     'headers' => array(
                         'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -134,7 +140,8 @@ class ZingFit
         }
     }
 
-    public function getClasses(){
+    public function getClasses()
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
         $optionSites = get_option('zingfit_sites');
@@ -143,7 +150,7 @@ class ZingFit
         if ($zingfit_access_token) {
             foreach ($optionSites as $sites) {
                 foreach ($sites as $site) {
-                    $url = $this->apiUrl.'sites/' . $site['id'] . '/classes';
+                    $url = $this->apiUrl . 'sites/' . $site['id'] . '/classes';
                     $args = array(
                         'headers' => array(
                             'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -160,10 +167,11 @@ class ZingFit
 
     }
 
-    public function registerUser($param){
+    public function registerUser($param)
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
-        $url = $this->apiUrl.'account';
+        $url = $this->apiUrl . 'account';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -180,15 +188,15 @@ class ZingFit
 
     public function getGateways($zingfit_access_token, $regionId)
     {
-        $url = $this->apiUrl.'gateways';
+        $url = $this->apiUrl . 'gateways';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
                 'X-ZINGFIT-REGION-ID' => $regionId,
-            )
+            ),
         );
 
-        $response = wp_remote_get($url,$args);
+        $response = wp_remote_get($url, $args);
         $api_response = json_decode(wp_remote_retrieve_body($response), true);
 
         update_option("zingfit_gateways", $api_response);
@@ -196,7 +204,8 @@ class ZingFit
         return $api_response;
     }
 
-    public function getUserAuthenticate($username, $password, $wpUserId){
+    public function getUserAuthenticate($username, $password, $wpUserId)
+    {
         $id = urlencode($this->client_id);
         $secret = urlencode($this->client_secret);
         $concatenated = $id . ':' . $secret;
@@ -207,10 +216,10 @@ class ZingFit
                 'Authorization' => 'Basic ' . $encoded,
                 'Content-Type' => 'application/x-www-form-urlencoded',
             ),
-            'body' => 'grant_type=password&username='.$username.'&password='.$password,
+            'body' => 'grant_type=password&username=' . $username . '&password=' . $password,
         );
 
-        $url = $this->apiUrl.'oauth/token';
+        $url = $this->apiUrl . 'oauth/token';
         $response = wp_remote_post($url, $args);
         $api_response = json_decode(wp_remote_retrieve_body($response), true);
 
@@ -223,12 +232,13 @@ class ZingFit
         update_user_meta($wpUserId, 'zingfit_customer_access_token', $zingfit_customer_access_token);
         update_user_meta($wpUserId, 'zingfit_customer_access_token_expires_in', $expires_in);
         update_user_meta($wpUserId, 'zingfit_customer_access_token_expires_at', $accessTokenExpireAt);
-        set_transient('zingfit_customer_access_token_'.$wpUserId, $zingfit_customer_access_token, $expires_in);
+        set_transient('zingfit_customer_access_token_' . $wpUserId, $zingfit_customer_access_token, $expires_in);
 
         return $api_response;
     }
 
-    public function getSeries($zingfit_access_token, $regionId){
+    public function getSeries($zingfit_access_token, $regionId)
+    {
 
         $zingfit_access_token = get_transient('zingfit_access_token');
 
@@ -236,11 +246,11 @@ class ZingFit
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
                 'X-ZINGFIT-REGION-ID' => $regionId,
-            )
+            ),
         );
-        $url = $this->apiUrl.'series';
+        $url = $this->apiUrl . 'series';
 
-        $response = wp_remote_get($url,$args);
+        $response = wp_remote_get($url, $args);
         return json_decode(wp_remote_retrieve_body($response), true);
 
     }
@@ -251,11 +261,11 @@ class ZingFit
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
                 'X-ZINGFIT-REGION-ID' => $regionId,
-            )
+            ),
         );
-        $url = $this->apiUrl.'rooms/'.$roomId;
+        $url = $this->apiUrl . 'rooms/' . $roomId;
 
-        $response = wp_remote_get($url,$args);
+        $response = wp_remote_get($url, $args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
@@ -265,11 +275,11 @@ class ZingFit
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'X-ZINGFIT-REGION-ID' => $regionId,
-            )
+            ),
         );
-        $url = $this->apiUrl.'classes/'.$classId.'/spots/details';
+        $url = $this->apiUrl . 'classes/' . $classId . '/spots/details';
 
-        $response = wp_remote_get($url,$args);
+        $response = wp_remote_get($url, $args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
@@ -289,11 +299,11 @@ class ZingFit
                 'Content-Type' => 'application/json;charset=UTF-8',
                 'X-ZINGFIT-REGION-ID' => $regionId,
             ),
-            'body' => $bodyData
+            'body' => $bodyData,
         );
-        $url = $this->apiUrl.'orders/series/';
+        $url = $this->apiUrl . 'orders/series/';
 
-        $response = wp_remote_post($url,$args);
+        $response = wp_remote_post($url, $args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
@@ -304,15 +314,15 @@ class ZingFit
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/json;charset=UTF-8',
                 'X-ZINGFIT-REGION-ID' => $regionId,
-            )
+            ),
         );
-        $url = $this->apiUrl.'account/';
+        $url = $this->apiUrl . 'account/';
 
-        $response = wp_remote_get($url,$args);
+        $response = wp_remote_get($url, $args);
         $data = wp_remote_retrieve_body($response);
         $userData = json_decode($data, true);
 
-        if($userData && !array_key_exists('error', $userData)) {
+        if ($userData && !array_key_exists('error', $userData)) {
             $wpUserId = get_current_user_id();
             update_user_meta($wpUserId, 'zingfit_customer_data', $userData);
         }
@@ -330,11 +340,11 @@ class ZingFit
                 'Content-Type' => 'application/json;charset=UTF-8',
                 'X-ZINGFIT-REGION-ID' => $regionId,
             ),
-            'body' => $checkoutInfo
+            'body' => $checkoutInfo,
         );
-        $url = $this->apiUrl.'payments/'.$orderId.'/creditcard';
+        $url = $this->apiUrl . 'payments/' . $orderId . '/creditcard';
 
-        $response = wp_remote_post($url,$args);
+        $response = wp_remote_post($url, $args);
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
@@ -343,12 +353,12 @@ class ZingFit
         if ($zingfit_access_token) {
             foreach ($optionSites as $sites) {
                 foreach ($sites as $site) {
-                    $url = $this->apiUrl.'sites/' . $site['id'] . '/classes?instructorId='.$instructorId;
+                    $url = $this->apiUrl . 'sites/' . $site['id'] . '/classes?instructorId=' . $instructorId;
                     $args = array(
                         'headers' => array(
-                            'Authorization' => 'Bearer '. $zingfit_access_token,
+                            'Authorization' => 'Bearer ' . $zingfit_access_token,
                             'X-ZINGFIT-REGION-ID' => '811593826090091886',
-                        )
+                        ),
                     );
 
                     $response = wp_remote_get($url, $args);
@@ -363,9 +373,9 @@ class ZingFit
 
     public function updateCustomerInfo($zingfit_user_access_token, $regionId, $data)
     {
-        $url = $this->apiUrl.'account';
+        $url = $this->apiUrl . 'account';
         $args = array(
-            'method'     => 'PUT',
+            'method' => 'PUT',
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/json;charset=UTF-8',
@@ -381,7 +391,7 @@ class ZingFit
 
     public function getCustomerCardsOfFile($zingfit_user_access_token, $regionId)
     {
-        $url = $this->apiUrl.'account/cardsonfile';
+        $url = $this->apiUrl . 'account/cardsonfile';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
@@ -399,14 +409,14 @@ class ZingFit
     {
         $data = json_encode($data);
 
-        $url = $this->apiUrl.'account/cardsonfile';
+        $url = $this->apiUrl . 'account/cardsonfile';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/json;charset=UTF-8',
                 'X-ZINGFIT-REGION-ID' => $regionId,
             ),
-            'body' => $data
+            'body' => $data,
         );
 
         $response = wp_remote_post($url, $args);
@@ -416,7 +426,7 @@ class ZingFit
 
     public function getCustomerMySeriesActive($zingfit_user_access_token, $regionId)
     {
-        $url = $this->apiUrl.'account/series';
+        $url = $this->apiUrl . 'account/series';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
@@ -432,7 +442,7 @@ class ZingFit
 
     public function getCustomerMyContractActive($zingfit_user_access_token, $regionId)
     {
-        $url = $this->apiUrl.'account/contracts?page=0&size=100';
+        $url = $this->apiUrl . 'account/contracts?page=0&size=100';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
@@ -448,7 +458,7 @@ class ZingFit
 
     public function getCustomerMyAttendance($zingfit_user_access_token, $regionId)
     {
-        $url = $this->apiUrl.'account/classes?page=0&size=100';
+        $url = $this->apiUrl . 'account/classes?page=0&size=100';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
@@ -462,9 +472,32 @@ class ZingFit
         return $CustomerMyAttendance;
     }
 
+    public function cancelCustomerAttendanceSpot($zingfit_user_access_token, $regionId, $attendanceId)
+    {
+        $url = $this->apiUrl . 'account/classes/'.$attendanceId;
+        $args = array(
+            'method' => 'PATCH',
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $body = json_decode($response['body']);
+        $response = $response['response'];
+
+        $cancelCustomerAttendance = [
+                                    'body' => $body,
+                                    'response' => $response
+                                ];
+        return $cancelCustomerAttendance;
+    }
+
     public function getCustomerMySeriesExpired($zingfit_user_access_token, $regionId)
     {
-        $url = $this->apiUrl.'account/series/expired';
+        $url = $this->apiUrl . 'account/series/expired';
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
@@ -481,15 +514,15 @@ class ZingFit
     public function customerBookSpot($zingfit_user_access_token, $regionId, $classId, $spotId, $seriesId)
     {
 
-        $url = $this->apiUrl.'classes/'.$classId.'/spots';
+        $url = $this->apiUrl . 'classes/' . $classId . '/spots';
         $args = array(
-            'method'     => 'PUT',
+            'method' => 'PUT',
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'X-ZINGFIT-REGION-ID' => $regionId,
             ),
-            'body' => 'spotId='.$spotId.'&seriesItemId='.$seriesId,
+            'body' => 'spotId=' . $spotId . '&seriesItemId=' . $seriesId,
         );
 
         $response = wp_remote_post($url, $args);
@@ -499,9 +532,9 @@ class ZingFit
 
     public function deleteCustomerCard($zingfit_user_access_token, $regionId, $cardId)
     {
-        $url = $this->apiUrl.'account/cardsonfile/'.$cardId;
+        $url = $this->apiUrl . 'account/cardsonfile/' . $cardId;
         $args = array(
-            'method'     => 'DELETE',
+            'method' => 'DELETE',
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_user_access_token,
                 'Content-Type' => 'application/json;charset=UTF-8',
@@ -516,7 +549,7 @@ class ZingFit
 
     public function getClassInfo($zingfit_access_token, $regionId, $classId)
     {
-        $url = $this->apiUrl.'classes/'.$classId;
+        $url = $this->apiUrl . 'classes/' . $classId;
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
@@ -532,7 +565,7 @@ class ZingFit
 
     public function getSeriesInfoById($zingfit_access_token, $regionId, $seriesId)
     {
-        $url = $this->apiUrl.'series/'.$seriesId;
+        $url = $this->apiUrl . 'series/' . $seriesId;
         $args = array(
             'headers' => array(
                 'Authorization' => 'Bearer ' . $zingfit_access_token,
