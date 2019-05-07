@@ -348,6 +348,24 @@ class ZingFit
         return json_decode(wp_remote_retrieve_body($response), true);
     }
 
+    public function chargeCardOnFile($zingfit_user_access_token, $regionId, $orderId, $cardOnFileId)
+    {
+        $cardOnFileId = json_encode($cardOnFileId);
+
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => $cardOnFileId,
+        );
+        $url = $this->apiUrl . 'payments/' . $orderId . '/cardonfile';
+
+        $response = wp_remote_post($url, $args);
+        return json_decode(wp_remote_retrieve_body($response), true);
+    }
+
     public function getInstructorClasses($zingfit_access_token, $optionSites, $regions, $instructorId)
     {
         if ($zingfit_access_token) {
@@ -422,6 +440,23 @@ class ZingFit
         $response = wp_remote_post($url, $args);
         $userCardsData = json_decode($response['body']);
         return $userCardsData;
+    }
+
+    public function getCustomerCardsOnFile($zingfit_user_access_token, $regionId)
+    {
+
+        $url = $this->apiUrl . 'account/cardsonfile';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_user_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+        );
+
+        $response = wp_remote_get($url, $args);
+        $userCardsOnFile = json_decode($response['body']);
+        return $userCardsOnFile;
     }
 
     public function getCustomerMySeriesActive($zingfit_user_access_token, $regionId)
