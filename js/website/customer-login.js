@@ -8,6 +8,21 @@
             $('#login_email').val(email);
         }
 
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
         $('#btn_login').click(function (e) {
             e.preventDefault();
 
@@ -37,7 +52,14 @@
                         {
                             localStorage.setItem('yoga_login_email',data[0].value);
                         }
-                        window.location.href = '/account/';
+
+                        var redirecturl = getUrlParameter('redirecturl');
+
+                        if(redirecturl){
+                            window.location.href = redirecturl;
+                        } else{
+                            window.location.href = '/account/';
+                        }
                     } else {
                         alert('Failed WP login');
                     }

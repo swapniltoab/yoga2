@@ -176,6 +176,9 @@ function logoutCureentUser()
 
     function sessionLogout(){
 
+        var pageURL = jQuery(location).attr("href");
+        // localStorage.setItem('yoga_user_login_url',pageURL);
+
         var ajax_url = zingfit_js_var.ajaxurl;
         var postData = {
             'action': 'wp_user_session_logout',
@@ -188,9 +191,9 @@ function logoutCureentUser()
             data:postData,
             success: (response) => {
                 if (response.status === true) {
-                    window.location.href = '/register/';
+                    window.location.href = '/register/?redirecturl='+pageURL;
                 } else {
-                    window.location.href = '/register/';
+                    window.location.href = '/register/?redirecturl='+pageURL;
                 }
             }
         });

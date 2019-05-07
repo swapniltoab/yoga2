@@ -15,6 +15,7 @@ if ($zingfit_user_access_token) {
     $myActiveSerieses = $zingfit->getCustomerMySeriesActive($zingfit_user_access_token, $regionId);
     $myActiveContracts = $zingfit->getCustomerMyContractActive($zingfit_user_access_token, $regionId);
     $myExpiredSerieses = $zingfit->getCustomerMySeriesExpired($zingfit_user_access_token, $regionId);
+    logoutCureentUser();
 } else {
     logoutCureentUser();
 }
