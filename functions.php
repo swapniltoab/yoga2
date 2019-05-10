@@ -19,10 +19,13 @@ function yoga_enqueue()
     wp_enqueue_script('delete-cc-card', yoga_uri . '/js/website/delete-cc-card.js', array('jquery'), true);
     wp_enqueue_script('cancel-spot', yoga_uri . '/js/website/cancel-spot.js', array('jquery'), true);
     wp_enqueue_script('schedule_reserve', yoga_uri . '/js/website/schedule_reserve.js', array('jquery'), true);
+    wp_enqueue_script('forget-password', yoga_uri . '/js/website/forget-password.js', array('jquery'), true);
+    wp_enqueue_script('reset-user-password', yoga_uri . '/js/website/reset-user-password.js', array('jquery'), true);
     wp_enqueue_script('yoga_common', yoga_uri . '/js/website/common.js', array('jquery'), true);
 
     wp_localize_script('customer-register', 'zingfit_js_var', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
+        'homeurl' => home_url(),
     ));
 
 }
@@ -111,6 +114,8 @@ include_once yoga_path . '/admin/ajax-functions/zingfit_schedule_reserve.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_book_slot.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_delete_cc_card.php';
 include_once yoga_path . '/admin/ajax-functions/zingfit_cancel_spot.php';
+include_once yoga_path . '/admin/ajax-functions/forget-password.php';
+include_once yoga_path . '/admin/ajax-functions/reset-user-password.php';
 
 include_once yoga_path . '/shortcodes/schedule/schedule.shortcode.php';
 new ZingFit_Schedule_Shortcode();

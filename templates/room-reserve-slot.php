@@ -177,9 +177,6 @@ if ($_GET && !empty($_GET)) {
             </div>
         </div>
         <?php } ?>
-
-
-
     </div>
 
     <?php

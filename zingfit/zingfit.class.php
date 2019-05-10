@@ -407,6 +407,40 @@ class ZingFit
         return $userdata;
     }
 
+    public function forgotCustomerPassword($zingfit_access_token, $regionId, $data)
+    {
+        $url = $this->apiUrl . 'account/forgotpassword';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => json_encode($data),
+        );
+
+        $response = wp_remote_post($url, $args);
+        $userdata = json_decode($response['body']);
+        return $userdata;
+    }
+
+    public function resetCustomerPassword($zingfit_access_token, $regionId, $data)
+    {
+        $url = $this->apiUrl . 'account/passwordreset';
+        $args = array(
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $zingfit_access_token,
+                'Content-Type' => 'application/json;charset=UTF-8',
+                'X-ZINGFIT-REGION-ID' => $regionId,
+            ),
+            'body' => json_encode($data),
+        );
+
+        $response = wp_remote_post($url, $args);
+        $userdata = json_decode($response['body']);
+        return $userdata;
+    }
+
     public function getCustomerCardsOfFile($zingfit_user_access_token, $regionId)
     {
         $url = $this->apiUrl . 'account/cardsonfile';

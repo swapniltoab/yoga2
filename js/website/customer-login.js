@@ -3,8 +3,7 @@
     $(document).ready(function () {
 
         var email = localStorage.getItem('yoga_login_email');
-
-        if(email){
+        if (email) {
             $('#login_email').val(email);
         }
 
@@ -23,6 +22,18 @@
             }
         };
 
+        $('.js-login-forgot-password').click(function(e){
+            e.preventDefault();
+            $('#loginform').hide();
+            $('#forgotPasswordForm').show();
+        });
+
+        $('.js-back-to-login').click(function(e){
+            e.preventDefault();
+            $('#forgotPasswordForm').hide();
+            $('#loginform').show();
+        });
+
         $('#btn_login').click(function (e) {
             e.preventDefault();
 
@@ -36,8 +47,7 @@
                 'password': data[1].value,
             };
 
-            if ($('.rememberme').is(":checked"))
-            {
+            if ($('.rememberme').is(":checked")) {
                 postData['remember'] = 1;
             }
 
@@ -45,19 +55,18 @@
                 type: 'POST',
                 dataType: 'json',
                 url: ajax_url,
-                data:postData,
+                data: postData,
                 success: (response) => {
                     if (response.status === true) {
-                        if ($('.rememberme').is(":checked"))
-                        {
-                            localStorage.setItem('yoga_login_email',data[0].value);
+                        if ($('.rememberme').is(":checked")) {
+                            localStorage.setItem('yoga_login_email', data[0].value);
                         }
 
                         var redirecturl = getUrlParameter('redirecturl');
 
-                        if(redirecturl){
+                        if (redirecturl) {
                             window.location.href = redirecturl;
-                        } else{
+                        } else {
                             window.location.href = '/account/';
                         }
                     } else {

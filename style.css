@@ -958,3 +958,12 @@ div#schedule-table {
 .cc-radio-options-sec {
     padding: 20px 0;
 }
+
+.js-back-to-login, .js-login-forgot-password {
+    margin-top: 10px;
+    display: block;
+}
+
+form#resetPasswordForm {
+    padding: 40px;
+}
