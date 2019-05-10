@@ -97,11 +97,21 @@
                                                 <div class="class-time">
                                                    <?php echo $class['time'] ?>
                                                 </div>
-                                                <?php if($class['bookable']) { ?>
-                                                    <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
-                                                <?php } else { ?>
-                                                    <div class="reserve not-bookable" >RESERVE</div>
-                                                <?php } ?>
+                                                <?php
+                                                if(is_user_logged_in()){
+                                                    if($class['bookable']) { ?>
+                                                        <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                                    <?php } else { ?>
+                                                        <div class="reserve not-bookable" >RESERVE</div>
+                                                    <?php }
+                                                } else {
+                                                    if($class['bookable']) { ?>
+                                                        <a href="/register/?redirecturl=<?php echo home_url() ?>/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                                    <?php } else { ?>
+                                                        <div class="reserve not-bookable" >RESERVE</div>
+                                                    <?php }
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -191,11 +201,11 @@
                 foreach ($classes as $key => $class) {
                      if ($key == 0):
                     ?>
-                     <div id="menu-<?php echo $class['date'] ?>" class="classes-container tab-pane <?php echo $active ?>">
-                     <?php
-                     endif;
-                     ?>
-                     <div class="js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classTypeId'] ?>">
+                    <div id="menu-<?php echo $class['date'] ?>" class="classes-container tab-pane <?php echo $active ?>">
+                    <?php
+                    endif;
+                    ?>
+                    <div class="js-container" data-instructor="<?php echo $class['instructorId'] ?>" data-class-type="<?php echo $class['classTypeId'] ?>">
                         <div class="class-instructor position-relative">
                             <div class="col-7 px-0">
                             <div class="class-type">
@@ -207,16 +217,28 @@
                             <div class="class-time">
                                 <?php echo $class['time'] ?>
                             </div>
+                        </div>
+                        <div class="col-5">
+
+                            <?php
+                                if(is_user_logged_in()){
+                                    if($class['bookable']) { ?>
+                                        <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                    <?php } else { ?>
+                                        <div class="reserve not-bookable" >RESERVE</div>
+                                    <?php }
+                                } else {
+                                    if($class['bookable']) { ?>
+                                        <a href="/register/?redirecturl=<?php echo home_url() ?>/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
+                                    <?php } else { ?>
+                                        <div class="reserve not-bookable" >RESERVE</div>
+                                    <?php }
+                                }
+                            ?>
+
+                        </div>
+                    </div>
                 </div>
-                         <div class="col-5">
-                            <?php if($class['bookable']) { ?>
-                                <a href="/book/?classId=<?php echo $class['class_Id'] ?>" class="reserve btn-register" data-room-id="<?php echo $class['room_Id'] ?>" data-class-id="<?php echo $class['class_Id'] ?>">RESERVE</a>
-                            <?php } else { ?>
-                                <div class="reserve not-bookable" >RESERVE</div>
-                            <?php } ?>
-                        </div>
-                        </div>
-                        </div>
                     <?php  if ($key == ($length - 1)): ?>
                             </div>
                     <?php endif;

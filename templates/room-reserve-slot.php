@@ -2,7 +2,7 @@
 
 /*template name: Zingfit Room Reserve Layout */
 
-if(is_user_logged_in()){
+// if(is_user_logged_in()){
 get_header();
 
 $regions = get_option('zingfit_regions');
@@ -192,9 +192,9 @@ if ($_GET && !empty($_GET)) {
 <?php
 }
 get_footer();
-} else {
-    $url = home_url();
-    wp_redirect($url.'/register/');
-    exit;
-}
+// } else {
+//     $url = home_url();
+//     wp_redirect($url.'/register/');
+//     exit;
+// }
 ?>

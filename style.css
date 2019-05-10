@@ -964,6 +964,12 @@ div#schedule-table {
     display: block;
 }
 
+@media screen and (max-width: 767px) {
+    .js-back-to-login, .js-login-forgot-password {
+        font-size: 12px;
+    }
+}
+
 form#resetPasswordForm {
     padding: 40px;
 }
